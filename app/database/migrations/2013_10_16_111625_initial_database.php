@@ -38,6 +38,52 @@ class InitialDatabase extends Migration {
 			$table->string('description', 300)->nullable();
 			$table->integer('active');
 		});
+
+		Schema::table('comments', function($table)
+		{
+			$table->create();
+			$table->engine = 'InnoDB';
+			$table->increments('id');
+			$table->string('user_id');
+			$table->string('product_id');
+			$table->string('text', 300)->nullable();
+			$table->integer('approved');
+			$table->timestamp('posted_at');
+		});
+
+		Schema::table('colors', function($table)
+		{
+			$table->create();
+			$table->engine = 'InnoDB';
+			$table->increments('id');
+			$table->string('id');
+			$table->string('color');
+		});
+
+		Schema::table('categorized_products', function($table)
+		{
+			$table->create();
+			$table->engine = 'InnoDB';
+			$table->integer('category_id');
+			$table->integer('product_id');
+		});
+
+		Schema::table('categorized_products', function($table)
+		{
+			$table->create();
+			$table->engine = 'InnoDB';
+			$table->integer('category_id');
+			$table->integer('product_id');
+		});
+
+		Schema::table('likes', function($table)
+		{
+			$table->create();
+			$table->engine = 'InnoDB';
+			$table->integer('comment_id');
+			$table->integer('user_id');
+			$table->increments('id');
+		});
 	}
 
 	/**
