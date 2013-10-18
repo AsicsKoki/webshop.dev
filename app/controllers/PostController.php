@@ -1,6 +1,6 @@
 <?php
 
-class HomeController extends BaseController {
+class PostController extends BaseController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -15,12 +15,10 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
+	public function postData()
 	{
-		return View::make('index');
-	}
-	public function users(){
-		return Users::all();
+		$url = Input::get('url');
+		return 'posted';
 	}
 
 }

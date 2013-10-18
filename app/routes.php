@@ -11,7 +11,10 @@
 |
 */
 
-Route::get('/', function()
+Route::get('/', 'HomeController@showWelcome');
+Route::post('/', 'PostController@postData');
+// Route::get('/users', 'HomeController@users');
+/*Route::get('/', function()
 {
-	return View::make('hello');
-});
+	return View::make('index');
+});*/
