@@ -1,6 +1,6 @@
 @extends('layout')
 @section('main')
-	<table>
+	<table id="productsTable" class="table table-hover" class="display">
 		<thead>
 			<th>Product name</th>
 			<th>Color</th>

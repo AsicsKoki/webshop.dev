@@ -1,41 +1,27 @@
 <!doctype html>
 <html>
 	<head>
-		<link rel="stylesheet" href="css/styles.css">
-		<link rel="stylesheet" href="css/bootstrap.css">
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/bootstrap-responsive.css">
-		<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
-		<link rel="stylesheet" href="css/jquery.dataTables.css">
-		<link rel="stylesheet" href="css/jquery.dataTables_themeroller.css">
+		{{-- STYLES --}}
+		{{HTML::style('css/styles.css')}}
+		{{HTML::style('css/bootstrap.min.css')}}
+		{{HTML::style('css/bootstrap-responsive.min.css')}}
+		{{HTML::style('css/jquery.dataTables.css')}}
+		{{HTML::style('css/jquery.dataTables_themeroller.css')}}
 	</head>
 	<body id="background">
-			<div id="mainElement">
-				<header>123</header>
-				@yield('main');
-				<footer id="footer">(2013) All rights reserved</footer>
-			</div>
-		<script src="js/jquery-1.10.2.min.js"></script>
-		<script src="js/bootstrap.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/main.js"></script>
-		<script src="js/jquery.dataTables.min.js"></script>
-		<script type="text/javascript">
-			$('.delete').click(function(e){
-				e.preventDefault();
-				var id = $(this).data('id');
-				var self = this;
-				$.ajax({
-					url: "cartDelete.php",
-					type: "POST",
-					data: {
-						id: id
-					},
-					success: function(data){
-						$(self).parents("tr").remove();
-					}
-				});
-			});
-		</script>
+		<div id="mainElement">
+		<header id="header">
+			<p>Konstantin's web shop</p>
+		</header>
+			@include('partials.loginLogout')
+			@include('partials.navbar')
+			@yield('main')
+			<footer id="footer">(2013) All rights reserved</footer>
+		</div>
+		{{-- SCRIPTS --}}
+		{{ HTML::script('js/jquery-1.10.2.min.js') }}
+		{{ HTML::script('js/jquery.dataTables.js') }}
+		{{ HTML::script('js/main.js') }}
+		{{ HTML::script('js/bootstrap.js') }}
 	</body>
 </html>
