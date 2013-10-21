@@ -19,8 +19,11 @@ class HomeController extends BaseController {
 	{
 		return View::make('hello');
 	}
-	public function users(){
-		return Users::all();
+
+	public function products(){
+		$products = Product::all();
+		return View::make('products')->with('products', $products);
+
 	}
 
 }

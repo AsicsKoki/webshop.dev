@@ -10,5 +10,5 @@
 	</thead>
 	<tbody>
 		{{}}
-	</tbody> 
+	</tbody>
 @stop
