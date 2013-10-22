@@ -12,10 +12,10 @@
 |
 */
 
-Route::get('/', 'HomeController@showWelcome');
 Route::get('products', 'HomeController@products');
 Route::post('/', 'PostController@postData');
 Route::get('users', 'UsersController@users');
+Route::put('users', 'UsersController@createUser');
 // Route::get('/users', 'HomeController@users');
 /*Route::get('/', function()
 {

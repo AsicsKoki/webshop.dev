@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts/main')
 @section('main')
 	<table id="productsTable" class="table table-hover" class="display">
 		<thead>

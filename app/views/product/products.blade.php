@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts/main')
 @section('main')
 	<table id="productsTable" class="table table-hover" class="display">
 		<thead>
@@ -12,9 +12,9 @@
 		@foreach($products as $product)
 			<tr>
 				<td>{{$product->name}}</td>
-				<td>{{'123'}}</td>
+				<td>{{$product->color->color_name}}</td>
 				<td>{{$product->price}}</td>
-				<td>{{'delete'}}</td>
+				<td>{{'<a class="btn">Read more</a>'}}</td>
 				<td>{{$product->quantity}}</td>
 			</tr>
 		@endforeach

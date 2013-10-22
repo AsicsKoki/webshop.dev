@@ -16,8 +16,7 @@ class HomeController extends BaseController {
 	*/
 
 	public function products(){
-		$products = Product::all();
-		return View::make('products')->with('products', $products);
+		return View::make('product.products')->with('products', Product::with('color')->get());
 
 	}
 
