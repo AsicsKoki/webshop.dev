@@ -27,8 +27,8 @@
 
 
 
-Route::get('products', array('as' => 'AllProducts', 'uses' => 'ProductController@products'));
 Route::get('/', array('as' => 'HomePage', 'uses' => 'HomeController@welcome'));
 Route::get('users', array('as' => 'AllUsers', 'uses' => 'UsersController@users'));
 Route::put('users', 'UsersController@createUser');
-Route::get('products/{pid}', array('as' => 'ShowProductPage', 'uses' => 'ProductController@product'))->where('pid', '\d+');
+Route::get('products/{pid}', array('as' => 'ShowProductPage', 'uses' => 'ProductController@getProduct'))->where('pid', '\d+');
+Route::get('products', array('as' => 'AllProducts', 'uses' => 'ProductController@getProducts'));
