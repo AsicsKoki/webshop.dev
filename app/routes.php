@@ -12,12 +12,23 @@
 |
 */
 
-Route::get('products', 'HomeController@products');
-Route::post('/', 'PostController@postData');
-Route::get('users', 'UsersController@users');
+/*
+|--------------------------------------------------------------------------
+| Id legend
+|--------------------------------------------------------------------------
+|pid - Product id
+|uid - User id
+|
+|
+|
+|
+*/
+
+
+
+
+Route::get('products', array('as' => 'AllProducts', 'uses' => 'ProductController@products'));
+Route::get('/', array('as' => 'HomePage', 'uses' => 'HomeController@welcome'));
+Route::get('users', array('as' => 'AllUsers', 'uses' => 'UsersController@users'));
 Route::put('users', 'UsersController@createUser');
-// Route::get('/users', 'HomeController@users');
-/*Route::get('/', function()
-{
-	return View::make('index');
-});*/
+Route::get('products/{pid}', array('as' => 'ShowProductPage', 'uses' => 'ProductController@product'))->where('pid', '\d+');

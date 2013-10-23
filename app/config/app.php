@@ -92,7 +92,7 @@ return array(
 		'Illuminate\Encryption\EncryptionServiceProvider',
 		'Illuminate\Filesystem\FilesystemServiceProvider',
 		'Illuminate\Hashing\HashServiceProvider',
-		'Illuminate\Html\HtmlServiceProvider',
+		// 'Illuminate\Html\HtmlServiceProvider',
 		'Illuminate\Foundation\Providers\KeyGeneratorServiceProvider',
 		'Illuminate\Log\LogServiceProvider',
 		'Illuminate\Mail\MailServiceProvider',
@@ -113,7 +113,8 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'Profiler\ProfilerServiceProvider'
+		'Profiler\ProfilerServiceProvider',
+		'LaravelBook\Laravel4Powerpack\Providers\PowerpackServiceProvider',
 	),
 
 	/*
@@ -156,9 +157,9 @@ return array(
 		'Eloquent'        => 'Illuminate\Database\Eloquent\Model',
 		'Event'           => 'Illuminate\Support\Facades\Event',
 		'File'            => 'Illuminate\Support\Facades\File',
-		'Form'            => 'Illuminate\Support\Facades\Form',
+		// 'Form'            => 'Illuminate\Support\Facades\Form',
 		'Hash'            => 'Illuminate\Support\Facades\Hash',
-		'HTML'            => 'Illuminate\Support\Facades\HTML',
+		// 'HTML'            => 'Illuminate\Support\Facades\HTML',
 		'Input'           => 'Illuminate\Support\Facades\Input',
 		'Lang'            => 'Illuminate\Support\Facades\Lang',
 		'Log'             => 'Illuminate\Support\Facades\Log',
@@ -174,11 +175,14 @@ return array(
 		'Schema'          => 'Illuminate\Support\Facades\Schema',
 		'Seeder'          => 'Illuminate\Database\Seeder',
 		'Session'         => 'Illuminate\Support\Facades\Session',
-		'Str'             => 'Illuminate\Support\Str',
+		// 'Str'             => 'Illuminate\Support\Str',
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-		'Profiler' 		  => 'Profiler\Facades\Profiler'
+		'Profiler'        => 'Profiler\Facades\Profiler',
+		'HTML'            => 'LaravelBook\Laravel4Powerpack\Facades\HTMLFacade',
+		'Form'            => 'LaravelBook\Laravel4Powerpack\Facades\FormFacade',
+		'Str'             => 'LaravelBook\Laravel4Powerpack\Facades\StrFacade'
 	),
 
 );
