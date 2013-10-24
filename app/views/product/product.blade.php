@@ -1,9 +1,8 @@
 @extends('layouts/main')
 @section('main')
 	<div class="user-box pull-right">
-		<header>Posted by :</header>
-		<!-- <img src="files/<?php echo $poster['image_name'] ?>" alt=""> -->
-		<!-- <h5><a href="user.php?id=<?php echo $user_id ?>"><?php echo $poster['username'] ?></a></h5> -->
+		<header>Posted by </header>
+		{{$product->user->username}}
 	</div>
 	<div class="span6">
 		<h3>{{$product->name}}</h3>
