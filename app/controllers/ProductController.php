@@ -11,10 +11,6 @@ class ProductController extends BaseController {
 	{
 		return View::make('product.product')->with('product', Product::with('user','images')->find($pid));
 	}
-	public function postProduct()
-	{
-
-	}
-	
+	public function postProduct(){
 	}
 }
