@@ -23,7 +23,8 @@ class ProductController extends BaseController {
 			->find($pid));
 	}
 
-	public function postProduct(){
-
+	public function postProduct($pid){
+		Product::find($pid)->update(Input::get());
+		return Redirect::to('products/{pid}')->with('message', 'Saved');
 	}
 }
