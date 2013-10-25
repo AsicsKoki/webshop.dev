@@ -32,6 +32,7 @@
 						{{Form::textarea('description', $product->description)}}
 					</div>
 				</div>
+				{{Form::submit('Save', array('class'=> 'btn'));}}
 			{{ Form::close() }}
 		</div>
 	</div>

@@ -115,6 +115,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Profiler\ProfilerServiceProvider',
 		'LaravelBook\Laravel4Powerpack\Providers\PowerpackServiceProvider',
+		'Former\FormerServiceProvider',
 	),
 
 	/*
@@ -182,7 +183,8 @@ return array(
 		'Profiler'        => 'Profiler\Facades\Profiler',
 		'HTML'            => 'LaravelBook\Laravel4Powerpack\Facades\HTMLFacade',
 		'Form'            => 'LaravelBook\Laravel4Powerpack\Facades\FormFacade',
-		'Str'             => 'LaravelBook\Laravel4Powerpack\Facades\StrFacade'
+		'Str'             => 'LaravelBook\Laravel4Powerpack\Facades\StrFacade',
+		'Former'          => 'Former\Facades\Former'
 	),
 
 );
