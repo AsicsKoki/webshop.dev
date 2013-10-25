@@ -24,13 +24,19 @@
 |
 */
 
-
-
-
 Route::get('/', array('as' => 'HomePage', 'uses' => 'HomeController@welcome'));
-Route::get('users', array('as' => 'AllUsers', 'uses' => 'UsersController@users'));
-Route::put('users', 'UsersController@createUser');
+
+/**
+ * Product routes
+ */
 Route::get('products/{pid}', array('as' => 'ShowProductPage', 'uses' => 'ProductController@getProduct'))->where('pid', '\d+');
 Route::get('products', array('as' => 'AllProducts', 'uses' => 'ProductController@getProducts'));
-Route::post('products/{pid}', array('as' => 'UpdateProduct', 'uses' => 'ProductController@postProduct'))->where('pid', '\d+');
-Route::get('products/{pid}', array('as' => 'ShowProductEditPage', 'uses' => 'ProductController@getProduct'))->where('pid', '\d+');
+Route::post('products/{pid}/edit', array('as' => 'UpdateProduct', 'uses' => 'ProductController@postProduct'))->where('pid', '\d+');
+Route::get('products/{pid}/edit', array('as' => 'ShowProductEditPage', 'uses' => 'ProductController@editProduct'))->where('pid', '\d+');
+
+/**
+ * User related routes
+ */
+
+Route::get('users', array('as' => 'AllUsers', 'uses' => 'UsersController@users'));
+Route::put('users', 'UsersController@createUser');
