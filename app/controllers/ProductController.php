@@ -24,7 +24,27 @@ class ProductController extends BaseController {
 	}
 
 	public function postProduct($pid){
-		Product::find($pid)->update(Input::get());
-		return Redirect::to('products/{pid}')->with('message', 'Saved');
+
+		$validator = Validator::make(
+        	Input::get(),
+		    array(
+		       	'name' => 'required',
+        		'description' => 'required|min:20',
+        		'quantity' => 'required|min:1',
+        		'price' => 'required|min:1',
+		    )
+		);
+		if ($validator->passes())
+		{
+			echo "aha";
+			Product::find($pid)->update(Input::get());
+			return Redirect::to('products/{pid}')->with('message', 'Saved');
+		}
+		else{
+			echo "nope";
+			Redirect::back()
+				->withInput(Input::get())
+				->withErrors($validator);
+		}
 	}
 }
