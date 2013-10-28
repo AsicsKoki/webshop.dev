@@ -7,33 +7,21 @@
 	<div class="span6">
 		<h3>{{$product->name}}</h3>
 		<div>
-			{{Form::open(URL::route('UpdateProduct', array('pid'=>$product->id)), 'post', array('class' => 'form-horizontal pull-left'))}}
-				<div class='controll-group'>
-					{{Form::label('name', 'Product name :', array('class' => 'controll-lable'))}}
-					<div class="controls">
-						{{Form::text('name', $product->name)}}
-					</div>
-				</div>
-				<div class='controll-group'>
-					{{Form::label('price', 'Product price :', array('class' => 'controll-lable'))}}
-					<div class="controls">
-						{{Form::text('price', $product->price)}}
-					</div>
-				</div>
-				<div class='controll-group'>
-					{{Form::label('quantity', 'Product quantity :', array('class' => 'controll-lable'))}}
-					<div class="controls">
-						{{Form::text('quantity', $product->quantity)}}
-					</div>
-				</div>
-				<div class='controll-group'>
-					{{Form::label('description', 'Product description :', array('class' => 'controll-lable'))}}
-					<div class="controls">
-						{{Form::textarea('description', $product->description)}}
-					</div>
-				</div>
-				{{Form::submit('Save', array('class'=> 'btn'));}}
-			{{ Form::close() }}
+			{{ Former::open()->class('form-horizontal pull-left')->method('POST')->enctype('multipart/form-data')->action(URL::route('UpdateProduct', array('pid'=>$product->id)))}}
+			<div class='control-group'>
+				{{ Former::text('name')->required()->label('name')->maxlength(50)->value($product->name) }}
+			</div>
+			<div class='control-group'>
+				{{ Former::textarea('description')->required()->label('description')->maxlength(500)->value($product->description) }}
+			</div>
+			<div class='control-group'>
+				{{ Former::number('price')->required()->label('price')->value($product->price) }}
+			</div>
+			<div class='control-group'>
+				{{ Former::number('quantity')->required()->label('quantity')->value($product->quantity) }}
+			</div>
+				{{Former::actions()->submit('Submit')}}
+			{{ Former::close() }}
 		</div>
 	</div>
 @stop
