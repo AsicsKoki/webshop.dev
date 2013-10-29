@@ -26,10 +26,10 @@
 	<div class="tab-pane" id="likes">
 		<table id="like_table" class="table table-hover display">
 				<thead>
-						<th>Comment id</th>
-						<th>Posted by</th>
-						<th>Comment</th>
-						<th>Delete like</th>
+					<th>Comment id</th>
+					<th>Posted by</th>
+					<th>Comment</th>
+					<th>Delete like</th>
 				</thead>
 				<tbody>
 					#HERE GO LIKES
