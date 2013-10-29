@@ -15,7 +15,7 @@
 				<td>{{$user->first_name}}</td>
 				<td>{{$user->last_name}}</td>
 				<td>{{$user->email}}</td>
-				<td>{{'123'}}</td>
+				<td>{{ HTML::route('ShowUserPage', 'Read more', array('uid'=>$user->id), array('class'=>'btn')) }}</td>
 			</tr>
 		@endforeach
 		</tbody>

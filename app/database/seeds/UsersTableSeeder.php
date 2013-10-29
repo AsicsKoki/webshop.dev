@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder {
             [
                 'email'      => 'admin@reccircle.me',
                 'password'   => Hash::make('admin'),
-                'username'       => 'Mika',
+                'username'   => 'Mika',
                 'first_name' => 'Mika',
                 'last_name'  => 'Mikic',
                 'role_id'    => 0,
@@ -35,7 +35,7 @@ class UsersTableSeeder extends Seeder {
             [
                 'email'      => 'admin@reccircle.me',
                 'password'   => Hash::make('admin'),
-                'username'       => 'zika',
+                'username'   => 'zika',
                 'first_name' => 'Zika',
                 'last_name'  => 'Zivkovic',
                 'role_id'    => 0,

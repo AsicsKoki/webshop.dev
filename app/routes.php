@@ -38,5 +38,7 @@ Route::get('products/{pid}/edit', array('as' => 'ShowProductEditPage', 'uses' =>
  * User related routes
  */
 
-Route::get('users', array('as' => 'AllUsers', 'uses' => 'UsersController@users'));
+Route::get('users', array('as' => 'AllUsers', 'uses' => 'UsersController@getUsers'));
 Route::put('users', 'UsersController@createUser');
+Route::get('user/{uid}', array('as' => 'ShowUserPage', 'uses' => 'UsersController@getUser'))->where('uid', '\d+');
+
