@@ -11,15 +11,10 @@
 				{{ Former::textarea('bio')->label('bio')->maxlength(500)->value($user->bio) }}
 			</div>
 			<div class='control-group'>
-				{{ Former::text('first_name')->required()->label('First Name')->value($user->first_name) }}
-			</div>
-			<div class='control-group'>
-				{{ Former::text('last_name')->required()->label('Last name')->value($user->last_name) }}
-			</div>
-			<div class='control-group'>
 				{{ Former::text('email')->required()->label('Email')->value($user->email) }}
 			</div>
 				{{Former::actions()->submit('Submit')}}
+				{{Former::hidden()->name('_token')->value(csrf_token())}}
 			{{ Former::close() }}
 		</div>
 	</div>

@@ -9,7 +9,7 @@
 	</ul>
 	<header><h4> {{$user->username}}'s profile </h4></header>
 	<div id="my-tab-content" class="tab-content">
-		 <div class="tab-pane active" id="profile">
+		<div class="tab-pane active" id="profile">
 			<div class="columnLeft">
 				#Here goes profile pic
 			</div>
@@ -22,19 +22,18 @@
 				</ul>
 			</div>
 		</div>
-	</div>
-	<div class="tab-pane" id="likes">
-		<table id="like_table" class="table table-hover display">
-				<thead>
-					<th>Comment id</th>
-					<th>Posted by</th>
-					<th>Comment</th>
-					<th>Delete like</th>
-				</thead>
-				<tbody>
-					#HERE GO LIKES
-				</tbody>
-		</table>
+		<div class="tab-pane" id="likes">
+			<table id="like_table" class="table table-hover display">
+					<thead>
+						<th>Comment id</th>
+						<th>Posted by</th>
+						<th>Comment</th>
+						<th>Delete like</th>
+					</thead>
+					<tbody>
+					</tbody>
+			</table>
+		</div>
 	</div>
 </div>
 @stop

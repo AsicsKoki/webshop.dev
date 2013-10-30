@@ -12,8 +12,8 @@ class UsersController extends BaseController {
 
 	public function editUser($uid)
 	{
-		return View::make('User.UserUpdate')
-			->with('User', User::find($uid));
+		return View::make('user.userUpdate')
+			->with('user', User::find($uid));
 	}
 
 	public function postUser($uid){
@@ -21,10 +21,9 @@ class UsersController extends BaseController {
 		$validator = Validator::make(
         	Input::all(),
 		    array(
-				'name'        => 'required|between:5,50',
-				'description' => 'required|between:5,500',
-				'quantity'    => 'integer|required|min:1',
-				'price'       => 'integer|required|min:1',
+				'username'        => 'required|between:5,50',
+				'bio' 			=> 'required|between:5,500',
+				'email'       => 'required|min:1',
 		    )
 		);
 		if ($validator->passes())
@@ -37,5 +36,4 @@ class UsersController extends BaseController {
 				->withErrors($validator->messages());
 		}
 	}
-}
 }

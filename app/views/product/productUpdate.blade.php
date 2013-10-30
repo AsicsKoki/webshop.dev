@@ -20,6 +20,7 @@
 			<div class='control-group'>
 				{{ Former::number('quantity')->required()->label('quantity')->value($product->quantity) }}
 			</div>
+				{{Former::hidden()->name('_token')->value(csrf_token())}}
 				{{Former::actions()->submit('Submit')}}
 			{{ Former::close() }}
 		</div>
