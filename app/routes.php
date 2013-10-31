@@ -49,4 +49,5 @@ Route::get('users/{uid}/edit', array('as' => 'ShowUserEditPage', 'uses' => 'User
  */
 
 Route::get('login', array('uses' => 'SessionsController@login'));
+Route::post('login', array('as' => 'authenticate', 'uses' => 'SessionsController@authenticate'));
 Route::get('logout', array('uses' => 'SessionsController@logout'));
