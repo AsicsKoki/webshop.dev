@@ -8,6 +8,14 @@ class SessionsController extends BaseController {
 	|
 	|
 	*/
+    public function __construct()
+    {
+
+	// Enforce user authentication on specified methods
+	$this->beforeFilter('csrf', ['only' => ['authenticate']]);
+	parent::__construct();
+    }
+
 
 	public function login(){
 		return View::make('auth.login');

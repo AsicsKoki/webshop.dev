@@ -13,6 +13,7 @@
 					<form class="form-inline" method="post">
 					{{Former::text('username')->required()->label('username')->placeholder('Username')}}
 					{{Former::password('password')->required()->label('password')->placeholder('Password')}}
+					{{Former::hidden()->name('_token')->value(csrf_token())}}
 					{{Former::actions('Sign in')->submit('Submit')}}
 					<a class="btn-info" href="register.php">Register</a>
 					</form>

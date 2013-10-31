@@ -2,6 +2,15 @@
 
 class ProductController extends BaseController {
 
+    public function __construct()
+    {
+
+	// Enforce user authentication on specified methods
+	$this->beforeFilter('csrf', ['only' => ['authenticate']]);
+	parent::__construct();
+    }
+
+
 	public function getProducts()
 	{
 		return View::make('product.products')
