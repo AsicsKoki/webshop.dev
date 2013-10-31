@@ -2,7 +2,9 @@
 
 class BaseController extends Controller {
 
-	public function __construct(){}
+	public function __construct(){
+        $this->beforeFilter('auth');
+	}
 	/**
 	 * Setup the layout used by the controller.
 	 *
