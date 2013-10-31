@@ -9,13 +9,11 @@ class SessionsController extends BaseController {
 	|
 	*/
 
-	public function login()
-	{
+	public function login(){
 		return View::make('auth.login');
 	}
 
-	public function authenticate()
-	{
+	public function authenticate(){
 		 $credentials = array(
 			'username' => Input::get('username'),
 			'password' => Input::get('password')
@@ -26,5 +24,9 @@ class SessionsController extends BaseController {
 		} else {
 			return Redirect::to('/login');
 		}
+	}
+	public function logout(){
+		Auth::logout();
+		return Redirect::to('/login');
 	}
 }
