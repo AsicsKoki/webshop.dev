@@ -28,6 +28,7 @@ class SessionsController extends BaseController {
 		  );
 
 		if(Auth::attempt($credentials)){
+
 			return Redirect::intended('/');
 		} else {
 			return Redirect::to('/login');
