@@ -33,6 +33,8 @@ Route::get('products/{pid}', array('as' => 'ShowProductPage', 'uses' => 'Product
 Route::get('products', array('as' => 'AllProducts', 'uses' => 'ProductController@getProducts'));
 Route::post('products/{pid}/edit', array('as' => 'UpdateProduct', 'uses' => 'ProductController@postProduct'))->where('pid', '\d+');
 Route::get('products/{pid}/edit', array('as' => 'ShowProductEditPage', 'uses' => 'ProductController@editProduct'))->where('pid', '\d+');
+Route::get('newProduct', array('as'=>'newProductPage', 'uses' => 'ProductController@getNewProductPage'));
+Route::put('newProduct', array('as'=> 'newProduct', 'uses' =>'ProductController@putProduct'));
 
 /**
  * User related routes

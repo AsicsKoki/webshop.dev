@@ -23,7 +23,7 @@ class InitialDatabase extends Migration {
 		    $table->string('username', 64);
 			$table->string('bio', 300)->nullable();
 			$table->integer('role_id')->nullable();
-			$table->timestamp('updated_at');
+			$table->timestamps();
 		});
 
 		Schema::table('products', function($table)
@@ -38,7 +38,7 @@ class InitialDatabase extends Migration {
 		    $table->integer('quantity');
 			$table->string('description', 300)->nullable();
 			$table->integer('active');
-			$table->timestamp('updated_at');
+			$table->timestamps();
 			$table->index('user_id');
 		});
 
