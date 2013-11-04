@@ -52,6 +52,12 @@ class ProductController extends BaseController {
 				->withInput(Input::all())
 				->withErrors($validator->messages());
 		}
+		 if (Input::hasFile('image')) {
+	        $file            = Input::file('image');
+	        $destinationPath = public_path().'/img/';
+	        $filename        = str_random(6) . '_' . $file->getClientOriginalName();
+	        $uploadSuccess   = $file->move($destinationPath, $filename);
+    }
 	}
 
 	public function getNewProductPage(){
@@ -69,7 +75,7 @@ class ProductController extends BaseController {
 		    )
 		);
 		if($validator->passes()){
-			Input::all();
+			User::create(array(Input::all()));
 		}
 	}
 }
