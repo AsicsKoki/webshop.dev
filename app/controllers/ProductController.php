@@ -52,12 +52,12 @@ class ProductController extends BaseController {
 				->withInput(Input::all())
 				->withErrors($validator->messages());
 		}
-		 if (Input::hasFile('image')) {
+		if (Input::hasFile('image')) {
 	        $file            = Input::file('image');
 	        $destinationPath = public_path().'/img/';
 	        $filename        = str_random(6) . '_' . $file->getClientOriginalName();
 	        $uploadSuccess   = $file->move($destinationPath, $filename);
-    }
+   		}
 	}
 
 	public function getNewProductPage(){
@@ -75,7 +75,10 @@ class ProductController extends BaseController {
 		    )
 		);
 		if($validator->passes()){
-			User::create(array(Input::all()));
+			$data = Input::all();
+			$data['user_id']= Auth::User()->id;
+			Product::create($data);
+			return Redirect::intended('products');
 		}
 	}
 }

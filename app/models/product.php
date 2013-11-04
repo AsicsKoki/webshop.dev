@@ -6,7 +6,7 @@ class Product extends Eloquent {
    * Define which attributes can be filled
    * via MassAssignment
    */
-	protected $fillable = array('quantity', 'price', 'description', 'name');
+	protected $fillable = array('quantity', 'price', 'description', 'name', 'user_id', 'color_id');
 	public function color()
 	{
 		return $this->belongsTo('color');
