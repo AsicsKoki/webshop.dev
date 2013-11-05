@@ -16,7 +16,7 @@
 				{{ Former::number('quantity')->required()->label('quantity') }}
 			</div>
 			<div class='control-group'>
-				{{Former::select('color_id')->options(['1'=>'Red', '2'=>'Green','3'=>'Blue','4'=>'Purple'])}}
+				{{Former::select('color_id')->label('Color')->options(['1'=>'Red', '2'=>'Green','3'=>'Blue','4'=>'Purple'])}}
 			</div>
 				{{Former::hidden()->name('_token')->value(csrf_token())}}
 				{{Former::actions()->submit('Submit')}}

@@ -21,7 +21,7 @@
 				{{ Former::number('quantity')->required()->label('quantity')->value($product->quantity) }}
 			</div>
 			<div class='control-group'>
-				{{Former::select('color_id')->options(['1'=>'Red', '2'=>'Green','3'=>'Blue','4'=>'Purple'])}}
+				{{Former::select('color_id')->label('Color')->options(['1'=>'Red', '2'=>'Green','3'=>'Blue','4'=>'Purple'])}}
 			</div>
 			<div class='control-group'>
 				{{ Former::file('image')->label('Image') }}
