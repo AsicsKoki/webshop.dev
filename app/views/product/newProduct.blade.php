@@ -18,6 +18,9 @@
 			<div class='control-group'>
 				{{Former::select('color_id')->label('Color')->options(['1'=>'Red', '2'=>'Green','3'=>'Blue','4'=>'Purple'])}}
 			</div>
+			<div class='control-group'>
+				{{ Former::file('image')->label('Image') }}
+			</div>
 				{{Former::hidden()->name('_token')->value(csrf_token())}}
 				{{Former::actions()->submit('Submit')}}
 			{{ Former::close() }}

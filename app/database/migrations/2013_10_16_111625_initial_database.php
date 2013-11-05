@@ -127,10 +127,10 @@ class InitialDatabase extends Migration {
 			$table->create();
 			$table->engine = 'InnoDB';
 			$table->increments('id');
-			$table->integer('entity_id');
-			$table->string('entity_type', 300);
-			$table->string('entity_name', 300);
-			$table->string('image_name', 300);
+			$table->integer('imageable_id');
+			$table->string('imageable_type', 300);
+			$table->string('path', 300);
+			$table->timestamps();
 		});
 
 		Schema::table('products', function($table)

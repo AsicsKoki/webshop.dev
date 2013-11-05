@@ -18,6 +18,6 @@ class Product extends Eloquent {
 	}
 
 	public function images(){
-		return $this->morphMany('image','entity');
+		return $this->morphMany('image','imageable');
 	}
 }
