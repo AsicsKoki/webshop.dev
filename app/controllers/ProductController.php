@@ -1,5 +1,7 @@
 <?php
 
+use \Utils\HashUtility;
+
 class ProductController extends BaseController {
 
     public function __construct()
@@ -9,7 +11,23 @@ class ProductController extends BaseController {
 	$this->beforeFilter('csrf', ['only' => ['authenticate']]);
 	parent::__construct();
     }
-
+/**
+ * Saves the product image to database and to destination folder. Takes the id and hashes it to use as a name.
+ * @param  [type] $product [description]
+ * @return [type]          [description]
+ */
+    	private function saveProductImage($product){
+		$img = new Image;
+		$product->images()->save($img);
+		$file            = Input::file('image');
+		$extension       = Input::file('image')->getClientOriginalExtension();
+		$name            = Input::file('image')->getClientOriginalName();
+		$path            = HashUtility::alphaId($img->id). "." . $extension;
+		$destinationPath = public_path().'/img/';
+		$file->move($destinationPath, $path);
+		$img->path = $path;
+		$product->images()->save($img);
+    	}
 
 	public function getProducts()
 	{
@@ -31,7 +49,12 @@ class ProductController extends BaseController {
 			->with('product', Product::with('user','images')
 			->find($pid));
 	}
-	//updates an existing product
+	/**
+	 * Updates an existing product with new data.
+	 *
+	 * @param  [type] $pid -Product id, target.
+	 * @return [type]      [description]
+	 */
 	public function postProduct($pid){
 
 		$validator = Validator::make(
@@ -41,29 +64,30 @@ class ProductController extends BaseController {
 				'description' => 'required|between:5,500',
 				'quantity'    => 'integer|required|min:1',
 				'price'       => 'integer|required|min:1',
+				'image'       => 'image'
 		    )
 		);
 		if ($validator->passes())
 		{
-			Product::find($pid)->update(Input::all());
+			$data = Input::all();
+			$product = Product::find($pid);
+			$product->update($data);
+			if (Input::hasFile('image')) $this->saveProductImage($product);
 			return Redirect::back()->with('message', 'Saved');
 		} else {
 			return Redirect::back()
 				->withInput(Input::all())
 				->withErrors($validator->messages());
 		}
-		if (Input::hasFile('image')) {
-		   $file            = Input::file('image');
-		   $destinationPath = public_path().'/img/';
-		   $filename        = str_random(6) . '_' . $file;
-		   $uploadSuccess   = $file->move($destinationPath, $filename);
-		}
 	}
 
 	public function getNewProductPage(){
 		return View::make('product.newProduct');
 	}
-	//creates the new product
+	/**
+	 * Creates the new product and adds it to the database.
+	 * @return [type] [description]
+	 */
 	public function putProduct(){
 			$validator = Validator::make(
 		Input::all(),
@@ -72,22 +96,15 @@ class ProductController extends BaseController {
 				'description' => 'required|between:5,500',
 				'quantity'    => 'integer|required|min:1',
 				'price'       => 'integer|required|min:1',
-				'color_id'    => 'integer|required|between:1,5'
+				'color_id'    => 'integer|required|between:1,5',
+				'image'       => 'image'
 		    )
 		);
 		if($validator->passes()){
-			if (Input::hasFile('image')) {
-				$file            = Input::file('image');
-				$destinationPath = public_path().'/img/';
-				$filename        = $file->getClientOriginalName() . '-' . ;
-				$file->move($destinationPath, $filename);
-			}
 			$data = Input::all();
 			$data['user_id']= Auth::User()->id;
 			$product = Product::create($data);
-			$img = new Image;
-			$img->path = $filename;
-			$product->images()->save($img);
+			if (Input::hasFile('image')) $this->saveProductImage($product);
 			return Redirect::intended('products');
 		} else {
 			return Redirect::back()
