@@ -1,8 +1,17 @@
-@extends('layouts/main')
+@extends('layouts/productLayout')
 @section('main')
 	<div class="user-box pull-right">
 		<header>Posted by </header>
 		{{$product->user->username}}
+	</div>
+	<div class="span 4">
+		<div class="flexslider">
+			<ul class="slides">
+			@foreach ($product->images as $image)
+				<li><img src="/img/{{$image->path}}"/></li>
+			@endforeach
+			</ul>
+		</div>
 	</div>
 	<div class="span6">
 		<h3>{{$product->name}}</h3>

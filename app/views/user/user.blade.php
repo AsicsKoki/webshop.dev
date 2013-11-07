@@ -11,7 +11,12 @@
 	<div id="my-tab-content" class="tab-content">
 		<div class="tab-pane active" id="profile">
 			<div class="columnLeft">
-				#Here goes profile pic
+				<ul class="plain">
+				@foreach ($user->images as $image) {
+					<li><img src="files/{{$image}}"></img></li>
+				}
+				@endforeach
+				</ul>
 			</div>
 			<div class="columnRight">
 				<ul class="plain">
