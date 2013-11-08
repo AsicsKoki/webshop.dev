@@ -10,15 +10,15 @@
 		<header id="header">Konstantin's web shop</header>
 			<div id="elementOne">
 				<div id="central">
-					<form class="form-inline" method="post">
+				{{ Former::open()->class('form-horizontal pull-left')->method('PUT')->enctype('multipart/form-data')->action(URL::route('PutNewUser'))}}
 					{{Former::text('username')->required()->label('username')->placeholder('Username')}}
 					{{Former::password('password')->required()->label('password')->placeholder('Password')}}
 					{{Former::text('first_name')->required()->label('First Name')->placeholder('Enter First Name')}}
 					{{Former::text('last_name')->required()->label('Last Name')->placeholder('Enter Last Name')}}
+					{{Former::email('email')->required()->label('Email')->placeholder('Enter Your Email')}}
 					{{Former::hidden()->name('_token')->value(csrf_token())}}
-					{{Former::actions('Sign in')->submit('Register')}}
-					<a class="btn-info" href="register.php">Register</a>
-					</form>
+					{{Former::submit('Register')}}
+				{{ Former::close() }}
 				</div>
 			</div>
 			<footer id="footer">(2013) All rights reserved</footer>

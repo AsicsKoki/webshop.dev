@@ -41,7 +41,8 @@ Route::put('newProduct', array('as'=> 'putNewProduct', 'uses' =>'ProductControll
  */
 
 Route::get('users', array('as' => 'AllUsers', 'uses' => 'UsersController@getUsers'));
-Route::put('users', 'UsersController@createUser');
+Route::get('register', array('as' => 'RegisterForm', 'uses'=>'UsersController@getRegister'));
+Route::put('register', array('as'=>'PutNewUser', 'uses' => 'UsersController@putNewUser'));
 Route::get('user/{uid}', array('as' => 'ShowUserPage', 'uses' => 'UsersController@getUser'))->where('uid', '\d+');
 Route::post('users/{uid}/edit', array('as' => 'UpdateUser', 'uses' => 'UsersController@postUser'))->where('uid', '\d+');
 Route::get('users/{uid}/edit', array('as' => 'ShowUserEditPage', 'uses' => 'UsersController@editUser'))->where('uid', '\d+');
@@ -49,7 +50,6 @@ Route::get('users/{uid}/edit', array('as' => 'ShowUserEditPage', 'uses' => 'User
 /**
  * Authenticantion
  */
-
 Route::get('login', array('uses' => 'SessionsController@login'));
 Route::post('login', array('as' => 'authenticate', 'uses' => 'SessionsController@authenticate'));
 Route::get('logout', array('as' => 'logout', 'uses' => 'SessionsController@logout'));

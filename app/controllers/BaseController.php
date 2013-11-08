@@ -3,7 +3,7 @@
 class BaseController extends Controller {
 
 	public function __construct(){
-        $this->beforeFilter('auth', array('except' => array('login','authenticate')));
+       
 	}
 	/**
 	 * Setup the layout used by the controller.

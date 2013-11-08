@@ -7,6 +7,7 @@ class UsersController extends BaseController {
 
 	// Enforce user authentication on specified methods
 	$this->beforeFilter('csrf', ['only' => ['authenticate']]);
+	 $this->beforeFilter('auth', array('except' => array('login','authenticate','getRegister','putNewUser')));
 	parent::__construct();
     }
 
@@ -30,15 +31,41 @@ class UsersController extends BaseController {
 		$validator = Validator::make(
         	Input::all(),
 		    array(
-				'username'        => 'required|between:5,50',
-				'bio' 			=> 'required|between:5,500',
-				'email'       => 'required|min:1',
+				'username' => 'required|between:5,50',
+				'bio'      => 'required|between:5,500',
+				'email'    => 'required|min:1',
 		    )
 		);
 		if ($validator->passes())
 		{
 			User::find($uid)->update(Input::all());
 			return Redirect::back()->with('message', 'Saved');
+		} else {
+			return Redirect::back()
+				->withInput(Input::all())
+				->withErrors($validator->messages());
+		}
+	}
+
+	public function getRegister(){
+		return View::make('auth.register');
+	}
+
+	public function putNewUser(){
+			$validator = Validator::make(
+		Input::all(),
+		    array(
+				'username'   => 'required|between:5,50',
+				'first_name' => 'required|min:1',
+				'last_name'  => 'required|min:1',
+				'email'      => 'required|email',
+				'password'   => 'required|min:5'
+		    )
+		);
+
+		if($validator->passes()){
+			User::create(Input::all());
+			return Redirect::intended('login');
 		} else {
 			return Redirect::back()
 				->withInput(Input::all())

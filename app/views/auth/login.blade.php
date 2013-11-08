@@ -15,7 +15,7 @@
 					{{Former::password('password')->required()->label('password')->placeholder('Password')}}
 					{{Former::hidden()->name('_token')->value(csrf_token())}}
 					{{Former::actions('Sign in')->submit('Submit')}}
-					<a class="btn-info" href="register.php">Register</a>
+					{{ HTML::route('RegisterForm', 'Register', array(), array('class'=>'btn-danger')) }}
 					</form>
 				</div>
 			</div>
