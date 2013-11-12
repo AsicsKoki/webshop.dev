@@ -17,8 +17,13 @@
 					<td>{{$product->price}}</td>
 					<td>
 						{{ HTML::route('ShowProductPage', 'Read more', array('pid'=>$product->id), array('class'=>'btn')) }}
-						{{HTML::route('ShowProductEditPage', 'Edit', array('pid'=>$product->id), array('class'=>'btn btn-warning'))}}
-						<a class="btn btn-danger" href="#">Delete</a>
+						{{ HTML::route('ShowProductEditPage', 'Edit', array('pid'=>$product->id), array('class'=>'btn btn-warning'))}}
+						{{Former::framework('Nude')}}
+						{{ Former::open()->method('delete')->enctype('multipart/form-data')->action(URL::route('DeleteProduct', array('pid'=>$product->id))) }}
+						{{ Former::hidden('pid')->required()->value($product->id) }}
+						{{ Former::hidden()->name('_token')->value(csrf_token()) }}
+						{{ Former::actions()->submit('Delete') }}
+						{{ Former::close() }}
 					</td>
 					<td>{{$product->quantity}}</td>
 				</tr>

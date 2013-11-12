@@ -61,3 +61,4 @@ Route::get('admin/users/{uid}/edit', array('as' => 'ShowUserEditPage', 'uses' =>
 Route::post('admin/users/{uid}/edit', array('as' => 'UpdateUser', 'uses' => 'UsersController@postUser'))->where('uid', '\d+');
 Route::post('products/{pid}/edit', array('as' => 'UpdateProduct', 'uses' => 'ProductController@postProduct'))->where('pid', '\d+');
 Route::get('products/{pid}/edit', array('as' => 'ShowProductEditPage', 'uses' => 'ProductController@editProduct'))->where('pid', '\d+');
+Route::delete('admin/products/{pid}', array('as'=> 'DeleteProduct', 'uses' => 'ProductController@deleteProduct'))->where('pid', '\d+');

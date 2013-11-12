@@ -9,6 +9,7 @@
 		{{HTML::style('css/jquery.dataTables_themeroller.css')}}
 	</head>
 	<body id="background">
+			@include('partials.status')
 		<div id="mainElement">
 		<header id="header">
 			<p>Konstantin's web shop</p>

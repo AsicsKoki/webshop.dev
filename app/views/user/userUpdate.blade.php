@@ -13,8 +13,8 @@
 			<div class='control-group'>
 				{{ Former::text('email')->required()->label('Email')->value($user->email) }}
 			</div>
-				{{Former::actions()->submit('Submit')}}
 				{{Former::hidden()->name('_token')->value(csrf_token())}}
+				{{Former::actions()->submit('Submit')}}
 			{{ Former::close() }}
 		</div>
 	</div>

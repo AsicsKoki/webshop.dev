@@ -119,4 +119,10 @@ class ProductController extends BaseController {
 			->with('products', Product::with('color')
 			->get());
 	}
+
+	public function deleteProduct($pid){
+		Product::find($pid)->delete();
+		Session::flash('success', 'Product deleted');
+		return Redirect::intended('admin');
+	}
 }
