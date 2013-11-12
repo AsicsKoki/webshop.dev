@@ -31,8 +31,6 @@ Route::get('/', array('as' => 'HomePage', 'uses' => 'HomeController@welcome'));
  */
 Route::get('products/{pid}', array('as' => 'ShowProductPage', 'uses' => 'ProductController@getProduct'))->where('pid', '\d+');
 Route::get('products', array('as' => 'AllProducts', 'uses' => 'ProductController@getProducts'));
-Route::post('products/{pid}/edit', array('as' => 'UpdateProduct', 'uses' => 'ProductController@postProduct'))->where('pid', '\d+');
-Route::get('products/{pid}/edit', array('as' => 'ShowProductEditPage', 'uses' => 'ProductController@editProduct'))->where('pid', '\d+');
 Route::get('newProduct', array('as'=>'newProductPage', 'uses' => 'ProductController@getNewProductPage'));
 Route::put('newProduct', array('as'=> 'putNewProduct', 'uses' =>'ProductController@putProduct'));
 
@@ -44,8 +42,6 @@ Route::get('users', array('as' => 'AllUsers', 'uses' => 'UsersController@getUser
 Route::get('register', array('as' => 'RegisterForm', 'uses'=>'UsersController@getRegister'));
 Route::put('register', array('as'=>'PutNewUser', 'uses' => 'UsersController@putNewUser'));
 Route::get('user/{uid}', array('as' => 'ShowUserPage', 'uses' => 'UsersController@getUser'))->where('uid', '\d+');
-Route::post('users/{uid}/edit', array('as' => 'UpdateUser', 'uses' => 'UsersController@postUser'))->where('uid', '\d+');
-Route::get('users/{uid}/edit', array('as' => 'ShowUserEditPage', 'uses' => 'UsersController@editUser'))->where('uid', '\d+');
 
 /**
  * Authenticantion
@@ -53,3 +49,15 @@ Route::get('users/{uid}/edit', array('as' => 'ShowUserEditPage', 'uses' => 'User
 Route::get('login', array('uses' => 'SessionsController@login'));
 Route::post('login', array('as' => 'authenticate', 'uses' => 'SessionsController@authenticate'));
 Route::get('logout', array('as' => 'logout', 'uses' => 'SessionsController@logout'));
+
+/**
+ * Control panel
+ */
+
+
+Route::get('admin', array('as'=>'ShowProductsBackend', 'uses'=>'ProductController@getProductsAdmin'));
+Route::get('admin/users', array('as'=>'ShowUsersBackend', 'uses'=>'UsersController@getUsers'));
+Route::get('admin/users/{uid}/edit', array('as' => 'ShowUserEditPage', 'uses' => 'UsersController@editUser'))->where('uid', '\d+');
+Route::post('admin/users/{uid}/edit', array('as' => 'UpdateUser', 'uses' => 'UsersController@postUser'))->where('uid', '\d+');
+Route::post('products/{pid}/edit', array('as' => 'UpdateProduct', 'uses' => 'ProductController@postProduct'))->where('pid', '\d+');
+Route::get('products/{pid}/edit', array('as' => 'ShowProductEditPage', 'uses' => 'ProductController@editProduct'))->where('pid', '\d+');

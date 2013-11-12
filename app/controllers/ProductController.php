@@ -113,4 +113,10 @@ class ProductController extends BaseController {
 				->withErrors($validator->messages());
 		}
 	}
+	public function getProductsAdmin()
+	{
+		return View::make('cpanel.products')
+			->with('products', Product::with('color')
+			->get());
+	}
 }
