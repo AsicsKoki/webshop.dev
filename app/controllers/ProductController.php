@@ -106,6 +106,7 @@ class ProductController extends BaseController {
 			$data['user_id']= Auth::User()->id;
 			$product = Product::create($data);
 			if (Input::hasFile('image')) $this->saveProductImage($product);
+			Session::flash('status_success', 'Product created');
 			return Redirect::intended('products');
 		} else {
 			return Redirect::back()
@@ -122,7 +123,7 @@ class ProductController extends BaseController {
 
 	public function deleteProduct($pid){
 		Product::find($pid)->delete();
-		Session::flash('success', 'Product deleted');
+		Session::flash('status_success', 'Product deleted');
 		return Redirect::intended('admin');
 	}
 }

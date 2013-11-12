@@ -8,6 +8,7 @@
 	</head>
 	<body id="background">
 		<div id="mainElement">
+		@include('partials.status')
 		<header id="header">
 			<p>Konstantin's web shop</p>
 		</header>
