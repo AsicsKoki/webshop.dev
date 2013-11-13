@@ -1,27 +1,13 @@
-<!doctype html>
+@extends('layouts/mainLayout')
 <html>
-	<head>
+	@section('moreStyles')
 		{{-- STYLES --}}
-		{{ HTML::style('css/styles.css')}}
-		{{ HTML::style('css/bootstrap.min.css')}}
 		{{ HTML::style('css/bootstrap-responsive.min.css')}}
 		{{ HTML::style('css/jquery.dataTables.css')}}
 		{{ HTML::style('css/jquery.dataTables.css')}}
-		{{ HTML::script('js/jquery-1.10.2.min.js') }}
+	@stop
+	@section('moreScripts')
 		{{-- SCRIPTS --}}
-		{{ HTML::script('js/bootstrap.js') }}
-		{{ HTML::script('js/main.js') }}
 		{{ HTML::script('js/jquery.dataTables.js') }}
-	</head>
-	<body id="background">
-		<div id="mainElement">
-		<header id="header">
-			<p>Konstantin's web shop</p>
-		</header>
-			@include('partials.loginLogout')
-			@include('partials.navbar')
-			@yield('main')
-			<footer id="footer">(2013) All rights reserved</footer>
-		</div>
-	</body>
+	@stop
 </html>

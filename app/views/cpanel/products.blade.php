@@ -1,5 +1,6 @@
 @extends('layouts/cpanel')
 @section('main')
+		@include('partials.sidebar')
 	<div>
 		<table id="productsTable" class="table table-hover" class="display">
 			<thead>
