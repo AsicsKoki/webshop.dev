@@ -39,7 +39,7 @@ Route::put('newProduct', array('as'=> 'putNewProduct', 'uses' =>'ProductControll
  */
 
 Route::get('users', array('as' => 'AllUsers', 'uses' => 'UsersController@getUsers'));
-Route::get('register', array('as' => 'RegisterForm', 'uses'=>'UsersController@getRegister'));
+Route::get('register', array('as' => 'RegisterForm', 'uses'=>'UsersController@getNewUser'));
 Route::put('register', array('as'=>'PutNewUser', 'uses' => 'UsersController@putNewUser'));
 Route::get('user/{uid}', array('as' => 'ShowUserPage', 'uses' => 'UsersController@getUser'))->where('uid', '\d+');
 

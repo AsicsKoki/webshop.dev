@@ -13,7 +13,7 @@
 			<div class="columnLeft">
 				<ul class="plain">
 				@foreach ($user->images as $image) {
-					<li><img src="files/{{$image}}"></img></li>
+					<li><img src="files/{{$image->path}}"></img></li>
 				}
 				@endforeach
 				</ul>

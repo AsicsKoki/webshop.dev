@@ -13,6 +13,7 @@
 				{{ Former::open()->class('form-horizontal pull-left')->method('PUT')->enctype('multipart/form-data')->action(URL::route('PutNewUser'))}}
 					{{Former::text('username')->required()->label('username')->placeholder('Username')}}
 					{{Former::password('password')->required()->label('password')->placeholder('Password')}}
+					{{Former::password('password_confirmation')->required()->label('password')->placeholder('Retype your password')}}
 					{{Former::text('first_name')->required()->label('First Name')->placeholder('Enter First Name')}}
 					{{Former::text('last_name')->required()->label('Last Name')->placeholder('Enter Last Name')}}
 					{{Former::email('email')->required()->label('Email')->placeholder('Enter Your Email')}}
