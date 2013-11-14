@@ -6,8 +6,9 @@
 			<li>{{ HTML::route('AllUsers', 'Users') }}</li>
 			<li>{{ HTML::route('newProductPage', 'New product') }}</li>
 			<li><a href="#">Contact</a></li>
-			<li><form action="result.php" method="post" enctype="multipart/form-data"><input name="search" type="text" class="search-query" placeholder="Search"><input type="submit" value="search" class="btn">
-			</form></li>
+			<li>
+				{{Former::open()->method('post')->action(URL::route('searchProduct'))}}
+			</li>
 		</ul>
 	</div>
 </div>

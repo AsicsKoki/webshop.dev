@@ -126,4 +126,8 @@ class ProductController extends BaseController {
 		Session::flash('status_success', 'Product deleted');
 		return Redirect::intended('admin');
 	}
+
+	public function searchProduct(){
+		
+	}
 }
