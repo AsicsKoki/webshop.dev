@@ -66,5 +66,4 @@ Route::delete('admin/products/{pid}', array('as'=> 'DeleteProduct', 'uses' => 'P
 /**
  * Utils
  */
-Route::get('result', array('as'=>'GetResults', 'uses'=>'ProductController@getResults'))
-Route::post('result', array('as'=>'SearchProducts', 'uses'=>'ProductController@searchProduct'))
+Route::post('result', array('as'=>'SearchProducts', 'uses'=>'ProductController@searchProduct'));

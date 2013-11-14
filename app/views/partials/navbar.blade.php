@@ -7,7 +7,11 @@
 			<li>{{ HTML::route('newProductPage', 'New product') }}</li>
 			<li><a href="#">Contact</a></li>
 			<li>
-				{{Former::open()->method('post')->action(URL::route('searchProduct'))}}
+				{{ Former::open()->method('post')->action(URL::route('SearchProducts')) }}
+				{{ Former::framework('Nude') }}
+				{{ Former::text('search')->label(' ')->required()->placeholder('Search products') }}
+				{{ Former::actions()->submit('search')->name('search')->class('pull-right') }}
+				{{ Former::close() }}
 			</li>
 		</ul>
 	</div>

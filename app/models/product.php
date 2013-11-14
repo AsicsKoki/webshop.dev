@@ -20,4 +20,8 @@ class Product extends Eloquent {
 	public function images(){
 		return $this->morphMany('image','imageable');
 	}
+
+	public static function search($keyword){
+		return static::where('name', 'LIKE', '%'.$keyword.'%')->orWhere('description', 'LIKE', '%'.$keyword.'%');
+	}
 }

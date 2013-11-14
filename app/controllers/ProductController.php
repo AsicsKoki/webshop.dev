@@ -128,6 +128,8 @@ class ProductController extends BaseController {
 	}
 
 	public function searchProduct(){
-		
+		$keyword = Input::get('search');
+		$data = Product::search($keyword);
+		return View::make('product.results')->with('data', $data->get());
 	}
 }
