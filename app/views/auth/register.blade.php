@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+@include('partials.status')
 	{{ HTML::style('css/styles.css')}}
 	{{ HTML::style('css/bootstrap.min.css')}}
 	{{ HTML::style('css/bootstrap-responsive.min.css')}}
