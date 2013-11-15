@@ -128,8 +128,18 @@ class ProductController extends BaseController {
 	}
 
 	public function searchProduct(){
+		$validator = Validator::make(
+		Input::all(),
+		    array(
+				'search' => 'required',
+		    )
+		);
+		if($validator->passes()){
 		$keyword = Input::get('search');
-		$data = Product::search($keyword);
-		return View::make('product.results')->with('data', $data->get());
+		$data = Product::search($keyword)->with('images');
+			return View::make('product.results')->with('data', $data->get());
+		} else {
+			return View::make('products.empty');
+		}
 	}
 }
