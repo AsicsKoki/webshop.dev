@@ -33,6 +33,7 @@ Route::get('products/{pid}', array('as' => 'ShowProductPage', 'uses' => 'Product
 Route::get('products', array('as' => 'AllProducts', 'uses' => 'ProductController@getProducts'));
 Route::get('newProduct', array('as'=>'newProductPage', 'uses' => 'ProductController@getNewProductPage'));
 Route::put('newProduct', array('as'=> 'putNewProduct', 'uses' =>'ProductController@putProduct'));
+Route::post('products/cart', array('as'=>'addToCart', 'uses'=>'ProductController@postToCart'));
 
 /**
  * User related routes

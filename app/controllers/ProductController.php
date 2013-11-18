@@ -142,4 +142,8 @@ class ProductController extends BaseController {
 			return View::make('products.empty');
 		}
 	}
+
+	public function postToCart(){
+		
+	}
 }
