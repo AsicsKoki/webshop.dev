@@ -143,7 +143,12 @@ class ProductController extends BaseController {
 		}
 	}
 
-	public function postToCart(){
-		
+	public function postToCart($pid){
+		if(Session::has($pid)){
+			Session::forget($pid);
+			}
+		$quantity = Input::get('quantity');
+		Session::push('cartData', array('id'=> $pid, 'quantity'=>$quantity))
+		return Redirect::back();
 	}
 }

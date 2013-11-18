@@ -15,8 +15,8 @@
 					{{Former::text('username')->required()->label('username')->placeholder('Username')}}
 					{{Former::password('password')->required()->label('password')->placeholder('Password')}}
 					{{Former::hidden()->name('_token')->value(csrf_token())}}
-					{{Former::actions('Sign in')->submit('Submit')}}
-					{{ HTML::route('RegisterForm', 'Register', array(), array('class'=>'btn-danger')) }}
+					{{Former::actions('Sign in')->label('')->submit('Sign in')}}
+					{{ HTML::route('RegisterForm', 'Register', array(), array('class'=>'btn btn-danger')) }}
 					</form>
 				</div>
 			</div>

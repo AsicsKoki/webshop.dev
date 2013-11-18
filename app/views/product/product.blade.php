@@ -30,8 +30,9 @@
 		{{ Former::open()->class('form-horizontal pull-left')->method('post')->enctype('multipart/form-data')}}
 			{{ Former::select('color_id')->label('Color')->options(['1'=>'Red', '2'=>'Green','3'=>'Blue','4'=>'Purple'])}}
 			{{ Former::number('quantity')->required()->label('quantity') }}
+			{{ Former::hidden()->name('_token')->value(csrf_token()) }}
 			{{ Former::framework('Nude') }}
-			{{ Former::actions()->submit('Submit')}}
+			{{ Former::actions()->submit('Submit') }}
 		{{ Former::close() }}
 		</div>
 	</div>
