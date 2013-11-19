@@ -1,6 +1,5 @@
 @extends('layouts/main')
 @section('main')
-@dd($cartItems)
 	<div id="result">
 		<table id="productsTable" class="table table-hover" class="display">
 			<thead>
@@ -11,6 +10,9 @@
 				<th>Total price</th>
 			</thead>
 			<tbody>
+				@foreach ($cartItems as $product) {
+					<td>{{$product->quantity}}</td>
+				}
 			</tbody>
 		</table>
 		<a class="btn" href="order.php">Checkout</a>

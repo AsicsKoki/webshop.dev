@@ -16,7 +16,7 @@ class CartController extends BaseController {
 	public function getCart(){
 		$cartItems = Session::get('cartData');
 		var_dump($cartItems);
-		// return View::make('cart.cart', $cartItems);
+		return View::make('cart.cart', $cartItems);
 	}
 
 	public function postToCart($pid){
@@ -24,7 +24,12 @@ class CartController extends BaseController {
 			Session::forget($pid);
 		}
 		$quantity = Input::get('quantity');
-		Session::push('cartData', array('id'=> $pid, 'quantity'=>$quantity));
+
+		$cart = Session::get('cartData');
+		$cart[$pid] = $quantity;
+		Session::set('cartData', $cart);
+
+
 		return Redirect::back();
 	}
 }
