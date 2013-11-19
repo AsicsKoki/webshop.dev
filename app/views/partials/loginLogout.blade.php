@@ -1,5 +1,5 @@
 <div style="float: right;">
-	<a href="cart.php"><button class="btn-success">My cart</button></a>
+	{{ HTML::route('showCart', 'Your Cart', array(), array('class'=>'btn btn-success')) }}
 	<a><button class="btn-info">Profile</button></a>
-	{{ HTML::route('logout', 'Log out', array(), array('class'=>'btn-danger')) }}
+	{{ HTML::route('logout', 'Log out', array(), array('class'=>'btn btn-danger')) }}
 </div>

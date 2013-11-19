@@ -33,7 +33,6 @@ Route::get('products/{pid}', array('as' => 'ShowProductPage', 'uses' => 'Product
 Route::get('products', array('as' => 'AllProducts', 'uses' => 'ProductController@getProducts'));
 Route::get('newProduct', array('as'=>'newProductPage', 'uses' => 'ProductController@getNewProductPage'));
 Route::put('newProduct', array('as'=> 'putNewProduct', 'uses' =>'ProductController@putProduct'));
-Route::post('products/{pid}', array('as'=>'addToCart', 'uses'=>'ProductController@postToCart'));
 
 /**
  * User related routes
@@ -68,3 +67,9 @@ Route::delete('admin/products/{pid}', array('as'=> 'DeleteProduct', 'uses' => 'P
  * Utils
  */
 Route::post('result', array('as'=>'SearchProducts', 'uses'=>'ProductController@searchProduct'));
+
+/**
+ * Cart
+ */
+Route::get('cart', array('as'=>'showCart', 'uses'=>'CartController@getCart'));
+Route::post('products/{pid}', array('as'=>'addToCart', 'uses'=>'CartController@postToCart'));

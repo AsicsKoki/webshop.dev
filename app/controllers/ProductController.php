@@ -7,17 +7,18 @@ class ProductController extends BaseController {
     public function __construct()
     {
 
-	// Enforce user authentication on specified methods
-	$this->beforeFilter('csrf', ['only' => ['authenticate']]);
-	 $this->beforeFilter('auth', array('except' => array('login','authenticate','getRegister')));
-	parent::__construct();
+		// Enforce user authentication on specified methods
+		$this->beforeFilter('csrf', ['only' => ['authenticate']]);
+		 $this->beforeFilter('auth', array('except' => array('login','authenticate','getRegister')));
+		parent::__construct();
     }
-/**
- * Saves the product image to database and to destination folder. Takes the id and hashes it to use as a name.
- * @param  [type] $product [description]
- * @return [type]          [description]
- */
-    	private function saveProductImage($product){
+
+	/**
+	 * Saves the product image to database and to destination folder. Takes the id and hashes it to use as a name.
+	 * @param  [type] $product [description]
+	 * @return [type]          [description]
+	 */
+	private function saveProductImage($product){
 		$img = new Image;
 		$product->images()->save($img);
 		$file            = Input::file('image');
@@ -85,12 +86,13 @@ class ProductController extends BaseController {
 	public function getNewProductPage(){
 		return View::make('product.newProduct');
 	}
+
 	/**
 	 * Creates the new product and adds it to the database.
 	 * @return [type] [description]
 	 */
 	public function putProduct(){
-			$validator = Validator::make(
+		$validator = Validator::make(
 		Input::all(),
 		    array(
 				'name'        => 'required|between:5,50',
@@ -114,8 +116,7 @@ class ProductController extends BaseController {
 				->withErrors($validator->messages());
 		}
 	}
-	public function getProductsAdmin()
-	{
+	public function getProductsAdmin(){
 		return View::make('cpanel.products')
 			->with('products', Product::with('color')
 			->get());
@@ -141,14 +142,5 @@ class ProductController extends BaseController {
 		} else {
 			return View::make('products.empty');
 		}
-	}
-
-	public function postToCart($pid){
-		if(Session::has($pid)){
-			Session::forget($pid);
-			}
-		$quantity = Input::get('quantity');
-		Session::push('cartData', array('id'=> $pid, 'quantity'=>$quantity))
-		return Redirect::back();
 	}
 }

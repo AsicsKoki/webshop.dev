@@ -1,6 +1,5 @@
 @extends('layouts/main')
 @section('main')
-@dd($cartItems)
 	<div id="result">
 		<table id="productsTable" class="table table-hover" class="display">
 			<thead>
