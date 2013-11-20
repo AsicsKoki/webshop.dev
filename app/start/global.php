@@ -54,11 +54,11 @@ App::error(function(Exception $exception, $code)
 
 });
 
-App::error(function(MethodNotAllowedHttpException $exception)
+/*App::error(function(MethodNotAllowedHttpException $exception)
 {
     return Redirect::intended('products');
 });
-
+*/
 /*
 |--------------------------------------------------------------------------
 | Maintenance Mode Handler

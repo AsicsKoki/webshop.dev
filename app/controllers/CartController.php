@@ -1,6 +1,7 @@
 <?php
 
 use \Utils\HashUtility;
+use \Utils\Cart;
 
 class CartController extends BaseController {
 
@@ -13,10 +14,9 @@ class CartController extends BaseController {
 		parent::__construct();
     }
 
-	public function getCart(){
-		$cartItems = Session::get('cartData');
-		var_dump($cartItems);
-		return View::make('cart.cart', $cartItems);
+	public function getCartPage(){
+		$html = Cart::getCart();
+		return View::make('cart.cart')->with('html',$html);
 	}
 
 	public function postToCart($pid){
@@ -24,12 +24,9 @@ class CartController extends BaseController {
 			Session::forget($pid);
 		}
 		$quantity = Input::get('quantity');
-
 		$cart = Session::get('cartData');
 		$cart[$pid] = $quantity;
 		Session::set('cartData', $cart);
-
-
 		return Redirect::back();
 	}
 }

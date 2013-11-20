@@ -71,5 +71,5 @@ Route::post('result', array('as'=>'SearchProducts', 'uses'=>'ProductController@s
 /**
  * Cart
  */
-Route::get('cart', array('as'=>'showCart', 'uses'=>'CartController@getCart'));
+Route::get('cart', array('as'=>'showCart', 'uses'=>'CartController@getCartPage'));
 Route::post('products/{pid}', array('as'=>'addToCart', 'uses'=>'CartController@postToCart'));

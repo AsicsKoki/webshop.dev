@@ -10,6 +10,7 @@
 				<th>Total price</th>
 			</thead>
 			<tbody>
+			{{$html}}
 			</tbody>
 		</table>
 		<a class="btn" href="order.php">Checkout</a>
