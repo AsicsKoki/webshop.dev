@@ -2,7 +2,15 @@
 
 class Cart{
 
-    public static function getCart(){
+     /**
+      * This class will handle cart related functions.
+      */
+
+     /**
+      * Generates the cart row with all the data.
+      * @return [type] [description]
+      */
+     public static function getCart(){
           if(!\Session::has('cartData')) return null;
           $html = '';
           foreach (\Session::get('cartData') as $pid => $quantity) {

@@ -2,6 +2,14 @@
 
 class HtmlGenerator{
 
+
+     /**
+      * Generates the html for the cart row.
+      * @param  [type] $html [description]
+      * @param  [type] $data [description]
+      * @param  [type] $sum  [description]
+      * @return [type]       [description]
+      */
      public static function cartItem($html, $data, $sum){
           $html .= "<tr>";
           $html .= "<td>".$data['name']."</td>";

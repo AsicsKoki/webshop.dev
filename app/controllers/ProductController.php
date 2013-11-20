@@ -31,20 +31,32 @@ class ProductController extends BaseController {
 		$product->images()->save($img);
     	}
 
+    /**
+     * Generates the products page and table.
+     * @return [type] [description]
+     */
 	public function getProducts()
 	{
 		return View::make('product.products')
 			->with('products', Product::with('color')
 			->get());
 	}
-
+	/**
+	 * Generates the product info page.
+	 * @param  [type] $pid [description]
+	 * @return [type]      [description]
+	 */
 	public function getProduct($pid)
 	{
 		return View::make('product.product')
 			->with('product', Product::with('user','images')
 			->find($pid));
 	}
-
+	/**
+	 * Genrerates the priduct edit page.
+	 * @param  [type] $pid [description]
+	 * @return [type]      [description]
+	 */
 	public function editProduct($pid)
 	{
 		return View::make('product.productUpdate')
@@ -82,7 +94,10 @@ class ProductController extends BaseController {
 				->withErrors($validator->messages());
 		}
 	}
-
+	/**
+	 * Generates the new product entry page.
+	 * @return [type] [description]
+	 */
 	public function getNewProductPage(){
 		return View::make('product.newProduct');
 	}
@@ -116,18 +131,29 @@ class ProductController extends BaseController {
 				->withErrors($validator->messages());
 		}
 	}
+	/**
+	 * Generates the backend products list.
+	 * @return [type] [description]
+	 */
 	public function getProductsAdmin(){
 		return View::make('cpanel.products')
 			->with('products', Product::with('color')
 			->get());
 	}
-
+	/**
+	 * Deletes the product.
+	 * @param  [type] $pid [description]
+	 * @return [type]      [description]
+	 */
 	public function deleteProduct($pid){
 		Product::find($pid)->delete();
 		Session::flash('status_success', 'Product deleted');
 		return Redirect::intended('admin');
 	}
-
+	/**
+	 * Handles the search and data display for searches.
+	 * @return [type] [description]
+	 */
 	public function searchProduct(){
 		$validator = Validator::make(
 		Input::all(),

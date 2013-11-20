@@ -11,21 +11,37 @@ class UsersController extends BaseController {
 	parent::__construct();
     }
 
-
+    /**
+     * Cretas the users view and table.
+     * @return [type] [description]
+     */
 	public function getUsers(){
 		return View::make('user.users')->with('users', User::all());
 	}
+	/**
+	 * Creates the user profile page.
+	 * @param  [type] $uid [description]
+	 * @return [type]      [description]
+	 */
 	public function getUser($uid)
 	{
 		return View::make('user.user')->with('user', User::find($uid));
 	}
-
+	/**
+	 * Creates the user edit page.
+	 * @param  [type] $uid [description]
+	 * @return [type]      [description]
+	 */
 	public function editUser($uid)
 	{
 		return View::make('user.userUpdate')
 			->with('user', User::find($uid));
 	}
-
+	/**
+	 * Updates user info.
+	 * @param  [type] $uid [description]
+	 * @return [type]      [description]
+	 */
 	public function postUser($uid){
 
 		$validator = Validator::make(
@@ -48,7 +64,10 @@ class UsersController extends BaseController {
 				->withErrors($validator->messages());
 		}
 	}
-
+	/**
+	 * Create user registration page and save a new user.
+	 * @return [type] [description]
+	 */
 	public function getNewUser(){
 		return View::make('auth.register');
 	}

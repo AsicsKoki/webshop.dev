@@ -13,12 +13,19 @@ class CartController extends BaseController {
 		 $this->beforeFilter('auth', array('except' => array('login','authenticate','getRegister')));
 		parent::__construct();
     }
-
+    /**
+     * Generates the cart page.
+     * @return [type] [description]
+     */
 	public function getCartPage(){
 		$html = Cart::getCart();
 		return View::make('cart.cart')->with('html',$html);
 	}
-
+	/**
+	 * Submits the form from the product page and adds it to the cart.
+	 * @param  [type] $pid [description]
+	 * @return [type]      [description]
+	 */
 	public function postToCart($pid){
 		if(Session::has($pid)){
 			Session::forget($pid);
