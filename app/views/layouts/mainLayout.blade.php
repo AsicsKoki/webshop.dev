@@ -10,7 +10,8 @@
 		@include('partials.status')
 		<div id="mainElement">
 		<header id="header">
-		@include('partials.cart')
+		<div id="cart" >
+		<div><a href="#" id="showCart" class="btn btnStyle pull-left">Open Cart</a></div></div>
 			<p>Konstantin's web shop</p>
 		</header>
 		@include('partials.loginLogout')

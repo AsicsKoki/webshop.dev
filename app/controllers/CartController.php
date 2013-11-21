@@ -5,18 +5,18 @@ use \Utils\Cart;
 
 class CartController extends BaseController {
 
-    public function __construct()
-    {
+	public function __construct()
+	{
 
 		// Enforce user authentication on specified methods
 		$this->beforeFilter('csrf', ['only' => ['authenticate']]);
 		 $this->beforeFilter('auth', array('except' => array('login','authenticate','getRegister')));
 		parent::__construct();
-    }
-    /**
-     * Generates the cart page.
-     * @return [type] [description]
-     */
+	}
+	/**
+	 * Generates the cart page.
+	 * @return [type] [description]
+	 */
 	public function getCartPage(){
 		$html = Cart::getCart();
 		return View::make('cart.cart')->with('html',$html);
@@ -35,5 +35,10 @@ class CartController extends BaseController {
 		$cart[$pid] = $quantity;
 		Session::set('cartData', $cart);
 		return Redirect::back();
+	}
+
+	public function getSlideCart(){
+		$html = Cart::getCart();
+		return View::make('partials.cart')->with('html',$html);
 	}
 }
