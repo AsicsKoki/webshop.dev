@@ -10,8 +10,8 @@ class HtmlGenerator{
       * @param  [type] $sum  [description]
       * @return [type]       [description]
       */
-     public static function cartItem($html, $data, $sum){
-          $html .= "<tr>";
+     public static function cartItem($data, $sum){
+          $html = "<tr>";
           $html .= "<td>".$data['name']."</td>";
           $html .= "<td>".$data['quantity']."</td>";
           $html .= "<td>".$data['price']."</td>";
