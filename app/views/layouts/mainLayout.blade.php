@@ -10,8 +10,7 @@
 		@include('partials.status')
 		<div id="mainElement">
 		<header id="header">
-		<div id="cart" >
-		<div><a href="#" id="showCart" class="btn btnStyle pull-left">Open Cart</a></div></div>
+			@include('partials.cart')
 			<p>Konstantin's web shop</p>
 		</header>
 		@include('partials.loginLogout')
@@ -23,6 +22,21 @@
 		{{ HTML::script('js/jquery-1.10.2.min.js') }}
 		{{ HTML::script('js/main.js') }}
 		{{ HTML::script('js/bootstrap.js') }}
+		<script type="text/javascript" charset="utf-8">
+			 $('#showCart').click(function(e){
+			 e.preventDefault();
+			 var self = this
+			 $.ajax({
+				    url: "ajaxSlideCart",
+				    type: "GET",
+				    data: {
+				    },
+				    success: function(data){
+						$("#slideTable").html(data);
+					}
+				});
+			});
+		</script>
 		@yield('moreScripts')
 	</body>
 </html>

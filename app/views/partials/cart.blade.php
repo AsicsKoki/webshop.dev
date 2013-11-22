@@ -8,10 +8,9 @@
 				<th>Action</th>
 				<th>Total price</th>
 			</thead>
-			<tbody>
-			{{$html}}
+			<tbody id="slideTable">
 			</tbody>
 		</table>
 	</div>
-
+	<div><a href="#" id="showCart" class="btn btnStyle pull-left">Open Cart</a></div>
 </div>

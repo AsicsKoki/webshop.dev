@@ -18,8 +18,11 @@ class CartController extends BaseController {
 	 * @return [type] [description]
 	 */
 	public function getCartPage(){
-		$html = Cart::getCart();
-		return View::make('cart.cart')->with('html',$html);
+		if(Request::ajax()){
+			return Cart::getCart();
+		} else {
+			return View::make('cart.cart')->with('html', Cart::getCart());
+		}
 	}
 	/**
 	 * Submits the form from the product page and adds it to the cart.
@@ -35,10 +38,5 @@ class CartController extends BaseController {
 		$cart[$pid] = $quantity;
 		Session::set('cartData', $cart);
 		return Redirect::back();
-	}
-
-	public function getSlideCart(){
-		$html = Cart::getCart();
-		return View::make('partials.cart')->with('html',$html);
 	}
 }
