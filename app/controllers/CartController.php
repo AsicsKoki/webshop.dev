@@ -30,13 +30,16 @@ class CartController extends BaseController {
 	 * @return [type]      [description]
 	 */
 	public function postToCart($pid){
-		if(Session::has($pid)){
-			Session::forget($pid);
-		}
 		$quantity = Input::get('quantity');
 		$cart = Session::get('cartData');
 		$cart[$pid] = $quantity;
 		Session::set('cartData', $cart);
 		return Redirect::back();
+	}
+	public function cartDeleteEntry(){
+		$pid = Input::get('pid');
+		$cart = Session::get('cartData');
+		unset($cart[$pid]);
+		return Session::set('cartData', $cart);
 	}
 }

@@ -15,7 +15,7 @@ class HtmlGenerator{
           $html .= "<td>".$data['name']."</td>";
           $html .= "<td>".$data['quantity']."</td>";
           $html .= "<td>".$data['price']."</td>";
-          $html .= "<td><a href=# class='deleteCartEntry btn' data-id=".$data['id'].">Remove</a></td>";
+          $html .= "<td><a href=# class='deleteCartEntry btn' data-pid=".$data['id'].">Remove</a></td>";
           $html .= "<td>".$sum."</td>";
           $html .= "</tr>";
           return $html;

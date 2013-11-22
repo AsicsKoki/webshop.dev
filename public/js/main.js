@@ -295,15 +295,15 @@ $(document).ready(function() {
 		});
 	});
 
-	$('div#content').on("click", ".deleteCartEntry",function(e){
+	$('#slideTable').on("click", ".deleteCartEntry",function(e){
 		e.preventDefault();
-		var id = $(this).data('id');
+		var pid = $(this).data('pid');
 		var self = this;
 		$.ajax({
-			url: "cartDelete.php",
-			type: "POST",
+			url: "ajaxCartDelete",
+			type: "DELETE",
 			data: {
-				id: id
+				pid: pid
 			},
 			success: function(data){
 				$(self).parents("tr").remove();
@@ -311,5 +311,17 @@ $(document).ready(function() {
 		});
 	});
 
-	$('div#')
+	//ajax cart slide controll, when button is pressed cart is generated and updated.
+	 $('#showCart').click(function(e){
+			 e.preventDefault();
+			 var self = this
+			 $.ajax({
+			    url: "ajaxSlideCart",
+			    type: "GET",
+			    data: {},
+			    success: function(data){
+					$("#slideTable").html(data);
+				}
+			});
+		});
 });

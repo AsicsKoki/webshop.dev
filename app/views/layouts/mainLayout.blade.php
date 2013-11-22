@@ -22,21 +22,6 @@
 		{{ HTML::script('js/jquery-1.10.2.min.js') }}
 		{{ HTML::script('js/main.js') }}
 		{{ HTML::script('js/bootstrap.js') }}
-		<script type="text/javascript" charset="utf-8">
-			 $('#showCart').click(function(e){
-			 e.preventDefault();
-			 var self = this
-			 $.ajax({
-				    url: "ajaxSlideCart",
-				    type: "GET",
-				    data: {
-				    },
-				    success: function(data){
-						$("#slideTable").html(data);
-					}
-				});
-			});
-		</script>
 		@yield('moreScripts')
 	</body>
 </html>

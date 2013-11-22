@@ -74,3 +74,4 @@ Route::post('result', array('as'=>'SearchProducts', 'uses'=>'ProductController@s
 Route::get('cart', array('as'=>'showCart', 'uses'=>'CartController@getCartPage'));
 Route::post('products/{pid}', array('as'=>'addToCart', 'uses'=>'CartController@postToCart'));
 Route::get('ajaxSlideCart', array('as'=>'ajaxSlideCart','uses'=>'CartController@getCartPage'));
+Route::delete('ajaxCartDelete', array('as'=>'cartDelete','uses'=>'CartController@cartDeleteEntry'));

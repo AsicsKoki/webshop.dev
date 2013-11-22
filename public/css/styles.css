@@ -249,7 +249,7 @@
     top: -290px;
   }
   #content{
-    width: 500px;
+    width: 530px;
     height: 230px;
     overflow-y: scroll;
   }
@@ -259,4 +259,10 @@
   .btnStyle{
     position: relative; 
     bottom: -60px;
+  };
+  .cartTableHeader{
+    background-color: #660066;
+    color: gold;
+    letter-spacing: 2px;
+    text-shadow: 0.5px 0.5px 0.5px #000000 ;
   };
