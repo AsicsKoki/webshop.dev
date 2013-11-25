@@ -9,7 +9,8 @@ class ProductController extends BaseController {
 
 		// Enforce user authentication on specified methods
 		$this->beforeFilter('csrf', ['only' => ['authenticate']]);
-		 $this->beforeFilter('auth', array('except' => array('login','authenticate','getRegister')));
+		$this->beforeFilter('admin', ['only' => ['getProductsAdmin', 'deleteProduct']]);
+		$this->beforeFilter('auth', array('except' => array('login','authenticate','getRegister')));
 		parent::__construct();
     }
 

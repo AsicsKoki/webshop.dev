@@ -7,7 +7,7 @@ class UsersController extends BaseController {
 
 	// Enforce user authentication on specified methods
 	$this->beforeFilter('csrf', ['only' => ['authenticate']]);
-	 $this->beforeFilter('auth', array('except' => array('login','authenticate','getNewUser','putNewUser')));
+	$this->beforeFilter('auth', array('except' => array('login','authenticate','getNewUser','putNewUser')));
 	parent::__construct();
     }
 
@@ -18,6 +18,7 @@ class UsersController extends BaseController {
 	public function getUsers(){
 		return View::make('user.users')->with('users', User::all());
 	}
+	
 	/**
 	 * Creates the user profile page.
 	 * @param  [type] $uid [description]
@@ -27,6 +28,7 @@ class UsersController extends BaseController {
 	{
 		return View::make('user.user')->with('user', User::find($uid));
 	}
+	
 	/**
 	 * Creates the user edit page.
 	 * @param  [type] $uid [description]
@@ -37,6 +39,7 @@ class UsersController extends BaseController {
 		return View::make('user.userUpdate')
 			->with('user', User::find($uid));
 	}
+	
 	/**
 	 * Updates user info.
 	 * @param  [type] $uid [description]
@@ -64,6 +67,7 @@ class UsersController extends BaseController {
 				->withErrors($validator->messages());
 		}
 	}
+	
 	/**
 	 * Create user registration page and save a new user.
 	 * @return [type] [description]

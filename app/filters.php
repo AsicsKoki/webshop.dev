@@ -77,4 +77,11 @@ Route::filter('csrf', function()
 	{
 		throw new Illuminate\Session\TokenMismatchException;
 	}
+	//NAPRAVI FILTER ZA ADMINA
+	//DEF U USERU HAS ROLE
+});
+
+
+Route::filter('admin', function(){
+	if (!Auth::user()->isAdmin()) return Redirect::guest('products');
 });

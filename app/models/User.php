@@ -54,4 +54,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->morphMany('image','imageable');
 	}
 
+	public function isAdmin()
+    {
+   		return $this->role->role == 'admin';
+    }
+
+    public function role()
+    {
+    	return $this->belongsTo('Role');
+	}
+
 }
