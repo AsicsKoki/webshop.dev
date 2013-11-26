@@ -170,4 +170,8 @@ class ProductController extends BaseController {
 			return View::make('products.empty');
 		}
 	}
+
+	public function getCategories(){
+		return View::make('cpanel.categories')->with('categories', Category::all());
+	}
 }

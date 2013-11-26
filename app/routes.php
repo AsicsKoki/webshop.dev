@@ -63,6 +63,7 @@ Route::post('products/{pid}/edit', array('as' => 'UpdateProduct', 'uses' => 'Pro
 Route::get('products/{pid}/edit', array('as' => 'ShowProductEditPage', 'uses' => 'ProductController@editProduct'))->where('pid', '\d+');
 Route::delete('admin/products/{pid}', array('as'=> 'DeleteProduct', 'uses' => 'ProductController@deleteProduct'))->where('pid', '\d+');
 Route::delete('admin/user/{uid}', array('as'=> 'DeleteUser', 'uses' => 'UsersController@deleteUser'))->where('uid', '\d+');
+Route::get('admin/categories', array('as'=>'GetCategories','uses'=>'ProductController@getCategories'));
 
 /**
  * Utils

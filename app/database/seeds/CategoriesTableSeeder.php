@@ -5,40 +5,40 @@ class CategoriesTableSeeder extends Seeder {
     public function run()
     {
         DB::table('categories')->delete();
-
+        DB::insert('insert into categories (name) values (123123)');
         DB::table('categories')->insert(array(
 
             [
                 'name' => 'Car parts',
-            ],
+            ]/*,
             [
                 'name' =>'Computers',
             ],
-                        [
+            [
                 'name' => 'Healthcare',
             ],
             [
                 'name' =>'Cell phone and tablet',
             ],
-                        [
+            [
                 'name' => 'Sports',
             ],
             [
                 'name' =>'Clothes',
             ],
-                        [
+            [
                 'name' => 'Books',
             ],
             [
                 'name' =>'Antiques',
             ],
-                        [
+            [
                 'name' => 'Home decoration',
             ],
             [
                 'name' =>'Other',
             ],
-              [
+            [
                 'name' => 'Tires',
                 'parent_id' => '1'
             ],
@@ -58,7 +58,7 @@ class CategoriesTableSeeder extends Seeder {
             [
                 'name' => 'Hard drives',
                 'parent_id' => '2'
-            ],
+            ]*/
         ));
     }
 }
