@@ -4,15 +4,15 @@ use \Utils\HashUtility;
 
 class ProductController extends BaseController {
 
-    public function __construct()
-    {
+	public function __construct()
+	{
 
 		// Enforce user authentication on specified methods
 		$this->beforeFilter('csrf', ['only' => ['authenticate']]);
-		$this->beforeFilter('admin', ['only' => ['getProductsAdmin', 'deleteProduct']]);
+		$this->beforeFilter('admin', ['only' => ['getProductsAdmin', 'deleteProduct', 'editProduct','postProduct']]);
 		$this->beforeFilter('auth', array('except' => array('login','authenticate','getRegister')));
 		parent::__construct();
-    }
+	}
 
 	/**
 	 * Saves the product image to database and to destination folder. Takes the id and hashes it to use as a name.
@@ -30,9 +30,9 @@ class ProductController extends BaseController {
 		$file->move($destinationPath, $path);
 		$img->path = $path;
 		$product->images()->save($img);
-    	}
+		}
 
-    /**
+	/**
      * Generates the products page and table.
      * @return [type] [description]
      */
@@ -80,7 +80,7 @@ class ProductController extends BaseController {
 				'quantity'    => 'integer|required|min:1',
 				'price'       => 'integer|required|min:1',
 				'image'       => 'image'
-		    )
+			)
 		);
 		if ($validator->passes())
 		{
@@ -117,7 +117,7 @@ class ProductController extends BaseController {
 				'price'       => 'integer|required|min:1',
 				'color_id'    => 'integer|required|between:1,5',
 				'image'       => 'image'
-		    )
+			)
 		);
 		if($validator->passes()){
 			$data = Input::all();
@@ -158,9 +158,9 @@ class ProductController extends BaseController {
 	public function searchProduct(){
 		$validator = Validator::make(
 		Input::all(),
-		    array(
+			array(
 				'search' => 'required',
-		    )
+			)
 		);
 		if($validator->passes()){
 		$keyword = Input::get('search');

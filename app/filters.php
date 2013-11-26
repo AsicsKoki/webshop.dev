@@ -77,8 +77,6 @@ Route::filter('csrf', function()
 	{
 		throw new Illuminate\Session\TokenMismatchException;
 	}
-	//NAPRAVI FILTER ZA ADMINA
-	//DEF U USERU HAS ROLE
 });
 
 
