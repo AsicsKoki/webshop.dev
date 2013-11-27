@@ -26,6 +26,6 @@ class Product extends Eloquent {
 	}
 
 	public function category(){
-		return $this->belongsTo('category');
+		return $this->belongsToMany('category', 'categorized_products');
 	}
 }
