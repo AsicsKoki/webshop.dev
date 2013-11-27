@@ -12,6 +12,7 @@
 			@endforeach
 			</ul>
 		</div>
+		@include('partials/rating')
 	</div>
 	<div class="span6">
 		<h3>{{$product->name}}</h3>
@@ -36,4 +37,23 @@
 		{{ Former::close() }}
 		</div>
 	</div>
+@stop
+@section('moreScripts')
+ </script>
+<script type="text/javascript">
+	$('.ratings_stars').hover(
+	// Handles the mouseover
+	function() {
+		$(this).prevAll().andSelf().addClass('ratings_over');
+		$(this).nextAll().removeClass('ratings_vote');
+	},
+	// Handles the mouseout
+	function() {
+		if($('#r1').data('rated')== 1 ){
+			return 0;
+		}
+		$(this).prevAll().andSelf().removeClass('ratings_over');
+		}
+	);
+	</script>
 @stop
