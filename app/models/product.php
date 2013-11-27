@@ -24,4 +24,8 @@ class Product extends Eloquent {
 	public static function search($keyword){
 		return static::where('name', 'LIKE', '%'.$keyword.'%')->orWhere('description', 'LIKE', '%'.$keyword.'%');
 	}
+
+	public function category(){
+		return $this->belongsTo('category');
+	}
 }
