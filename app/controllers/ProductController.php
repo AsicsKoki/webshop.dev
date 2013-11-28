@@ -50,7 +50,7 @@ class ProductController extends BaseController {
 	public function getProduct($pid)
 	{
 		return View::make('product.product')
-			->with('product', Product::with('user','images')
+			->with('product', Product::with('user','images','rating')
 			->find($pid));
 	}
 	/**

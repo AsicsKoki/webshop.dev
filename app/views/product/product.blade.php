@@ -39,7 +39,6 @@
 	</div>
 @stop
 @section('moreScripts')
- </script>
 <script type="text/javascript">
 	$('.ratings_stars').hover(
 	// Handles the mouseover
@@ -55,5 +54,8 @@
 		$(this).prevAll().andSelf().removeClass('ratings_over');
 		}
 	);
-	</script>
+</script>
+<script type="text/javascript">
+	
+</script>
 @stop

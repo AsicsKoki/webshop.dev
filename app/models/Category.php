@@ -8,7 +8,7 @@ class Category extends Eloquent {
      */
     public function parent()
     {
-        return $this->belongsTo('Category', 'parent_id');
+        return $this->belongsToMany('Category', 'parent_id');
     }
 
     /**

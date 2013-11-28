@@ -26,19 +26,16 @@ class HtmlGenerator{
 		return $html;
 	}
 
-	public function renderStars($result, $pid, $uid){
-        $html = '';
-        $id = $productId;
-        $userId = $userId;
-        $html = '';
-        $mark = $result;
+	public static function renderStars($rating, $pid, $uid){
+        $htmlStars = '';
+        $mark = $rating;
         $rest = 5 - $mark;
         for ($i=0; $i < $mark ; $i++) {
-                $html .= '<div class="ratings_stars ratings_over" data-productid="'.$id.'" data-userid="'.$uid.'"></div>';
+                $htmlStars .= '<div class="ratings_stars ratings_over" data-productid="'.$pid.'" data-userid="'.$uid.'"></div>';
         }
         for ($i=0; $i < $rest; $i++) {
-                $html .= '<div class="ratings_stars" data-productid="'.$id.'" data-userid="'.$uid.'"></div>';
+                $htmlStars .= '<div class="ratings_stars" data-productid="'.$pid.'" data-userid="'.$uid.'"></div>';
         }
-        return $html;
-}
+        return $htmlStars;
+	}
 }

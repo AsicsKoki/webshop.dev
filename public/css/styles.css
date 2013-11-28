@@ -190,17 +190,17 @@
     height:     32px;
   }
   .ratings_stars {
-    background: url('../img/star_empty.png') no-repeat;
+    background: url('../utils/star_empty.png') no-repeat;
     float:      left;
     height:     28px;
     padding:    2px;
     width:      32px;
   }
   .ratings_vote {
-    background: url('../img/star_full.png') no-repeat;
+    background: url('../utils/star_full.png') no-repeat;
   }
   .ratings_over {
-    background: url('../img/star_highlight.png') no-repeat;
+    background: url('../utils/star_highlight.png') no-repeat;
   }
   #categorySelect{
     width: 265px;

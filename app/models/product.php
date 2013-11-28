@@ -17,6 +17,11 @@ class Product extends Eloquent {
 		return $this->belongsTo('user');
 	}
 
+	public function rating()
+	{
+		return $this->belongsTo('rating');
+	}
+
 	public function images(){
 		return $this->morphMany('image','imageable');
 	}
@@ -27,5 +32,14 @@ class Product extends Eloquent {
 
 	public function category(){
 		return $this->belongsToMany('category', 'categorized_products');
+	}
+	/**
+	 * Calculates the rating of the product
+	 * @param  [type] $productId [description]
+	 * @return [type]            [description]
+	 */
+	public function calculateRating(){
+        $rating = $this->ratings()->get()->avg('rating');
+        return $rating;
 	}
 }
