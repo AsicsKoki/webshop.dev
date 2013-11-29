@@ -32,3 +32,8 @@
 	</table>
 	</div>
 @stop
+@section('moreScrypts')
+	<script type="text/javascript">
+		$('#usersTable').dataTable();
+	</script>
+@stop

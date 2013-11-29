@@ -56,6 +56,29 @@
 	);
 </script>
 <script type="text/javascript">
-	
+	//Rating stars controll
+	$('div#r1').children('div.ratings_stars').click(function(){
+		var rating = $(this).index();
+		var rating = rating + 1;
+		var userid = $(this).data('uid');
+		var productid = $(this).data('pid');
+		var self = this;
+		$.ajax({
+			url: "AjaxRatingSubmit",
+			type: "POST",
+			data: {
+				rating: rating,
+				user_id: userid,
+				product_id: productid
+			},
+		success: function(data){
+			if (data){
+				$("#r1").data('rated','1');
+				$(self).prevAll().andSelf().addClass('ratings_over');
+				}
+			}
+		});
+	});
+
 </script>
 @stop

@@ -108,11 +108,9 @@ $('.deleteComment').click(function(e){
 //parsley initialization
 $(document).ready(function() {
 	if($('table').not('.cart').length) {
-		$('#productsTable').dataTable();
-		$('#usersTable').dataTable();
-		$('#like_table').dataTable();
-		$('#categoryTable').dataTable();
-		$('#product_table_user').dataTable();
+		// $('#like_table').dataTable();
+		// $('#categoryTable').dataTable();
+		// $('#product_table_user').dataTable();
 	}
 	//COMMENT BOX(SUBMIT)
 	$('input#post_comment').click(function(e){
@@ -267,29 +265,6 @@ $(document).ready(function() {
 		success: function(data){
 			if (data){
 				$(self).parents('tr').remove();
-				}
-			}
-		});
-	});
-	//Rating stars controll
-	$('div.ratings_stars').on('click', function(){
-		var rating = $(this).index();
-		var rating = rating + 1;
-		var userid = $(this).data('userid');
-		var productid = $(this).data('productid');
-		var self = this;
-		$.ajax({
-			url: "ratingSubmit.php",
-			type: "POST",
-			data: {
-				rating: rating,
-				userid: userid,
-				productid: productid
-			},
-		success: function(data){
-			if (data){
-				$("#r1").data('rated','1');
-				$(self).prevAll().andSelf().addClass('ratings_over');
 				}
 			}
 		});

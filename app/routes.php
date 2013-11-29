@@ -66,9 +66,10 @@ Route::delete('admin/user/{uid}', array('as'=> 'DeleteUser', 'uses' => 'UsersCon
 Route::get('admin/categories', array('as'=>'GetCategories','uses'=>'ProductController@getCategories'));
 
 /**
- * Utils
+ * Utils and features(such as ratings and liking)
  */
 Route::post('result', array('as'=>'SearchProducts', 'uses'=>'ProductController@searchProduct'));
+Route::post('AjaxRatingSubmit', array('as'=>'AjaxRatingSubmit', 'uses'=>'ProductController@postRating'));
 
 /**
  * Cart

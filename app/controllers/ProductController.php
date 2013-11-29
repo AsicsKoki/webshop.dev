@@ -171,6 +171,12 @@ class ProductController extends BaseController {
 		}
 	}
 
+	public function postRating(){
+		$data = Input::all();
+		$rating = Rating::create($data);
+		$rating->save;
+	}
+
 	public function getCategories(){
 		return View::make('cpanel.categories')->with('categories', Category::all());
 	}

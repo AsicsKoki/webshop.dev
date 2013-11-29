@@ -21,3 +21,8 @@
 		</tbody>
 	</table>
 @stop
+@section('moreScrypts')
+	<script type="text/javascript">
+		$('#productsTable').dataTable();
+	</script>
+@stop
