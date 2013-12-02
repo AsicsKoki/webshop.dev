@@ -1,7 +1,7 @@
 @extends('layouts/main')
 @section('main')
 	<div id="result">
-		<table id="productsTable" class="table table-hover" class="display">
+		<table id="productsTable" class="table table-hover display">
 			<thead>
 				<th>Name</th>
 				<th>Quantity</th>

@@ -2,7 +2,7 @@
 @section('main')
 		@include('partials.sidebar')
 	<div>
-		<table id="productsTable" class="table table-hover" class="display">
+		<table id="productsTable" class="table table-hover display dataTable">
 			<thead>
 				<th>Product name</th>
 				<th>Color</th>
@@ -32,9 +32,4 @@
 			</tbody>
 		</table>
 	</div>
-@stop
-@section('moreScrypts')
-	<script type="text/javascript">
-		$('#productsTable').dataTable();
-	</script>
 @stop

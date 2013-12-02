@@ -1,5 +1,4 @@
 @extends('layouts/mainLayout')
-<html>
 	@section('moreStyles')
 		{{-- STYLES --}}
 		{{HTML::style('css/bootstrap-responsive.min.css')}}
@@ -9,5 +8,11 @@
 	@section('moreScripts')
 		{{-- SCRIPTS --}}
 		{{ HTML::script('js/jquery.dataTables.js') }}
-	@stop
-</html>
+		<script type="text/javascript">
+	if($('.dataTable').length){
+		$(document).ready(function() {
+			$('.dataTable').dataTable();
+		});
+	}
+</script>
+@stop

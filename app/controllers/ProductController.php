@@ -173,6 +173,7 @@ class ProductController extends BaseController {
 
 	public function postRating(){
 		$data = Input::all();
+		var_dump($data);
 		$rating = Rating::create($data);
 		$rating->save;
 	}

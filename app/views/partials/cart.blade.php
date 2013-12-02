@@ -1,6 +1,6 @@
 <div id="cart" >
 	<div id="content">
-		<table class="table table-hover cart" class="display" style="overflow-y: scroll;">
+		<table class="table table-hover cart display dataTable" style="overflow-y: scroll;">
 			<thead>
 				<th>Name</th>
 				<th>Quantity</th>

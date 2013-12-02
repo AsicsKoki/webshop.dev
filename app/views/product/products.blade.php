@@ -1,6 +1,6 @@
 @extends('layouts/main')
 @section('main')
-	<table id="productsTable" class="table table-hover" class="display">
+	<table id="productsTable" class="table table-hover display dataTable">
 		<thead>
 			<th>Product name</th>
 			<th>Color</th>
@@ -20,9 +20,4 @@
 		@endforeach
 		</tbody>
 	</table>
-@stop
-@section('moreScrypts')
-	<script type="text/javascript">
-		$('#productsTable').dataTable();
-	</script>
 @stop

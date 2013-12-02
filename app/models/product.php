@@ -39,7 +39,6 @@ class Product extends Eloquent {
 	 * @return [type]            [description]
 	 */
 	public function calculateRating(){
-        $rating = $this->ratings()->get()->avg('rating');
-        return $rating;
+        return $this->ratings()->get()->avg('rating');
 	}
 }
