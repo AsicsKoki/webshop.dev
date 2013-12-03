@@ -60,8 +60,8 @@
 	$('div#r1').children('div.ratings_stars').click(function(){
 		var rating = $(this).index();
 		var rating = rating + 1;
-		var userid = $(this).data('uid');
-		var productid = $(this).data('pid');
+		var userid = $(this).data('userid');
+		var productid = $(this).data('productid');
 		var self = this;
 		$.ajax({
 			url: "AjaxRatingSubmit",

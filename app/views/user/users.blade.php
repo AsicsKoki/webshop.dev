@@ -1,6 +1,4 @@
 @extends('layouts/main')
-@section('moreStyles')
-@stop
 @section('main')
 	<table id="usersTable" class="table table-hover dataTable" class="display">
 		<thead>

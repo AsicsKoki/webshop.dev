@@ -17,9 +17,9 @@ class Product extends Eloquent {
 		return $this->belongsTo('user');
 	}
 
-	public function rating()
+	public function ratings()
 	{
-		return $this->belongsTo('rating');
+		return $this->hasMany('Rating');
 	}
 
 	public function images(){
@@ -39,6 +39,6 @@ class Product extends Eloquent {
 	 * @return [type]            [description]
 	 */
 	public function calculateRating(){
-        return $this->ratings()->get()->avg('rating');
+        return $this->ratings()->avg('rating');
 	}
 }
