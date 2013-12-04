@@ -30,6 +30,7 @@ class CartController extends BaseController {
 	 * @return [type]      [description]
 	 */
 	public function postToCart($pid){
+		echo 'dsada'; exit;
 		$quantity = Input::get('quantity');
 		$cart = Session::get('cartData');
 		$cart[$pid] = $quantity;

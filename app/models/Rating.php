@@ -12,4 +12,11 @@ class Rating extends Eloquent {
 	{
 		return $this->belongsTo('Product');
 	}
+
+	public function saveRating($rating, $pid, $uid) {
+		$product = Product::find($pid);
+		$this->user_id = $uid;
+		$this->rating = $rating;
+	  	$product->rating()->attach($this);
+	}
 }

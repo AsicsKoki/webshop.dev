@@ -69,12 +69,12 @@ Route::get('admin/categories', array('as'=>'GetCategories','uses'=>'ProductContr
  * Utils and features(such as ratings and liking)
  */
 Route::post('result', array('as'=>'SearchProducts', 'uses'=>'ProductController@searchProduct'));
-Route::post('AjaxRatingSubmit', array('as'=>'AjaxRatingSubmit', 'uses'=>'ProductController@postRating'));
+Route::post('products/rate', array('as'=>'AjaxRatingSubmit', 'uses'=>'ProductController@postRating'));
 
 /**
  * Cart
  */
 Route::get('cart', array('as'=>'showCart', 'uses'=>'CartController@getCartPage'));
-Route::post('products/{pid}', array('as'=>'addToCart', 'uses'=>'CartController@postToCart'));
+Route::post('products/{pid}', array('as'=>'addToCart', 'uses'=>'CartController@postToCart'))->where('pid', '\d+');
 Route::get('ajaxSlideCart', array('as'=>'ajaxSlideCart','uses'=>'CartController@getCartPage'));
 Route::delete('ajaxCartDelete', array('as'=>'cartDelete','uses'=>'CartController@cartDeleteEntry'));

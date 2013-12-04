@@ -64,7 +64,7 @@
 		var productid = $(this).data('productid');
 		var self = this;
 		$.ajax({
-			url: "AjaxRatingSubmit",
+			url: "rate",
 			type: "POST",
 			data: {
 				rating: rating,

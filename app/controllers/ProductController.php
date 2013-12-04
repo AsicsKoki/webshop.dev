@@ -49,11 +49,6 @@ class ProductController extends BaseController {
 	 */
 	public function getProduct($pid)
 	{
-		// echo "test";
-		// // var_dump(Product::find(33)->ratings()->get()->toArray());
-		// var_dump(Product::find(33)->calculateRating());
-
-		// exit;
 		return View::make('product.product')
 			->with('product', Product::with('user','images','ratings')
 			->find($pid));
@@ -178,14 +173,12 @@ class ProductController extends BaseController {
 
 	public function postRating(){
 		$rating = new Rating;
-		$rating->rating = Input::get('rating');
 		$rating->user_id = Input::get('user_id');
-		$product = Product::find(Input::get('product_id'));
-		$product->rating->attach($rating);
+		$rating->rating = Input::get('rating');
+		Product::find(Input::get('product_id'))->ratings()->save($rating);
 	}
 
 	public function getCategories(){
 		return View::make('cpanel.categories')->with('categories', Category::all());
 	}
 }
-//vardumpuj product ratings i menjaj relacije dok ne proradi

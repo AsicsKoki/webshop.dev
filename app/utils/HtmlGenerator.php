@@ -27,15 +27,15 @@ class HtmlGenerator{
 	}
 
 	public static function renderStars($rating, $pid, $uid){
-        $htmlStars = '';
-        $mark = $rating;
-        $rest = 5 - $mark;
-        for ($i=0; $i < $mark ; $i++) {
-                $htmlStars .= '<div class="ratings_stars ratings_over" data-productid="'.$pid.'" data-userid="'.$uid.'"></div>';
-        }
-        for ($i=0; $i < $rest; $i++) {
-                $htmlStars .= '<div class="ratings_stars" data-productid="'.$pid.'" data-userid="'.$uid.'"></div>';
-        }
-        return $htmlStars;
+		$htmlStars = '';
+		$mark = $rating;
+		$rest = 5 - $mark;
+		for ($i=0; $i < $mark ; $i++) {
+			$htmlStars .= '<div class="ratings_stars ratings_over" data-productid="'.$pid.'" data-userid="'.$uid.'"></div>';
+		}
+		for ($i=0; $i < $rest; $i++) {
+			$htmlStars .= '<div class="ratings_stars" data-productid="'.$pid.'" data-userid="'.$uid.'"></div>';
+		}
+		return $htmlStars;
 	}
 }
