@@ -3,5 +3,5 @@
 <li class="header"><h3>Menu</h3></li>
 <li>{{ HTML::route('ShowProductsBackend', 'Products') }}</li>
 <li>{{ HTML::route('ShowUsersBackend', 'Users') }}</li>
-<li><a href="categories.php"><i class="icon-chevron-right"></i> Categories </a></li>
+<li>{{ HTML::route('GetCategories', 'Categories') }}</li>
 </ul>

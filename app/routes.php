@@ -64,6 +64,7 @@ Route::get('products/{pid}/edit', array('as' => 'ShowProductEditPage', 'uses' =>
 Route::delete('admin/products/{pid}', array('as'=> 'DeleteProduct', 'uses' => 'ProductController@deleteProduct'))->where('pid', '\d+');
 Route::delete('admin/user/{uid}', array('as'=> 'DeleteUser', 'uses' => 'UsersController@deleteUser'))->where('uid', '\d+');
 Route::get('admin/categories', array('as'=>'GetCategories','uses'=>'ProductController@getCategories'));
+Route::delete('admin/deleteCategory', array('as'=>'deleteCategory','uses'=>'ProductController@deleteCategory'));
 
 /**
  * Utils and features(such as ratings and liking)

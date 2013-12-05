@@ -49,6 +49,8 @@ class ProductController extends BaseController {
 	 */
 	public function getProduct($pid)
 	{
+		// var_dump(Category::find(10)->toArray());
+		// exit;
 		return View::make('product.product')
 			->with('product', Product::with('user','images','ratings')
 			->find($pid));
@@ -180,5 +182,11 @@ class ProductController extends BaseController {
 
 	public function getCategories(){
 		return View::make('cpanel.categories')->with('categories', Category::all());
+	}
+
+	public function deleteCategory(){
+		$id = Input::get('cid');
+		Category::find($id)->delete();
+		return 1;
 	}
 }
