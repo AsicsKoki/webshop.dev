@@ -194,9 +194,9 @@ class ProductController extends BaseController {
 	 * @return [type] [description]
 	 */
 	public function getCategoryResults($cid){
-		// $category= Category::find(1)->with('products')->get()->toArray();
-		// var_dump($category);
-		// exit;
+		$category= Category::find(1)->get()->toArray();
+		var_dump($category);
+		exit;
 		return View::make('product.categoryResult')
 			->with('result', Category::find($cid)->with('products')->get()->toArray());
 	}
