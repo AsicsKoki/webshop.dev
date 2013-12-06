@@ -38,21 +38,25 @@ class HtmlGenerator{
 		}
 		return $htmlStars;
 	}
-
-	public static function renderCategories($parentId, $level = 0){
+	/**
+	 * Render the on screen menu when selecting all items for a certian category
+	 * @param  [type]  $parentId [description]
+	 * @param  integer $level    [description]
+	 * @return [type]            [description]
+	 */
+	public static function renderCategoryMenu($parentId, $level = 0){
 		$html = "";
 		if($parentId)
-			$row = DB::table('categories')->where('parent_id', $parentId);
+			$row = \Category::where('parent_id', $parentId)->get()->toArray();
 		else
-			$row = DB::table('categories')->whereNull('parent_id');
-	
-		$query = mysql_query($sql, $conn);
-		while($res = mysql_fetch_assoc($query)){
-			$currentId = $res['id'];
-			$html .= "<option value=".$currentId.">";
-			$html .= str_repeat("-", $level);
-			$html .= $res['name']."</option>";
-			$html .= renderCategories($currentId, $level+1);
+			$row = \Category::whereNull('parent_id')->get()->toArray();
+
+		foreach($row as $category){
+			$currentId = $category['id'];
+			$html .= "<li><a href='products/category/".$currentId."'>";
+			$html .= str_repeat(" - ", $level);
+			$html .= $category['name']."</a></li>";
+			$html .= HtmlGenerator::renderCategoryMenu($currentId, $level+1);
 		}
 		return $html;
 	}

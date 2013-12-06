@@ -1,5 +1,6 @@
 @extends('layouts/productLayout')
 @section('main')
+@include('partials/categoryMenu')
 	<div class="user-box pull-right">
 		<header>Posted by </header>
 		{{$product->user->username}}

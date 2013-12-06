@@ -10,7 +10,7 @@
 			<th>Quantity</th>
 		</thead>
 		<tbody>
-		@foreach($products as $product)
+		@foreach($result as $product)
 			<tr>
 				<td>{{$product->name}}</td>
 				<td>{{$product->color->color_name}}</td>

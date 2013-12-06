@@ -189,4 +189,15 @@ class ProductController extends BaseController {
 		Category::find($id)->delete();
 		return 1;
 	}
+	/**
+	 * Display products based on selected category
+	 * @return [type] [description]
+	 */
+	public function getCategoryResults($cid){
+		// $category= Category::find(1)->with('products')->get()->toArray();
+		// var_dump($category);
+		// exit;
+		return View::make('product.categoryResult')
+			->with('result', Category::find($cid)->with('products')->get()->toArray());
+	}
 }

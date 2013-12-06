@@ -22,7 +22,7 @@ class Category extends Eloquent {
     }
 
     public function products(){
-        return $this->belongsToMany('product');
+        return $this->belongsToMany('product', 'categorized_products');
     }
 
 }

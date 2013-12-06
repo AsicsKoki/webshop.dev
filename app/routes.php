@@ -33,6 +33,7 @@ Route::get('products/{pid}', array('as' => 'ShowProductPage', 'uses' => 'Product
 Route::get('products', array('as' => 'AllProducts', 'uses' => 'ProductController@getProducts'));
 Route::get('newProduct', array('as'=>'newProductPage', 'uses' => 'ProductController@getNewProductPage'));
 Route::put('newProduct', array('as'=> 'putNewProduct', 'uses' =>'ProductController@putProduct'));
+Route::get('products/category/{cid}', array('as'=>'getCategoryResults', 'uses'=>'ProductController@getCategoryResults'))->where('cid', '\d+');;
 
 /**
  * User related routes
@@ -65,7 +66,6 @@ Route::delete('admin/products/{pid}', array('as'=> 'DeleteProduct', 'uses' => 'P
 Route::delete('admin/user/{uid}', array('as'=> 'DeleteUser', 'uses' => 'UsersController@deleteUser'))->where('uid', '\d+');
 Route::get('admin/categories', array('as'=>'GetCategories','uses'=>'ProductController@getCategories'));
 Route::delete('admin/deleteCategory', array('as'=>'deleteCategory','uses'=>'ProductController@deleteCategory'));
-
 /**
  * Utils and features(such as ratings and liking)
  */
