@@ -194,10 +194,12 @@ class ProductController extends BaseController {
 	 * @return [type] [description]
 	 */
 	public function getCategoryResults($cid){
-		$category= Category::find(1)->get()->toArray();
-		var_dump($category);
-		exit;
 		return View::make('product.categoryResult')
 			->with('result', Category::find($cid)->with('products')->get()->toArray());
+	}
+
+	public function postComment(){
+		$id = Input::get('id');
+		$text = Input::get('text');
 	}
 }
