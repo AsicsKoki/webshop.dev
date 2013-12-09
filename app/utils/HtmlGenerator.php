@@ -60,4 +60,13 @@ class HtmlGenerator{
 		}
 		return $html;
 	}
+
+	public static function generateComment($text){
+		$html = '';
+		$html .= '<div class="commentBox well">
+			<header class="com_header">
+			Posted by you
+			</header>'.$text.'</div>';
+		return $html;
+	}
 }

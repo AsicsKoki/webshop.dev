@@ -49,10 +49,8 @@ class ProductController extends BaseController {
 	 */
 	public function getProduct($pid)
 	{
-		// var_dump(Category::find(10)->toArray());
-		// exit;
 		return View::make('product.product')
-			->with('product', Product::with('user','images','ratings')
+			->with('product', Product::with('user','images','ratings', 'comments')
 			->find($pid));
 	}
 	/**
@@ -203,6 +201,8 @@ class ProductController extends BaseController {
 		$comment->user_id = Auth::User()->id;
 		$comment->comment = Input::get('text');
 		Product::find(Input::get('id'))->comments()->save($comment);
-		
+		$text = Input::get('text');
+		$commentData = HtmlGenerator::generateComment($text);
+		return $commentData;
 	}
 }

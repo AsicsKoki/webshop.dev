@@ -14,9 +14,14 @@
 			</ul>
 		</div>
 		@include('partials/rating')
+		@foreach ($product->comments as $comment)
 		<div class="commentBox well">
-			
+		  <header class="com_header">
+			<a href="/user/{{$comment['user_id']}}">{{$comment->user->username}}</a>
+			</header>
+			{{$comment['comment']}}
 		</div>
+		@endforeach
 	</div>
 	<div class="span6">
 		<h3>{{$product->name}}</h3>
