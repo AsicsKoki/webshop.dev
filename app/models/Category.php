@@ -15,7 +15,7 @@ class Category extends Eloquent {
     //  * Relationship: BusinessCategory
     //  * - One to many relationship with (self) model
     //  *
-     
+
     public function children()
     {
         return $this->hasMany('Category', 'parent_id');

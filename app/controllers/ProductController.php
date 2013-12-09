@@ -199,7 +199,10 @@ class ProductController extends BaseController {
 	}
 
 	public function postComment(){
-		$id = Input::get('id');
-		$text = Input::get('text');
+		$comment = new comment;
+		$comment->user_id = Auth::User()->id;
+		$comment->comment = Input::get('text');
+		Product::find(Input::get('id'))->comments()->save($comment);
+		
 	}
 }

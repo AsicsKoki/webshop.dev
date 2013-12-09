@@ -42,7 +42,7 @@
 		</div>
 		<form id="post_comment_form" action="">
 			<textarea required="required" data-minlength="6" id="comment" name="comment" cols="100" rows="10"></textarea>
-			<input data-id= id="post_comment" type="submit" name"submit" class="btn" value="Comment">
+			<input data-id="{{$product->id}}" id="post_comment" type="submit" name"submit" class="btn" value="Comment">
 		</form>
 	</div>
 @stop
@@ -90,29 +90,24 @@
 
 </script>
 <script type="text/javascript">
-	$('input#post_comment').click(function(e){
-	    e.preventDefault();
-	    var valid = $("form#post_comment_form").parsley('validate');
-	    if (valid) {
-			var text = $('textarea#comment').val();
-			var id = $(this).data('id');
-			var self = this;
-			$.ajax({
-	            url: "comment",
-	            type: "POST",
-	            data: {
-	                    id: id,
-	                    text: text
-	            },
-	            success: function(data){
-	      //               if (data){
-							// var temp = $("script#comment_box_temp").html();
-							// temp = temp.replace('{{text}}',$('textarea#comment').val());
-							// $('div#comment_content').append(temp);
-							// }
-						}
-					});
-				}
+$('input#post_comment').click(function(e){
+	e.preventDefault();
+	var text = $('textarea#comment').val();
+	var id = $(this).data('id');
+	var self = this;
+		$.ajax({
+			url: "comment",
+			type: "POST",
+			data: {
+				id: id,
+				text: text
+			},
+		success: function(data){
+			if (data){
+
+			}
+		}
 	});
+});
 </script>
 @stop

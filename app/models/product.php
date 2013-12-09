@@ -41,4 +41,9 @@ class Product extends Eloquent {
 	public function calculateRating(){
         return round($this->ratings()->avg('rating'));
 	}
+
+	public function comments()
+	{
+		return $this->hasMany('Comment');
+	}
 }

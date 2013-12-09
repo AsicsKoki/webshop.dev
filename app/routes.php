@@ -71,6 +71,7 @@ Route::delete('admin/deleteCategory', array('as'=>'deleteCategory','uses'=>'Prod
  */
 Route::post('result', array('as'=>'SearchProducts', 'uses'=>'ProductController@searchProduct'));
 Route::post('products/rate', array('as'=>'AjaxRatingSubmit', 'uses'=>'ProductController@postRating'));
+Route::post('products/comment', array('as'=>'postComment', 'uses'=>'ProductController@postComment'));
 
 /**
  * Cart
