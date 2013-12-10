@@ -202,7 +202,6 @@ class ProductController extends BaseController {
 		$comment->comment = Input::get('text');
 		Product::find(Input::get('id'))->comments()->save($comment);
 		$text = Input::get('text');
-		$commentData = HtmlGenerator::generateComment($text);
-		return $commentData;
+		return \Utils\HtmlGenerator::generateComment($text);
 	}
 }
