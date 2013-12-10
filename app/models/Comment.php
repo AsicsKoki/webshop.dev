@@ -9,4 +9,12 @@ class Comment extends Eloquent {
 	{
 		return $this->belongsTo('product');
 	}
+
+	public function like(){
+		return $this hasMany('Like');
+	}
+
+	public static function hasLikes($comment_id){
+
+	}
 }

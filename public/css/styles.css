@@ -259,10 +259,14 @@
   .btnStyle{
     position: relative; 
     bottom: -60px;
-  };
+  }
   .cartTableHeader{
     background-color: #660066;
     color: gold;
     letter-spacing: 2px;
     text-shadow: 0.5px 0.5px 0.5px #000000 ;
-  };
+  }
+  .quantityArea{
+    height: 30px;
+    width: 221px;
+  }
