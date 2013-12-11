@@ -170,42 +170,6 @@ $(document).ready(function() {
 			}
 		});
 	});
-	//LIKE
-	$('div.well.comment_padding').on('click', 'a.like', function(e){
-		e.preventDefault();
-		var userId = $(this).data('userid');
-		var commentId = $(this).data('commentid');
-		var self = this;
-		$.ajax({
-			url: "postLike.php",
-			type: "POST",
-			data: {
-				userId: userId,
-				commentId: commentId
-			},
-			success: function(data){
-				$(self).text('Unlike').removeClass('like').addClass('unlike');
-			}
-		});
-	})
-	//UNLIKE
-	$('div.well.comment_padding').on('click', 'a.unlike', function(e){
-		e.preventDefault();
-		var userId = $(this).data('userid');
-		var commentId = $(this).data('commentid');
-		var self = this;
-		$.ajax({
-			url: "unLike.php",
-			type: "POST",
-			data: {
-				userId: userId,
-				commentId: commentId
-			},
-			success: function(data){
-				$(self).text('Like').removeClass('unlike').addClass('like');
-			}
-		});
-	});
 	//OPEN AND CLOSE THE "LIKED BY" SECTION ON PRODUCT VIEW
 	$('a.open_likes').click(function(e){
 		e.preventDefault();

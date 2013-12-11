@@ -120,4 +120,43 @@ $('input#post_comment').click(function(e){
 	});
 });
 </script>
+<script type="text/javascript">
+$('div.commentBox').on('click', 'a.like', function(e){
+	e.preventDefault();
+	var userId = $(this).data('userid');
+	var commentId = $(this).data('commentid');
+	var self = this;
+	$.ajax({
+		url: "postLike",
+		type: "PUT",
+		data: {
+			user_id: userId,
+			comment_id: commentId
+		},
+		success: function(data){
+			$(self).text('Unlike').removeClass('like').addClass('unlike');
+		}
+	});
+})
+</script>
+</script>
+<script type="text/javascript">
+$('div.commentBox').on('click', 'a.unlike', function(e){
+	e.preventDefault();
+		var userId = $(this).data('userid');
+		var commentId = $(this).data('commentid');
+		var self = this;
+		$.ajax({
+			url: "unLike",
+			type: "DELETE",
+			data: {
+				user_id: userId,
+				comment_id: commentId
+			},
+			success: function(data){
+				$(self).text('Like').removeClass('unlike').addClass('like');
+			}
+		});
+	});
+</script>
 @stop

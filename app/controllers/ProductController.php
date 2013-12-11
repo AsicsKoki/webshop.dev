@@ -204,4 +204,9 @@ class ProductController extends BaseController {
 		$text = Input::get('text');
 		return \Utils\HtmlGenerator::generateComment($text);
 	}
+
+	public function postLike(){
+		$data = Input::all();
+		return Like::create($data);
+	}
 }
