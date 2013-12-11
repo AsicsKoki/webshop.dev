@@ -11,4 +11,8 @@ class Like extends Eloquent {
 	{
 		return $this->belongsTo('Comment');
 	}
+
+	public static function countLikes($comment_id){
+		return Like::where('comment_id', '=', $comment_id)->count();
+	}
 }

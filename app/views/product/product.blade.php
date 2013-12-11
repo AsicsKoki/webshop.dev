@@ -26,6 +26,7 @@
 				@else
 					{{'<a class="like" href="#" data-commentid="'.$comment['id'].'" data-userid="'.Auth::user()->id.'">Like</a>'}}
 				@endif
+				{{Like::countLikes($comment['id'])}}
 			</div>
 			@endforeach
 		</div>
