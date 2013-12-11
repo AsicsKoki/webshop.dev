@@ -11,10 +11,10 @@ class Comment extends Eloquent {
 	}
 
 	public function like(){
-		return $this hasMany('Like');
+		return $this->hasMany('Like');
 	}
 
-	public static function hasLikes($comment_id){
-
+	public static function isLiked($comment_id, $user_id){
+		return Like::where('comment_id', '=', $comment_id)->where('user_id', '=', $user_id)->count();
 	}
 }

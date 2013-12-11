@@ -21,6 +21,11 @@
 				<a href="/user/{{$comment['user_id']}}">{{$comment->user->username}}</a>
 				</header>
 				{{$comment['comment']}}
+				@if(Comment::isLiked($comment['id'], Auth::user()->id))
+					{{'<a class="unlike" href="#" data-commentid="'.$comment['id'].'" data-userid="'.Auth::user()->id.'">Unlike</a>'}}
+				@else
+					{{'<a class="like" href="#" data-commentid="'.$comment['id'].'" data-userid="'.Auth::user()->id.'">Like</a>'}}
+				@endif
 			</div>
 			@endforeach
 		</div>
