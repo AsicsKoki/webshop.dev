@@ -19,6 +19,9 @@
 			<div class="commentBox well">
 			  <header class="com_header">
 				<a href="/user/{{$comment['user_id']}}">{{$comment->user->username}}</a>
+				@if(Auth::user()->role_id == 1)
+					{{'<a href="#" class="deleteComment" data-commentid="'.$comment['id'].'">Delete</a>'}}
+				@endif
 				</header>
 				{{$comment['comment']}}
 				@if(Comment::isLiked($comment['id'], Auth::user()->id))
@@ -140,7 +143,6 @@ $('div.commentBox').on('click', 'a.like', function(e){
 	});
 })
 </script>
-</script>
 <script type="text/javascript">
 $('div.commentBox').on('click', 'a.unlike', function(e){
 	e.preventDefault();
@@ -159,5 +161,24 @@ $('div.commentBox').on('click', 'a.unlike', function(e){
 			}
 		});
 	});
+</script>
+<script type="text/javascript">
+$('.deleteComment').click(function(e){
+	e.preventDefault();
+	var id = $(this).data('commentid');
+	var self = this;
+	$.ajax({
+		url: "deleteComment",
+		type: "DELETE",
+		data: {
+			id: id
+		},
+		success: function(data){
+			if (data){
+				$(self).parents(".commentBox").remove();
+			}
+		}
+	});
+});
 </script>
 @stop

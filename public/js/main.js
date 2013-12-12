@@ -87,24 +87,6 @@ $('.deletePhoto').click(function(e){
 		}
 	});
 });
-//AJAX DELETE COMMENT BACK END
-$('.deleteComment').click(function(e){
-	var id = $(this).data('id');
-	var self = this;
-	$.ajax({
-		url: "commentDelete.php",
-		type: "get",
-		data: {
-			id: id
-		},
-		success: function(data){
-			if (data){
-				$(self).parents("div.well").remove();
-				$("div.comment_thumbnail").remove();
-			}
-		}
-	});
-});
 //parsley initialization
 $(document).ready(function() {
 	if($('table').not('.cart').length) {
@@ -112,31 +94,6 @@ $(document).ready(function() {
 		// $('#categoryTable').dataTable();
 		// $('#product_table_user').dataTable();
 	}
-	//COMMENT BOX(SUBMIT)
-	$('input#post_comment').click(function(e){
-		e.preventDefault();
-		var valid = $("form#post_comment_form").parsley('validate');
-		if (valid) {
-		var text = $('textarea#comment').val();
-		var id = $(this).data('id');
-		var self = this;
-		$.ajax({
-			url: "comment.php",
-			type: "POST",
-			data: {
-				id: id,
-				text: text
-			},
-			success: function(data){
-				if (data){
-					var temp = $("script#comment_box_temp").html();
-					temp = temp.replace('{{text}}',$('textarea#comment').val());
-					$('div#comment_content').append(temp);
-					}
-				}
-			});
-		}
-	});
 	//READ MORE BUTTON
 	$("#readMore").click(function(){
 		var self = $(this);

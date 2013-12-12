@@ -213,4 +213,8 @@ class ProductController extends BaseController {
 	public function unLike(){
 		return Like::where('comment_id', '=', Input::get('comment_id'))->where('user_id', '=', Input::get('user_id'))->delete();
 	}
+
+	public function deleteComment(){
+		return Comment::where('id', '=', Input::get('id'))->delete();
+	}
 }
