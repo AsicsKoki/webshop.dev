@@ -15,4 +15,8 @@ class Like extends Eloquent {
 	public static function countLikes($comment_id){
 		return Like::where('comment_id', '=', $comment_id)->count();
 	}
+
+	public static function likedBy($comment_id){
+		return Like::where('comment_id', '=', $comment_id)->with('user')->get();
+	}
 }

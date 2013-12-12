@@ -30,6 +30,11 @@
 					{{'<a class="like" href="#" data-commentid="'.$comment['id'].'" data-userid="'.Auth::user()->id.'">Like</a>'}}
 				@endif
 				{{Like::countLikes($comment['id'])}}
+				<ul>
+				@foreach (Like::likedBy($comment['id']) as $data)
+				<li>{{$data->user->username}}</li>
+				@endforeach
+				</ul>
 			</div>
 			@endforeach
 		</div>
