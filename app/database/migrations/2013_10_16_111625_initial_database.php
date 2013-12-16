@@ -51,7 +51,7 @@ class InitialDatabase extends Migration {
 			$table->integer('product_id')->unsigned();
 			$table->string('comment', 300)->nullable();
 			$table->integer('approved');
-			$table->timestamp('posted_at');
+			$table->timestamps();
 			$table->index('user_id');
 			$table->index('product_id');
 		});
@@ -70,6 +70,7 @@ class InitialDatabase extends Migration {
 			$table->engine = 'InnoDB';
 			$table->integer('category_id')->unsigned();
 			$table->integer('product_id')->unsigned();
+			$table->timestamps();
 		});
 
 		Schema::table('comment_likes', function($table)
@@ -81,6 +82,7 @@ class InitialDatabase extends Migration {
 			$table->increments('id');
 			$table->index('commenT_id');
 			$table->index('user_id');
+			$table->timestamps();
 		});
 
 		Schema::table('roles', function($table)
@@ -99,6 +101,7 @@ class InitialDatabase extends Migration {
 			$table->integer('parent_id')->nullable()->unsigned();
 			$table->string('name', 300);
 			$table->index('parent_id');
+			$table->timestamps();
 		});
 
 		Schema::table('banners', function($table)
@@ -117,7 +120,7 @@ class InitialDatabase extends Migration {
 			$table->integer('user_id')->unsigned();
 			$table->integer('product_id')->unsigned();
 			$table->integer('rating');
-			$table->timestamp('rated_at');
+			$table->timestamps();
 			$table->index('user_id');
 			$table->index('product_id');
 		});

@@ -30,11 +30,14 @@
 					{{'<a class="like" href="#" data-commentid="'.$comment['id'].'" data-userid="'.Auth::user()->id.'">Like</a>'}}
 				@endif
 				{{Like::countLikes($comment['id'])}}
-				<ul>
-				@foreach (Like::likedBy($comment['id']) as $data)
-				<li>{{$data->user->username}}</li>
-				@endforeach
-				</ul>
+				<a href="#" class="likeToggle"></a>
+				<div class="hide likedBy">
+					<ul>
+					@foreach (Like::likedBy($comment['id']) as $data)
+						<li>{{$data->user->username}}</li>
+					@endforeach
+					</ul>
+				</div>
 			</div>
 			@endforeach
 		</div>
@@ -61,10 +64,11 @@
 			{{ Former::actions()->submit('Submit') }}
 		{{ Former::close() }}
 		</div>
-		<form id="post_comment_form" action="">
-			<textarea required="required" data-minlength="6" id="comment" name="comment" cols="100" rows="10"></textarea>
+		{{ Former::open()->id('post_comment_form')->method('post')->enctype('multipart/form-data')}}
+		{{ Former::textarea('comment')->id('comment')->required()}}
 			<input data-id="{{$product->id}}" id="post_comment" type="submit" name"submit" class="btn" value="Comment">
-		</form>
+		{{ Former::input()->submit('Submit')->data_id($product->id)->id('post_comment')->class('btn') }}
+		{{ Former::close() }}
 	</div>
 @stop
 @section('moreScripts')
@@ -185,5 +189,11 @@ $('.deleteComment').click(function(e){
 		}
 	});
 });
+</script>
+<script type="text/javascript">
+ $('a.likeToggle').click(function(e){
+        e.preventDefault();
+        $(this).siblings('.likedBy').slideToggle();
+})
 </script>
 @stop
