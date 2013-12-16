@@ -22,8 +22,9 @@ class InitialDatabase extends Migration {
 		    $table->string('last_name', 64);
 		    $table->string('username', 64);
 			$table->string('bio', 300)->nullable();
-			$table->integer('role_id')->nullable();
+			$table->integer('role_id')->unsigned();
 			$table->timestamps();
+			$table->index('role_id');
 		});
 
 		Schema::table('products', function($table)
@@ -60,7 +61,7 @@ class InitialDatabase extends Migration {
 		{
 			$table->create();
 			$table->engine = 'InnoDB';
-			$table->integer('id');
+			$table->increments('id');
 			$table->string('color_name');
 		});
 
@@ -89,7 +90,7 @@ class InitialDatabase extends Migration {
 		{
 			$table->create();
 			$table->engine = 'InnoDB';
-			$table->integer('id');
+			$table->increments('id');
 			$table->string('role', 300);
 		});
 

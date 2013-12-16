@@ -30,7 +30,7 @@ class ProductController extends BaseController {
 		$file->move($destinationPath, $path);
 		$img->path = $path;
 		$product->images()->save($img);
-		}
+	}
 
 	/**
      * Generates the products page and table.
@@ -42,6 +42,7 @@ class ProductController extends BaseController {
 			->with('products', Product::with('color')
 			->get());
 	}
+	
 	/**
 	 * Generates the product info page.
 	 * @param  [type] $pid [description]
@@ -53,6 +54,7 @@ class ProductController extends BaseController {
 			->with('product', Product::with('user','images','ratings', 'comments')
 			->find($pid));
 	}
+	
 	/**
 	 * Genrerates the priduct edit page.
 	 * @param  [type] $pid [description]
@@ -64,6 +66,7 @@ class ProductController extends BaseController {
 			->with('product', Product::with('user','images')
 			->find($pid));
 	}
+	
 	/**
 	 * Updates an existing product with new data.
 	 *
@@ -95,6 +98,7 @@ class ProductController extends BaseController {
 				->withErrors($validator->messages());
 		}
 	}
+	
 	/**
 	 * Generates the new product entry page.
 	 * @return [type] [description]
@@ -132,6 +136,7 @@ class ProductController extends BaseController {
 				->withErrors($validator->messages());
 		}
 	}
+	
 	/**
 	 * Generates the backend products list.
 	 * @return [type] [description]
@@ -141,6 +146,7 @@ class ProductController extends BaseController {
 			->with('products', Product::with('color')
 			->get());
 	}
+	
 	/**
 	 * Deletes the product.
 	 * @param  [type] $pid [description]
@@ -151,6 +157,7 @@ class ProductController extends BaseController {
 		Session::flash('status_success', 'Product deleted');
 		return Redirect::intended('admin');
 	}
+	
 	/**
 	 * Handles the search and data display for searches.
 	 * @return [type] [description]
@@ -187,6 +194,7 @@ class ProductController extends BaseController {
 		Category::find($id)->delete();
 		return 1;
 	}
+	
 	/**
 	 * Display products based on selected category
 	 * @return [type] [description]

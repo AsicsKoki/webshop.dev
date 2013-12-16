@@ -10,10 +10,10 @@ class SessionsController extends BaseController {
 	*/
     public function __construct()
     {
- 	$this->beforeFilter('auth', array('except' => array('login','authenticate','getRegister')));
-	// Enforce user authentication on specified methods
-	$this->beforeFilter('csrf', ['only' => ['authenticate']]);
-	parent::__construct();
+	 	$this->beforeFilter('auth', array('except' => array('login','authenticate','getRegister')));
+		// Enforce user authentication on specified methods
+		$this->beforeFilter('csrf', ['only' => ['authenticate']]);
+		parent::__construct();
     }
 
 
@@ -34,6 +34,7 @@ class SessionsController extends BaseController {
 			return Redirect::to('/login');
 		}
 	}
+	
 	public function logout(){
 		Auth::logout();
 		Session::flush();

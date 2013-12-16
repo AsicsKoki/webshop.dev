@@ -1,7 +1,7 @@
 <?php
 
 class Category extends Eloquent {
- /**
+    /**
      * Relationship: Category
      * - Many to one relationship with (self) model
      *

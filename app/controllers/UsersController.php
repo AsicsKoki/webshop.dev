@@ -4,12 +4,11 @@ class UsersController extends BaseController {
 
     public function __construct()
     {
-
-	// Enforce user authentication on specified methods
-	$this->beforeFilter('csrf', ['only' => ['authenticate']]);
-	$this->beforeFilter('admin', ['only' => ['getUsersBackend', 'deleteUser', 'postUser']]);
-	$this->beforeFilter('auth', array('except' => array('login','authenticate','getNewUser','putNewUser')));
-	parent::__construct();
+		// Enforce user authentication on specified methods
+		$this->beforeFilter('csrf', ['only' => ['authenticate']]);
+		$this->beforeFilter('admin', ['only' => ['getUsersBackend', 'deleteUser', 'postUser']]);
+		$this->beforeFilter('auth', array('except' => array('login','authenticate','getNewUser','putNewUser')));
+		parent::__construct();
     }
 
     /**
@@ -56,6 +55,7 @@ class UsersController extends BaseController {
 				'email'    => 'required|email|unique:users,email',
 		    )
 		);
+
 		if ($validator->passes())
 		{
 			User::find($uid)->update(Input::all());
@@ -78,7 +78,7 @@ class UsersController extends BaseController {
 	}
 
 	public function putNewUser(){
-			$validator = Validator::make(
+		$validator = Validator::make(
 		Input::all(),
 		    array(
 				'username'              => 'required|between:5,50|unique:users,username',
@@ -98,7 +98,7 @@ class UsersController extends BaseController {
 			Session::flash('status_success', 'Registerd successfuly. Please log in');
 			return Redirect::intended('login');
 		} else {
-			Session::flash('status_error', 'Please enter valid data');	
+			Session::flash('status_error', 'Please enter valid data');
 			return Redirect::back()
 				->withInput(Input::all())
 				->withErrors($validator->messages());

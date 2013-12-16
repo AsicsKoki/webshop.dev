@@ -9,7 +9,7 @@
 		"loic-sharma/profiler": "1.1.*",
 		"imagine/imagine": "~0.5.0",
 		"anahkiasen/former": "dev-master",
-		"paypal/rest-api-sdk-php" : "0.5.*",
+		"paypal/rest-api-sdk-php" : "0.7.0",
 		"anouar/paypalpayment": "dev-master"
 	},
 	"autoload": {

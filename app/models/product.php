@@ -7,6 +7,7 @@ class Product extends Eloquent {
    * via MassAssignment
    */
 	protected $fillable = array('quantity', 'price', 'description', 'name', 'user_id', 'color_id');
+
 	public function color()
 	{
 		return $this->belongsTo('color');
@@ -33,6 +34,7 @@ class Product extends Eloquent {
 	public function category(){
 		return $this->belongsToMany('category', 'categorized_products');
 	}
+
 	/**
 	 * Calculates the rating of the product
 	 * @param  [type] $productId [description]
