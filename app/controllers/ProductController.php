@@ -208,12 +208,23 @@ class ProductController extends BaseController {
 	}
 
 	public function postComment(){
-		$comment = new comment;
-		$comment->user_id = Auth::User()->id;
-		$comment->comment = Input::get('text');
-		Product::find(Input::get('id'))->comments()->save($comment);
-		$text = Input::get('text');
-		return \Utils\HtmlGenerator::generateComment($text);
+		$validator = Validator::make(
+		Input::all(),
+			array(
+				'text' => 'required|min:5',
+			)
+		);
+		if($validator->passes()){
+			$comment = new comment;
+			$comment->user_id = Auth::User()->id;
+			$comment->comment = Input::get('text');
+			Product::find(Input::get('id'))->comments()->save($comment);
+			$text = Input::get('text');
+			return \Utils\HtmlGenerator::generateComment($text);
+		} else {
+			Session::flash('status_error', 'Please enter comment.');
+			return Redirect::back();
+		}
 	}
 
 	public function postLike(){
