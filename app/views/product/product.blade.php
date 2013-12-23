@@ -41,6 +41,12 @@
 			</div>
 			@endforeach
 		</div>
+		<div id="categorySelect">
+          		<ul style='list-style: none; text-align: left;'>
+          		<h4>Please select item category:</h4>
+          		{{ Utils\HtmlGenerator::renderCategorySelection(0,0, $product->id)}}
+          	</ul>
+		</div>
 	</div>
 	<div class="span6">
 		<h3>{{$product->name}}</h3>

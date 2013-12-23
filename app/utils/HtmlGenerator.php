@@ -69,4 +69,27 @@ class HtmlGenerator{
 			</header>'.$text.'</div>';
 		return $html;
 	}
+	public static function renderCategorySelection($parentId, $level = 0, $productId = NULL){
+		$html = "";
+		if($productId)
+			$join = "LEFT JOIN categorized_products ON categories.id = categorized_products.category_id";
+		else
+			$join = "";
+
+
+		if($parentId)
+			$row = \Category::where('parent_id', $parentId)->get()->toArray();
+		else
+			$row = \Category::whereNull('parent_id')->get()->toArray();
+
+		foreach($row as $category){
+			$checked = $res['product_id']? "checked = checked": "";
+			$currentId = $res['id'];
+			$html .= "<li><input type='checkbox'".$checked." name='category[]' class='categoryCheck' data-productId=".$productId." data-categoryId=".$currentId." value=".$currentId.">";
+			$html .= str_repeat(" - ", $level);
+			$html .= $res['name']."</li>";
+			$html .= renderCategorySelection($currentId, $level+1, $productId);
+			}
+		return $html;
+	}
 }

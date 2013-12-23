@@ -172,10 +172,10 @@ class ProductController extends BaseController {
 		if($validator->passes()){
 			$keyword = Input::get('search');
 			$data = Product::search($keyword)->with('images');
+			if(!$data->count()){
+				return View::make('product.empty');
+			}
 			return View::make('product.results')->with('data', $data->get());
-				if($data == 0){
-					return View::make('products.empty');
-				}
 		} else {
 			return View::make('products.empty');
 		}
