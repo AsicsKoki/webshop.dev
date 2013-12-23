@@ -29,7 +29,7 @@
 				@else
 					{{'<a class="like" href="#" data-commentid="'.$comment['id'].'" data-userid="'.Auth::user()->id.'">Like</a>'}}
 				@endif
-				{{Like::countLikes($comment['id'])}}
+				<p class="counter">{{Like::countLikes($comment['id'])}}</p>
 				<a href="#" class="likeToggle"></a>
 				<div class="hide likedBy">
 					<ul>
@@ -64,11 +64,10 @@
 			{{ Former::actions()->submit('Submit') }}
 		{{ Former::close() }}
 		</div>
-		{{ Former::open()->id('post_comment_form')->method('post')->enctype('multipart/form-data')}}
-		{{ Former::textarea('comment')->id('comment')->required()}}
+		<form id="post_comment_form" action="">
+			<textarea required="required" data-minlength="6" id="comment" name="comment" cols="100" rows="10"></textarea>
 			<input data-id="{{$product->id}}" id="post_comment" type="submit" name"submit" class="btn" value="Comment">
-		{{ Former::input()->submit('Submit')->data_id($product->id)->id('post_comment')->class('btn') }}
-		{{ Former::close() }}
+		</form>
 	</div>
 @stop
 @section('moreScripts')
@@ -148,6 +147,7 @@ $('div.commentBox').on('click', 'a.like', function(e){
 		},
 		success: function(data){
 			$(self).text('Unlike').removeClass('like').addClass('unlike');
+			$(self).parents('div.commentBox').children('.counter').html(data);
 		}
 	});
 })
@@ -167,6 +167,7 @@ $('div.commentBox').on('click', 'a.unlike', function(e){
 			},
 			success: function(data){
 				$(self).text('Like').removeClass('unlike').addClass('like');
+				$(self).parents('div.commentBox').children('.counter').html(data);
 			}
 		});
 	});

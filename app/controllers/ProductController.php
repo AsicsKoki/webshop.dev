@@ -157,7 +157,7 @@ class ProductController extends BaseController {
 		Session::flash('status_success', 'Product deleted');
 		return Redirect::intended('admin');
 	}
-	
+
 	/**
 	 * Handles the search and data display for searches.
 	 * @return [type] [description]
@@ -170,9 +170,12 @@ class ProductController extends BaseController {
 			)
 		);
 		if($validator->passes()){
-		$keyword = Input::get('search');
-		$data = Product::search($keyword)->with('images');
+			$keyword = Input::get('search');
+			$data = Product::search($keyword)->with('images');
 			return View::make('product.results')->with('data', $data->get());
+				if($data == 0){
+					return View::make('products.empty');
+				}
 		} else {
 			return View::make('products.empty');
 		}
@@ -194,7 +197,7 @@ class ProductController extends BaseController {
 		Category::find($id)->delete();
 		return 1;
 	}
-	
+
 	/**
 	 * Display products based on selected category
 	 * @return [type] [description]
@@ -215,11 +218,13 @@ class ProductController extends BaseController {
 
 	public function postLike(){
 		$data = Input::all();
-		return Like::create($data);
+		Like::create($data);
+		return Like::countLikes(Input::get('comment_id'));
 	}
 
 	public function unLike(){
-		return Like::where('comment_id', '=', Input::get('comment_id'))->where('user_id', '=', Input::get('user_id'))->delete();
+		Like::where('comment_id', '=', Input::get('comment_id'))->where('user_id', '=', Input::get('user_id'))->delete();
+		return Like::countLikes(Input::get('comment_id'));
 	}
 
 	public function deleteComment(){
