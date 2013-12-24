@@ -41,12 +41,12 @@
 			</div>
 			@endforeach
 		</div>
-		<div id="categorySelect">
-          		<ul style='list-style: none; text-align: left;'>
-          		<h4>Please select item category:</h4>
-          		{{ Utils\HtmlGenerator::renderCategorySelection(0,0, $product->id)}}
-          	</ul>
-		</div>
+		@{{<div id="categorySelect">
+     		<ul style='list-style: none; text-align: left;'>
+     		<h4>Please select item category:</h4>
+     		{{ Utils\HtmlGenerator::renderCategorySelection(0,0, $product->id)}}
+     		</ul>
+		</div>}}
 	</div>
 	<div class="span6">
 		<h3>{{$product->name}}</h3>
@@ -77,6 +77,12 @@
 	</div>
 @stop
 @section('moreScripts')
+{{ HTML::script('js/jquery.flexslider-min.js') }}
+<script type="text/javascript" charset="utf-8">
+	$(window).load(function() {
+		$('.flexslider').flexslider();
+	});
+</script>
 <script type="text/javascript">
 	$('.ratings_stars').hover(
 	// Handles the mouseover
