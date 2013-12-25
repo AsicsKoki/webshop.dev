@@ -42,7 +42,7 @@ class ProductController extends BaseController {
 			->with('products', Product::with('color')
 			->get());
 	}
-	
+
 	/**
 	 * Generates the product info page.
 	 * @param  [type] $pid [description]
@@ -54,7 +54,7 @@ class ProductController extends BaseController {
 			->with('product', Product::with('user','images','ratings', 'comments')
 			->find($pid));
 	}
-	
+
 	/**
 	 * Genrerates the priduct edit page.
 	 * @param  [type] $pid [description]
@@ -66,7 +66,7 @@ class ProductController extends BaseController {
 			->with('product', Product::with('user','images')
 			->find($pid));
 	}
-	
+
 	/**
 	 * Updates an existing product with new data.
 	 *

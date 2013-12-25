@@ -3,8 +3,7 @@
 <div>
 	<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
 		<li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
-		<li><a href="#likes" data-toggle="tab">Likes</a></li>
-		<li><a href="#rates" data-toggle="tab">Ratings</a></li>
+		<li><a href="#Comments" data-toggle="tab">Comments</a></li>
 		<li><a href="#Posts" data-toggle="tab">Posts</a></li>
 	</ul>
 	<header><h4> {{$user->username}}'s profile </h4></header>
@@ -27,18 +26,65 @@
 				</ul>
 			</div>
 		</div>
-		<div class="tab-pane" id="likes">
+		<div class="tab-pane" id="Comments">
 			<table id="like_table" class="table table-hover display">
-					<thead>
-						<th>Comment id</th>
-						<th>Posted by</th>
-						<th>Comment</th>
-						<th>Delete like</th>
-					</thead>
-					<tbody>
-					</tbody>
+				<thead>
+					<th>Comment</th>
+					<th>Action</th>
+				</thead>
+				<tbody>
+				@foreach ($user->comments as $comment)
+					<tr>
+						<td>{{$comment['comment']}}</td>
+						<td><a href="#" class="deleteComment" data-commentid="{{$comment['id']}}">Delete</a></td>
+					</tr>
+				@endforeach
+				</tbody>
 			</table>
+		</div>
+		<div class="tab-pane" id="Posts">
+		<table id="productsTable" class="table table-hover display dataTable">
+		<thead>
+			<th>Product name</th>
+			<th>Color</th>
+			<th>Price</th>
+			<th>Action</th>
+			<th>Quantity</th>
+		</thead>
+		<tbody>
+		@foreach($user->products as $product)
+			<tr>
+				<td>{{$product->name}}</td>
+				<td>{{$product->color->color_name}}</td>
+				<td>{{$product->price}}</td>
+				<td>{{ HTML::route('ShowProductPage', 'Read more', array('pid'=>$product->id), array('class'=>'btn')) }}</td>
+				<td>{{$product->quantity}}</td>
+			</tr>
+		@endforeach
+		</tbody>
+	</table>
 		</div>
 	</div>
 </div>
+@stop
+@section('moreScripts')
+<script type="text/javascript">
+$('.deleteComment').click(function(e){
+	e.preventDefault();
+	var id = $(this).data('commentid');
+	var self = this;
+	$.ajax({
+		url: "deleteComment",
+		type: "DELETE",
+		data: {
+			id: id
+		},
+		success: function(data){
+			if (data){
+				$(self).parents("tr").remove();
+			}
+		}
+	});
+});
+</script>
 @stop

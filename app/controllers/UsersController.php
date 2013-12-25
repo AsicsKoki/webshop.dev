@@ -26,7 +26,9 @@ class UsersController extends BaseController {
 	 */
 	public function getUser($uid)
 	{
-		return View::make('user.user')->with('user', User::find($uid));
+		return View::make('user.user')
+			->with('user', User::with('products','ratings','likes', 'comments')
+			->find($uid));
 	}
 
 	/**
