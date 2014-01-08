@@ -9,7 +9,7 @@
 		<div class="flexslider">
 			<ul class="slides">
 			@foreach ($product->images as $image)
-				<li><img src="/img/{{$image->path}}"/></li>
+				<li><img class="imgThumb" src="/img/{{$image->path}}"/></li>
 			@endforeach
 			</ul>
 		</div>
@@ -41,12 +41,12 @@
 			</div>
 			@endforeach
 		</div>
-		@{{<div id="categorySelect">
+		<!--<div id="categorySelect">
      		<ul style='list-style: none; text-align: left;'>
      		<h4>Please select item category:</h4>
-     		{{ Utils\HtmlGenerator::renderCategorySelection(0,0, $product->id)}}
+     		Utils\HtmlGenerator::renderCategorySelection(0,0, $product->id)
      		</ul>
-		</div>}}
+		</div> -->
 	</div>
 	<div class="span6">
 		<h3>{{$product->name}}</h3>
