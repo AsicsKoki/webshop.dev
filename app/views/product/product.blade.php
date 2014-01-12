@@ -67,7 +67,11 @@
 			{{ Former::number('quantity')->required()->label('quantity')->class('quantityArea') }}
 			{{ Former::hidden()->name('_token')->value(csrf_token()) }}
 			{{ Former::framework('Nude') }}
-			{{ Former::actions()->submit('Submit') }}
+			@if($product->quantity > 0)
+				{{ Former::actions()->submit('Add to cart') }}
+			@else
+				<a href="#" class="btn-danger">Sold out!</a>'}}
+			@endif
 		{{ Former::close() }}
 		</div>
 		<form id="post_comment_form" action="">
