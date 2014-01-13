@@ -72,7 +72,7 @@ class HtmlGenerator{
 	public static function renderCategorySelection($parentId, $level = 0, $productId = NULL){
 		$html = "";
 		if($productId)
-			$join = "LEFT JOIN categorized_products ON categories.id = categorized_products.category_id";
+			$row = \Category::where('parent_id', $parentId)->with()->get()->toArray();
 		else
 			$join = "";
 

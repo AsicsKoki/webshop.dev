@@ -8,9 +8,13 @@
 	<div class="span 4">
 		<div class="flexslider">
 			<ul class="slides">
-			@foreach ($product->images as $image)
-				<li><img class="imgThumb" src="/img/{{$image->path}}"/></li>
-			@endforeach
+			@if(!$product->images->isEmpty())
+				@foreach ($product->images as $image)
+					<li><img class="imgThumb" src="/img/{{$image->path}}"/></li>
+				@endforeach
+			@else
+				<li><img class="imgThumb" src="/img/default.gif"/></li>
+			@endif
 			</ul>
 		</div>
 		@include('partials/rating')
@@ -64,7 +68,7 @@
 			</dl>
 		{{ Former::open()->class('form-horizontal pull-left')->method('post')->enctype('multipart/form-data')}}
 			{{ Former::select('color_id')->label('Color')->options(['1'=>'Red', '2'=>'Green','3'=>'Blue','4'=>'Purple'])}}
-			{{ Former::number('quantity')->required()->label('quantity')->class('quantityArea') }}
+			{{ Former::number('quantity')->required()->label('quantity')->class('quantityArea')->pattern('[0-9]*') }}
 			{{ Former::hidden()->name('_token')->value(csrf_token()) }}
 			{{ Former::framework('Nude') }}
 			@if($product->quantity > 0)

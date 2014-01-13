@@ -95,11 +95,10 @@
     	float: right;
     	position: relative;
     }
-    .more{
+    #more{
     	width: 50%;
-    	text-align: center;
-    	padding-top: 240px;
-		padding-left: 150px;
+      padding-left: 180px;
+    	text-align: left;
     }
     .headerNavbar{
 	height:100px;

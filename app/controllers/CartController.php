@@ -34,6 +34,7 @@ class CartController extends BaseController {
 		$cart = Session::get('cartData');
 		$cart[$pid] = $quantity;
 		Session::set('cartData', $cart);
+		Session::flash('status_success', 'Added to cart.');
 		return Redirect::back();
 	}
 	public function cartDeleteEntry(){
