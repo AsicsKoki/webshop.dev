@@ -90,8 +90,6 @@
 	$(window).load(function() {
 		$('.flexslider').flexslider();
 	});
-</script>
-<script type="text/javascript">
 	$('.ratings_stars').hover(
 	// Handles the mouseover
 	function() {
@@ -106,8 +104,6 @@
 		$(this).prevAll().andSelf().removeClass('ratings_over');
 		}
 	);
-</script>
-<script type="text/javascript">
 	//Rating stars controll
 	$('div#r1').children('div.ratings_stars').click(function(){
 		var rating = $(this).index();
@@ -131,90 +127,79 @@
 			}
 		});
 	});
-
-</script>
-<script type="text/javascript">
-$('input#post_comment').click(function(e){
-	e.preventDefault();
-	var text = $('textarea#comment').val();
-	var id = $(this).data('id');
-	var self = this;
-		$.ajax({
-			url: "comment",
-			type: "POST",
-			data: {
-				id: id,
-				text: text
-			},
-		success: function(data){
-			$('#commentArea').append(data);
-		}
+	$('input#post_comment').click(function(e){
+		e.preventDefault();
+		var text = $('textarea#comment').val();
+		var id = $(this).data('id');
+		var self = this;
+			$.ajax({
+				url: "comment",
+				type: "POST",
+				data: {
+					id: id,
+					text: text
+				},
+			success: function(data){
+				$('#commentArea').append(data);
+			}
+		});
 	});
-});
-</script>
-<script type="text/javascript">
-$('div.commentBox').on('click', 'a.like', function(e){
-	e.preventDefault();
-	var userId = $(this).data('userid');
-	var commentId = $(this).data('commentid');
-	var self = this;
-	$.ajax({
-		url: "postLike",
-		type: "PUT",
-		data: {
-			user_id: userId,
-			comment_id: commentId
-		},
-		success: function(data){
-			$(self).text('Unlike').removeClass('like').addClass('unlike');
-			$(self).parents('div.commentBox').children('.counter').html(data);
-		}
-	});
-})
-</script>
-<script type="text/javascript">
-$('div.commentBox').on('click', 'a.unlike', function(e){
-	e.preventDefault();
+	$('div.commentBox').on('click', 'a.like', function(e){
+		e.preventDefault();
 		var userId = $(this).data('userid');
 		var commentId = $(this).data('commentid');
 		var self = this;
 		$.ajax({
-			url: "unLike",
-			type: "DELETE",
+			url: "postLike",
+			type: "PUT",
 			data: {
 				user_id: userId,
 				comment_id: commentId
 			},
 			success: function(data){
-				$(self).text('Like').removeClass('unlike').addClass('like');
+				$(self).text('Unlike').removeClass('like').addClass('unlike');
 				$(self).parents('div.commentBox').children('.counter').html(data);
 			}
 		});
 	});
-</script>
-<script type="text/javascript">
-$('.deleteComment').click(function(e){
-	e.preventDefault();
-	var id = $(this).data('commentid');
-	var self = this;
-	$.ajax({
-		url: "deleteComment",
-		type: "DELETE",
-		data: {
-			id: id
-		},
-		success: function(data){
-			if (data){
-				$(self).parents(".commentBox").remove();
+	$('div.commentBox').on('click', 'a.unlike', function(e){
+		e.preventDefault();
+			var userId = $(this).data('userid');
+			var commentId = $(this).data('commentid');
+			var self = this;
+			$.ajax({
+				url: "unLike",
+				type: "DELETE",
+				data: {
+					user_id: userId,
+					comment_id: commentId
+				},
+				success: function(data){
+					$(self).text('Like').removeClass('unlike').addClass('like');
+					$(self).parents('div.commentBox').children('.counter').html(data);
+				}
+			});
+		});
+	$('.deleteComment').click(function(e){
+		e.preventDefault();
+		var id = $(this).data('commentid');
+		var self = this;
+		$.ajax({
+			url: "deleteComment",
+			type: "DELETE",
+			data: {
+				id: id
+			},
+			success: function(data){
+				if (data){
+					$(self).parents(".commentBox").remove();
+				}
 			}
-		}
+		});
 	});
-});
-</script>
-<script type="text/javascript">
- $('a.likeToggle').click(function(e){
-        e.preventDefault();
-        $(this).siblings('.likedBy').slideToggle();
-})
+	 $('a.likeToggle').click(function(e){
+	        e.preventDefault();
+	        $(this).siblings('.likedBy').slideToggle();
+	})
 </script>
 @stop

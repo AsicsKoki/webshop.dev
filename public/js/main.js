@@ -214,7 +214,7 @@ $(document).ready(function() {
 			 e.preventDefault();
 			 var self = this
 			 $.ajax({
-			    url: "ajaxSlideCart",
+			    url: "/ajaxSlideCart",
 			    type: "GET",
 			    data: {},
 			    success: function(data){
