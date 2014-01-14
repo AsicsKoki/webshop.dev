@@ -1,14 +1,16 @@
 //CART COMMANDS
 $("#showCart").on('click',function(){
 	if($("#cart").css('top')=="-290px"){
-		$("#showCart").html('Close cart.');
 		$("#cart").animate({
 			top: "0px"
+		}, 500, function(){
+			$("#showCart").html('Close cart.');
 		});
 	} else {
-		$("#showCart").html('Open cart.');
 		$("#cart").animate({
 			top: "-290px"
+		}, 500, function(){
+			$("#showCart").html('Open cart.');
 		});
 	}
 });

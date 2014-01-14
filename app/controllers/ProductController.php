@@ -241,4 +241,8 @@ class ProductController extends BaseController {
 	public function deleteComment(){
 		return Comment::where('id', '=', Input::get('id'))->delete();
 	}
+
+	public function updateCategories(){
+
+	}
 }

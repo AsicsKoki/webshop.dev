@@ -45,12 +45,15 @@
 			</div>
 			@endforeach
 		</div>
-		<div id="categorySelect">
-     		<ul style='list-style: none; text-align: left;'>
-     		<h4>Please select item category:</h4>
-     		{{Utils\HtmlGenerator::renderCategorySelection(0,0, $product->id)}}
-     		</ul>
-		</div>
+		@if(Auth::user()->role_id == 1)
+			<div id="categorySelect">
+	     		<ul style='list-style: none; text-align: left;'>
+	     		<h4>Please select item category:</h4>
+	     		<a href="#" id="updateCategories" class="btn">Update categories</a>
+	     		{{Utils\HtmlGenerator::renderCategorySelection(0,0, $product->id)}}
+	     		</ul>
+			</div>
+		@endif
 	</div>
 	<div class="span6">
 		<h3>{{$product->name}}</h3>
@@ -201,5 +204,22 @@
 	        e.preventDefault();
 	        $(this).siblings('.likedBy').slideToggle();
 	})
+	 //CATEGORY UPDATE
+	$('#updateCategories').click(function(e){
+		e.preventDefault();
+		var productId = $(this).data('productId');
+		var categoryId = $(this).data('categoryId');
+		var self = this;
+		$.ajax({
+			url: "/updateCategory",
+			type: "PUT",
+			data: {
+				product_id: productId,
+				category_id: categoryId
+			},
+			success: function(data){
+			}
+		});
+	});
 </script>
 @stop

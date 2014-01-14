@@ -75,6 +75,8 @@ Route::post('products/comment', array('as'=>'postComment', 'uses'=>'ProductContr
 Route::put('products/postLike', array('as'=>'postLike', 'uses'=>'ProductController@postLike'));
 Route::delete('products/unLike', array('as'=>'unLike', 'uses'=>'ProductController@unLike'));
 Route::delete('products/deleteComment', array('as'=>'deleteComment', 'uses'=>'ProductController@deleteComment'));
+Route::put('products/{pid}/updateCategories', array('as'=>'updateCategories', 'uses'=>'ProductController@updateCategories'));
+
 
 
 /**
