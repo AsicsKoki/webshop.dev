@@ -71,25 +71,24 @@ class HtmlGenerator{
 	}
 	public static function renderCategorySelection($parentId, $level = 0, $productId = NULL){
 		$html = "";
-		if($productId)
-			$row = \Category::where('parent_id', $parentId)->with()->get()->toArray();
-		else
-			$join = "";
-
 
 		if($parentId)
-			$row = \Category::where('parent_id', $parentId)->get()->toArray();
+			$row = \Category::where('parent_id', $parentId)->get();
 		else
-			$row = \Category::whereNull('parent_id')->get()->toArray();
+			$row = \Category::whereNull('parent_id')->get();
 
 		foreach($row as $category){
-			$checked = $category['product_id']? "checked = checked": "";
-			$currentId = $category['id'];
+			$checked = '';
+			if ($productId)
+				$checked = $category->products()->where('product_id', $productId)->count() ? "checked = checked": "";
+
+			$currentId = $category->id;
 			$html .= "<li><input type='checkbox'".$checked." name='category[]' class='categoryCheck' data-productId=".$productId." data-categoryId=".$currentId." value=".$currentId.">";
-			$html .= str_repeat(" - ", $level);
-			$html .= $category['name']."</li>";
-			$html .= renderCategorySelection($currentId, $level+1, $productId);
-			}
+			// $html .= str_repeat(" - ", $level);
+			$html .= "<span style='margin-left:".($level*15)."px;'>".$category->name."</span></li>";
+
+			$html .= static::renderCategorySelection($currentId, $level + 1, $productId);
+		}
 		return $html;
 	}
 }
