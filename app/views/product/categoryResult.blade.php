@@ -10,15 +10,7 @@
 			<th>Quantity</th>
 		</thead>
 		<tbody>
-		@foreach($result as $product)
-			<tr>
-				<td>{{$product->name}}</td>
-				<td>{{$product->color->color_name}}</td>
-				<td>{{$product->price}}</td>
-				<td>{{ HTML::route('ShowProductPage', 'Read more', array('pid'=>$product->id), array('class'=>'btn')) }}</td>
-				<td>{{$product->quantity}}</td>
-			</tr>
-		@endforeach
+		{{var_dump($result['products'])}}
 		</tbody>
 	</table>
 @stop

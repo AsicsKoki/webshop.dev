@@ -98,7 +98,7 @@ class ProductController extends BaseController {
 				->withErrors($validator->messages());
 		}
 	}
-	
+
 	/**
 	 * Generates the new product entry page.
 	 * @return [type] [description]
@@ -136,7 +136,7 @@ class ProductController extends BaseController {
 				->withErrors($validator->messages());
 		}
 	}
-	
+
 	/**
 	 * Generates the backend products list.
 	 * @return [type] [description]
@@ -146,7 +146,7 @@ class ProductController extends BaseController {
 			->with('products', Product::with('color')
 			->get());
 	}
-	
+
 	/**
 	 * Deletes the product.
 	 * @param  [type] $pid [description]
