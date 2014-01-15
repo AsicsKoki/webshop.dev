@@ -49,7 +49,6 @@
 			<div id="categorySelect">
 	     		<ul style='list-style: none; text-align: left;'>
 	     		<h4>Please select item category:</h4>
-	     		<a href="#" id="updateCategories" class="btn">Update categories</a>
 	     		{{Utils\HtmlGenerator::renderCategorySelection(0,0, $product->id)}}
 	     		</ul>
 			</div>
@@ -205,17 +204,18 @@
 	        $(this).siblings('.likedBy').slideToggle();
 	})
 	 //CATEGORY UPDATE
-	$('#updateCategories').click(function(e){
-		e.preventDefault();
-		var productId = $(this).data('productId');
-		var categoryId = $(this).data('categoryId');
-		var self = this;
+	$('.categoryCheckbox').click(function(e){
+		var product_id = $(this).data('productid');
+		var category_id = $(this).data('categoryid');
+		var checked = $(this).is(':checked') ? 1 : 0;
+		var self = this
 		$.ajax({
-			url: "/updateCategory",
-			type: "PUT",
+			url: "updateCategory",
+			type: "POST",
 			data: {
-				product_id: productId,
-				category_id: categoryId
+				checked: checked,
+				product_id: product_id,
+				category_id: category_id
 			},
 			success: function(data){
 			}

@@ -242,7 +242,11 @@ class ProductController extends BaseController {
 		return Comment::where('id', '=', Input::get('id'))->delete();
 	}
 
-	public function updateCategories(){
-
+	public function updateCategory(){
+		if (Input::get('checked')) {
+			return DB::table('categorized_products')->insert(array('category_id' => Input::get('category_id'), 'product_id' => Input::get('product_id')));
+		} else {
+			return DB::table('categorized_products')->where('category_id', '=', Input::get('category_id'))->where('product_id', '=', Input::get('product_id'))->delete();
+		}
 	}
 }

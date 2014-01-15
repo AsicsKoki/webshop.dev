@@ -80,11 +80,10 @@ class HtmlGenerator{
 		foreach($row as $category){
 			$checked = '';
 			if ($productId)
-				$checked = $category->products()->where('product_id', $productId)->count() ? "checked = checked": "";
+				$checked = $category->products()->where('product_id', $productId)->count() ? "checked = checked ": "";
 
 			$currentId = $category->id;
-			$html .= "<li><input type='checkbox'".$checked." name='category[]' class='categoryCheck' data-productId=".$productId." data-categoryId=".$currentId." value=".$currentId.">";
-			// $html .= str_repeat(" - ", $level);
+			$html .= "<li><input class='categoryCheckbox' type='checkbox'".$checked." name='category[]' class='categoryCheck' data-productId=".$productId." data-categoryId=".$currentId.">";
 			$html .= "<span style='margin-left:".($level*15)."px;'>".$category->name."</span></li>";
 
 			$html .= static::renderCategorySelection($currentId, $level + 1, $productId);
