@@ -120,6 +120,7 @@ return array(
 	|
 	*/
 
-	'domain' => null,
+	'domain'          => null,
+	'expire_on_close' => false
 
 );

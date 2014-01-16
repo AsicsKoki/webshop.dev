@@ -1,10 +1,10 @@
 <div class="navbar">
 	<div class="navbar-inner">
-		{{ HTML::route('HomePage', 'Home', array(), array('class'=>'brand')) }}
+	<a href="{{ URL::route('HomePage') }}" class = "brand">Home</a></li>
 		<ul class="nav">
-			<li>{{ HTML::route('AllProducts', 'Products') }}</li>
-			<li>{{ HTML::route('AllUsers', 'Users') }}</li>
-			<li>{{ HTML::route('newProductPage', 'New product') }}</li>
+			<li><a href="{{ URL::route('AllProducts') }}">Products</a></li>
+			<li><a href="{{ URL::route('AllUsers') }}">Users</a></li>
+			<li><a href="{{ URL::route('newProductPage') }}">New product</a></li>
 			<li><a href="#">Contact</a></li>
 			<li>
 				{{ Former::open()->method('post')->action(URL::route('SearchProducts')) }}

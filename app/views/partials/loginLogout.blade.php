@@ -1,5 +1,5 @@
 <div style="float: right;">
-	{{ HTML::route('showCart', 'Your Cart', array(), array('class'=>'btn btn-success')) }}
+	<a href="{{ URL::route('showCart') }} " class='btn'>Show cart</a>
 	<a><button class="btn btn-info">Profile</button></a>
-	{{ HTML::route('logout', 'Log out', array(), array('class'=>'btn btn-danger')) }}
+	<a href="{{ URL::route('logout') }} " class='btn btn-danger'>Log out</a>
 </div>

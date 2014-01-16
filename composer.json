@@ -4,12 +4,10 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"require": {
-		"laravel/framework": "4.0.*",
-		"laravelbook/laravel4-powerpack": "dev-master",
-		"loic-sharma/profiler": "1.1.*",
-		"imagine/imagine": "~0.5.0",
+		"laravel/framework": "4.1.*",
 		"anahkiasen/former": "dev-master",
 		"paypal/rest-api-sdk-php" : "0.7.0",
+		"juy/profiler" : "dev-master",
 		"anouar/paypalpayment": "dev-master"
 	},
 	"autoload": {

@@ -15,7 +15,7 @@
 				<td>{{$user->first_name}}</td>
 				<td>{{$user->last_name}}</td>
 				<td>{{$user->email}}</td>
-				<td>{{ HTML::route('ShowUserPage', 'Read more', array('uid'=>$user->id), array('class'=>'btn')) }}</td>
+				<td><a href="{{ URL::route('ShowUserPage', $user->id) }}" class='btn'>Read more</a></td>
 			</tr>
 		@endforeach
 		</tbody>
