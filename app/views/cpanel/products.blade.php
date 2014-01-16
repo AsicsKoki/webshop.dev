@@ -16,8 +16,8 @@
 					<td>{{$product->color->color_name}}</td>
 					<td>{{$product->price}}</td>
 					<td>
-						{{ HTML::route('ShowProductPage', 'Read more', array('pid'=>$product->id), array('class'=>'btn')) }}
-						{{ HTML::route('ShowProductEditPage', 'Edit', array('pid'=>$product->id), array('class'=>'btn btn-warning'))}}
+						<a href="{{ URL::route('ShowProductPage', $product->id) }} " class='btn'>Read more</a>
+						<a href="{{ URL::route('ShowProductEditPage', $product->id) }} " class='btn btn-danger'>Edit</a>
 						{{Former::framework('Nude')}}
 						{{ Former::open()->method('delete')->enctype('multipart/form-data')->action(URL::route('DeleteProduct', array('pid'=>$product->id))) }}
 						{{ Former::hidden('pid')->required()->value($product->id) }}

@@ -57,7 +57,7 @@
 				<td>{{$product->name}}</td>
 				<td>{{$product->color->color_name}}</td>
 				<td>{{$product->price}}</td>
-				<td>{{ HTML::route('ShowProductPage', 'Read more', array('pid'=>$product->id), array('class'=>'btn')) }}</td>
+				<td><a href="{{ URL::route('ShowProductPage', $product->id) }} " class='btn'>Read more</a></td>
 				<td>{{$product->quantity}}</td>
 			</tr>
 		@endforeach

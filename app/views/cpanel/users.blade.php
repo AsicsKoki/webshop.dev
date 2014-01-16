@@ -17,8 +17,8 @@
 				<td>{{$user->first_name}}</td>
 				<td>{{$user->last_name}}</td>
 				<td>{{$user->email}}</td>
-				<td>{{ HTML::route('ShowUserPage', 'Read more', array('uid'=>$user->id), array('class'=>'btn')) }}
-					{{ HTML::route('ShowUserEditPage', 'Edit', array('uid'=>$user->id), array('class'=>'btn btn-warning'))}}
+				<td><a href="{{ URL::route('ShowUserPage', $user->id) }} " class='btn'>Read more</a>
+					<a href="{{ URL::route('ShowUserEditPage', $user->id) }} " class='btn btn-danger'>Edit</a>
 					{{Former::framework('Nude')}}
 					{{ Former::open()->method('delete')->enctype('multipart/form-data')->action(URL::route('DeleteUser', array('uid'=>$user->id))) }}
 					{{ Former::hidden('uid')->required()->value($user->id) }}
