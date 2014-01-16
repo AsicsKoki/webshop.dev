@@ -203,8 +203,12 @@ class ProductController extends BaseController {
 	 * @return [type] [description]
 	 */
 	public function getCategoryResults($cid){
+		// return View::make('product.categoryResult')
+		// 	->with('result', Category::find($cid)->with('products')->get()->toArray());
+		// return Category::with('products')->find($cid)->toArray();
+
 		return View::make('product.categoryResult')
-			->with('result', Category::find($cid)->with('products')->get()->toArray());
+			->with('result', Category::with('products')->find($cid)->toArray());
 	}
 
 	public function postComment(){

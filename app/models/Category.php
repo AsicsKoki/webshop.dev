@@ -16,8 +16,9 @@ class Category extends Eloquent {
         return $this->hasMany('Category', 'parent_id');
     }
 
-    public function products(){
-        return $this->belongsToMany('product', 'categorized_products');
+    public function products()
+    {
+        return $this->belongsToMany('Product', 'categorized_products');
     }
 
 }
