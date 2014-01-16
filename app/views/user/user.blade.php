@@ -69,22 +69,22 @@
 @stop
 @section('moreScripts')
 <script type="text/javascript">
-$('.deleteComment').click(function(e){
-	e.preventDefault();
-	var id = $(this).data('commentid');
-	var self = this;
-	$.ajax({
-		url: "/deleteComment",
-		type: "DELETE",
-		data: {
-			id: id
-		},
-		success: function(data){
-			if (data){
-				$(self).parents("tr").remove();
+	$('.deleteComment').click(function(e){
+		e.preventDefault();
+		var id = $(this).data('commentid');
+		var self = this;
+		$.ajax({
+			url: "deleteProfileComment",
+			type: "DELETE",
+			data: {
+				id: id
+			},
+			success: function(data){
+				if (data){
+					$(self).parents("tr").remove();
+				}
 			}
-		}
+		});
 	});
-});
 </script>
 @stop
