@@ -74,7 +74,7 @@ $('.deleteComment').click(function(e){
 	var id = $(this).data('commentid');
 	var self = this;
 	$.ajax({
-		url: "deleteComment",
+		url: "/deleteComment",
 		type: "DELETE",
 		data: {
 			id: id
