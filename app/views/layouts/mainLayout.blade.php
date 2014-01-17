@@ -22,6 +22,7 @@
 		{{ HTML::script('js/jquery-1.10.2.min.js') }}
 		{{ HTML::script('js/main.js') }}
 		{{ HTML::script('js/bootstrap.js') }}
+		{{ HTML::script('https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js') }}
 		@yield('moreScripts')
 	</body>
 </html>
