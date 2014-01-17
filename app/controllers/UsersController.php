@@ -125,4 +125,12 @@ class UsersController extends BaseController {
 		Session::flash('status_success', 'User removed');
 		return Redirect::intended('admin/users');
 	}
+
+	public function getComments($uid){
+		return View::make('user.comments')->with('comments', User::find($uid)->comments->toArray());
+	}
+
+	public function getCommentsRaw($uid){
+		return User::find($uid)->comments;
+	}
 }
