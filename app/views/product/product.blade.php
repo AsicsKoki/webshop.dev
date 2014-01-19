@@ -18,32 +18,8 @@
 			</ul>
 		</div>
 		@include('partials/rating')
-		<div id="commentArea">
-			@foreach ($product->comments as $comment)
-			<div class="commentBox well">
-			  <header class="com_header">
-				<a href="/user/{{$comment['user_id']}}">{{$comment->user->username}}</a>
-				@if(Auth::user()->role_id == 1)
-					{{'<a href="#" class="deleteComment" data-commentid="'.$comment['id'].'">Delete</a>'}}
-				@endif
-				</header>
-				{{$comment['comment']}}
-				@if(Comment::isLiked($comment['id'], Auth::user()->id))
-					{{'<a class="unlike" href="#" data-commentid="'.$comment['id'].'" data-userid="'.Auth::user()->id.'">Unlike</a>'}}
-				@else
-					{{'<a class="like" href="#" data-commentid="'.$comment['id'].'" data-userid="'.Auth::user()->id.'">Like</a>'}}
-				@endif
-				<p class="counter">{{Like::countLikes($comment['id'])}}</p>
-				<a href="#" class="likeToggle"></a>
-				<div class="hide likedBy">
-					<ul>
-					@foreach (Like::likedBy($comment['id']) as $data)
-						<li>{{$data->user->username}}</li>
-					@endforeach
-					</ul>
-				</div>
-			</div>
-			@endforeach
+		<div id="commentArea" ng-app ng-controller="commentAreaController" ng-include="tpl='{{URL::to('/')}}/templates/partials/productComments.html'">
+			Loading...
 		</div>
 		@if(Auth::user()->role_id == 1)
 			<div id="categorySelect">
@@ -88,6 +64,7 @@
 @stop
 @section('moreScripts')
 {{ HTML::script('js/jquery.flexslider-min.js') }}
+{{ HTML::script('js/angularScripts.js') }}
 <script type="text/javascript" charset="utf-8">
 	$(window).load(function() {
 		$('.flexslider').flexslider();

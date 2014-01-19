@@ -1,0 +1,6 @@
+<div class="commentBox well" ng-repeat="comment in comments">
+  <header class="com_header">
+	<a href="/user/{{comment.user_id}}">{{comment.username}}</a>
+	</header>
+	{{comment.comment}}
+</div>

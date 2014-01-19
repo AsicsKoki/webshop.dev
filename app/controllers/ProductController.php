@@ -253,4 +253,8 @@ class ProductController extends BaseController {
 			return DB::table('categorized_products')->where('category_id', '=', Input::get('category_id'))->where('product_id', '=', Input::get('product_id'))->delete();
 		}
 	}
+
+	public function getCommentsRaw($pid){
+		return Product::find($pid)->comments;
+	}
 }
