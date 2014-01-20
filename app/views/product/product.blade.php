@@ -18,10 +18,10 @@
 			</ul>
 		</div>
 		@include('partials/rating')
-		<div id="data" class="hide" data-productid="{{$product->id}}"></div>
-		<div id="commentArea" ng-app ng-controller="commentAreaController" ng-include="tpl='{{URL::to('/')}}/templates/partials/productComments.html'">
-			Loading...
-		</div>
+			<div id="data" class="hide" data-productid="{{$product->id}}" data-userole="{{Auth::user()->role_id}}"></div>
+			<div id="commentArea" ng-app ng-controller="commentAreaController" ng-include="tpl='{{URL::to('/')}}/templates/partials/productComments.html'">
+				Loading...
+			</div>
 		@if(Auth::user()->role_id == 1)
 			<div id="categorySelect">
 	     		<ul style='list-style: none; text-align: left;'>
