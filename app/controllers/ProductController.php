@@ -255,6 +255,6 @@ class ProductController extends BaseController {
 	}
 
 	public function getCommentsRaw($pid){
-		return Product::find($pid)->comments;
+		return Product::with('comments.user')->find($pid);
 	}
 }

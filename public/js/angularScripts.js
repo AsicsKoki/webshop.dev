@@ -5,7 +5,8 @@ function commentController($scope, $http){
 	});
 };
 function commentAreaController($scope, $http){
-	$http.get('http://webshop.dev/products/37/comments').success(function(data){
-		$scope.comments = data;
+	var productId = $('div#data').data('productid');
+	$http.get('http://webshop.dev/products/'+productId+'/comments').success(function(data){
+		$scope.comments = data.comments;
 	});
 }
