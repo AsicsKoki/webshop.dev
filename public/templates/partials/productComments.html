@@ -1,7 +1,7 @@
 <div class="commentBox well" ng-repeat="comment in comments">
   <header class="com_header">
 	<a href="/user/{{comment.user_id}}">{{comment.user.username}}</a>
-	<a href="#" class="deleteComment" data-commentid="{{comment.id}}" ng-show="{{roleid}}"><h6>Delete</h6></a>
+	<a href="#" class="deleteComment" ng-click="deleteComment(comment)" ng-show="{{roleid}}"><h6>Delete</h6></a>
 	</header>
 	{{comment.comment}}
 </div>

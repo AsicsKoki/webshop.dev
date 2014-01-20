@@ -77,7 +77,7 @@ Route::post('products/rate', array('as'=>'AjaxRatingSubmit', 'uses'=>'ProductCon
 Route::post('products/comment', array('as'=>'postComment', 'uses'=>'ProductController@postComment'));
 Route::put('products/postLike', array('as'=>'postLike', 'uses'=>'ProductController@postLike'));
 Route::delete('products/unLike', array('as'=>'unLike', 'uses'=>'ProductController@unLike'));
-Route::delete('products/deleteComment', array('as'=>'deleteComment', 'uses'=>'ProductController@deleteComment'));
+Route::delete('products/deleteComment/{commentId}', array('as'=>'deleteComment', 'uses'=>'ProductController@deleteComment'))->where('commentId', '\d+');
 Route::post('products/updateCategory', array('as'=>'updateCategory', 'uses'=>'ProductController@updateCategory'));
 //delete comments on user page
 Route::delete('user/deleteProfileComment', array('as'=>'deleteUserProfileComment', 'uses'=>'ProductController@deleteComment'));

@@ -11,4 +11,11 @@ function commentAreaController($scope, $http){
 		$scope.comments = data.comments;
 	});
 	$scope.roleid = roleId;
+
+	$scope.deleteComment = function(comment){
+		var id = comment.id;
+		$http.delete('http://webshop.dev/products/deleteComment/'+id).success(function(data){
+			$scope.comments.splice( $scope.comments.indexOf(comment), 1 );
+		});
+	}
 }

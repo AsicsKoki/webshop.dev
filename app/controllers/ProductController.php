@@ -242,8 +242,8 @@ class ProductController extends BaseController {
 		return Like::countLikes(Input::get('comment_id'));
 	}
 
-	public function deleteComment(){
-		return Comment::where('id', '=', Input::get('id'))->delete();
+	public function deleteComment($commentId){
+		return Comment::where('id', '=', $commentId)->delete();
 	}
 
 	public function updateCategory(){
