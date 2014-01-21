@@ -9,7 +9,7 @@ class ProductController extends BaseController {
 
 		// Enforce user authentication on specified methods
 		$this->beforeFilter('csrf', ['only' => ['authenticate']]);
-		$this->beforeFilter('admin', ['only' => ['getProductsAdmin', 'deleteProduct', 'editProduct','postProduct']]);
+		$this->beforeFilter('admin', ['only' => ['getProductsAdmin', 'deleteProduct', 'editProduct','postProduct','deleteComment']]);
 		$this->beforeFilter('auth', array('except' => array('login','authenticate','getRegister')));
 		parent::__construct();
 	}
@@ -254,7 +254,13 @@ class ProductController extends BaseController {
 		}
 	}
 
-	public function getCommentsRaw($pid){
-		return Product::with('comments.user')->find($pid);
+	public function getCommentsJSON($pid){
+		// return Product::with("comments.like", "comments.user")->find($pid);
+
+		return Product::with(['comments' => function($query){
+			$query->with(['like' => function($query){
+				$query->where('user_id', Auth::User()->id );
+			}]);
+		}, "comments.user"])->find($pid);
 	}
 }

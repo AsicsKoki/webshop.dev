@@ -34,7 +34,7 @@ Route::get('products', array('as' => 'AllProducts', 'uses' => 'ProductController
 Route::get('newProduct', array('as'=>'newProductPage', 'uses' => 'ProductController@getNewProductPage'));
 Route::put('newProduct', array('as'=> 'putNewProduct', 'uses' =>'ProductController@putProduct'));
 Route::get('products/category/{cid}', array('as'=>'getCategoryResults', 'uses'=>'ProductController@getCategoryResults'))->where('cid', '\d+');;
-Route::get('products/{pid}/comments', array('as' => 'getProductComments', 'uses' => 'ProductController@getCommentsRaw'))->where('uid', '\d+');
+Route::get('products/{pid}/comments', array('as' => 'getProductComments', 'uses' => 'ProductController@getCommentsJSON'))->where('uid', '\d+');
 
 /**
  * User related routes

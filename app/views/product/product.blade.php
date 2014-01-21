@@ -18,7 +18,7 @@
 			</ul>
 		</div>
 		@include('partials/rating')
-			<div id="data" class="hide" data-productid="{{$product->id}}" data-userrole="{{Auth::user()->role_id}}"></div>
+			<div id="data" class="hide" data-productid="{{$product->id}}" data-userrole="{{Auth::user()->role_id}}" userId="{{Auth::user()->id}}"></div>
 			<div id="commentArea" ng-app ng-controller="commentAreaController" ng-include="tpl='{{URL::to('/')}}/templates/partials/productComments.html'">
 				Loading...
 			</div>
@@ -160,23 +160,6 @@
 				}
 			});
 		});
-	$('.deleteComment').click(function(e){
-		e.preventDefault();
-		var id = $(this).data('commentid');
-		var self = this;
-		$.ajax({
-			url: "deleteComment",
-			type: "DELETE",
-			data: {
-				id: id
-			},
-			success: function(data){
-				if (data){
-					$(self).parents(".commentBox").remove();
-				}
-			}
-		});
-	});
 	 $('a.likeToggle').click(function(e){
 	        e.preventDefault();
 	        $(this).siblings('.likedBy').slideToggle();

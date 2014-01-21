@@ -4,4 +4,8 @@
 	<a class="deleteComment" ng-click="deleteComment(comment)" ng-show="{{roleid}}"><h6>Delete</h6></a>
 	</header>
 	{{comment.comment}}
+	<div>
+		<a class="like" ng-show="!comment.like.length">Like</a>
+		<a class="unlike" ng-show="comment.like.length">Unlike</a>
+	</div>
 </div>
