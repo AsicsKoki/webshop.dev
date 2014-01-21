@@ -231,10 +231,8 @@ class ProductController extends BaseController {
 		}
 	}
 
-	public function postLike(){
-		$data = Input::all();
-		Like::create($data);
-		return Like::countLikes(Input::get('comment_id'));
+	public function postLike($commentId){
+		return Like::create(['user_id'=> Auth::User()->id, 'comment_id' => $commentId]);
 	}
 
 	public function unLike(){

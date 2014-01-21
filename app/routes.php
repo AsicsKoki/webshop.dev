@@ -75,7 +75,7 @@ Route::delete('admin/deleteCategory', array('as'=>'deleteCategory','uses'=>'Prod
 Route::post('result', array('as'=>'SearchProducts', 'uses'=>'ProductController@searchProduct'));
 Route::post('products/rate', array('as'=>'AjaxRatingSubmit', 'uses'=>'ProductController@postRating'));
 Route::post('products/comment', array('as'=>'postComment', 'uses'=>'ProductController@postComment'));
-Route::put('products/postLike', array('as'=>'postLike', 'uses'=>'ProductController@postLike'));
+Route::put('products/postLike', array('as'=>'postLike', 'uses'=>'ProductController@postLike/{commentId}'))->where('commentId', '\d+');
 Route::delete('products/unLike', array('as'=>'unLike', 'uses'=>'ProductController@unLike'));
 Route::delete('products/deleteComment/{commentId}', array('as'=>'deleteComment', 'uses'=>'ProductController@deleteComment'))->where('commentId', '\d+');
 Route::post('products/updateCategory', array('as'=>'updateCategory', 'uses'=>'ProductController@updateCategory'));
