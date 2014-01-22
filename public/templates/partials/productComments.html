@@ -7,6 +7,11 @@
 	<div>
 		<a class="like" ng-click="like(comment)" ng-show="!comment.likes.length">Like</a>
 		<a class="unlike" ng-click="unLike(comment)" ng-show="comment.likes.length">Unlike</a>
-		{{comment.likes.length}}
+		<div><a ng-click="likedBy(comment)">liked by</a> {{comment.likes.length}}</div>
+		<div class="likedBy">
+			<ul>
+				<li ng-repeat="like in comment.likes">{{like.user.username}}</li>
+			</ul>
+		</div>
 	</div>
 </div>
