@@ -236,8 +236,6 @@ class ProductController extends BaseController {
 	}
 
 	public function deleteLike($commentId){
-		// Like::where('comment_id', '=', Input::get('comment_id'))->where('user_id', '=', Input::get('user_id'))->delete();
-		// return Like::countLikes(Input::get('comment_id'));
 		return Like::where('comment_id', $commentId)->where('user_id', Auth::User()->id )->delete();
 	}
 
