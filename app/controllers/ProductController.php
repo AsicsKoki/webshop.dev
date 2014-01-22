@@ -235,9 +235,10 @@ class ProductController extends BaseController {
 		return Like::create(['user_id'=> Auth::User()->id, 'comment_id' => $commentId]);
 	}
 
-	public function unLike(){
-		Like::where('comment_id', '=', Input::get('comment_id'))->where('user_id', '=', Input::get('user_id'))->delete();
-		return Like::countLikes(Input::get('comment_id'));
+	public function deleteLike($commentId){
+		// Like::where('comment_id', '=', Input::get('comment_id'))->where('user_id', '=', Input::get('user_id'))->delete();
+		// return Like::countLikes(Input::get('comment_id'));
+		return Like::where('comment_id', $commentId)->where('user_id', Auth::User()->id )->delete();
 	}
 
 	public function deleteComment($commentId){
@@ -256,7 +257,7 @@ class ProductController extends BaseController {
 		// return Product::with("comments.like", "comments.user")->find($pid);
 
 		return Product::with(['comments' => function($query){
-			$query->with(['like' => function($query){
+			$query->with(['likes' => function($query){
 				$query->where('user_id', Auth::User()->id );
 			}]);
 		}, "comments.user"])->find($pid);

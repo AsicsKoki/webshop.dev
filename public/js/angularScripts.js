@@ -17,8 +17,17 @@ function commentAreaController($scope, $http){
 	}
 
 	$scope.like = function(comment){
-		$http.put('postLike/'+comment.id).success(function(data){
-			$scope.comments.comment.push(data);
+		$http.put('http://webshop.dev/products/postLike/'+comment.id).success(function(data){
+			comment.likes.push(data);
 		})
+	}
+
+	$scope.unLike = function(comment){
+		var userId = $('div#data').data('userid');
+		$http.delete('http://webshop.dev/products/unLike/'+comment.id).success(function(data){
+				comment.likes = comment.likes.filter(function(like){
+					return like.user_id != userId;
+			})
+		});
 	}
 }

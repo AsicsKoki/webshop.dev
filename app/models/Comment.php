@@ -10,7 +10,7 @@ class Comment extends Eloquent {
 		return $this->belongsTo('product');
 	}
 
-	public function like(){
+	public function likes(){
 		return $this->hasMany('Like');
 	}
 
