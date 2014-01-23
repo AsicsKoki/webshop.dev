@@ -8,7 +8,7 @@ function commentAreaController($scope, $http){
 		});
 
 	$scope.roleid = roleId;
-
+	$scope.liked = comment.likes.user.id == userId;
 	$scope.deleteComment = function(comment){
 		$http.delete('http://webshop.dev/products/deleteComment/'+comment.id).success(function(data){
 			$scope.comments.splice( $scope.comments.indexOf(comment), 1 );
@@ -23,7 +23,6 @@ function commentAreaController($scope, $http){
 	}
 
 	$scope.unLike = function(comment){
-		var userId = $('div#data').data('userid');
 		$http.delete('http://webshop.dev/products/unLike/'+comment.id).success(function(data){
 				comment.likes = comment.likes.filter(function(like){
 					return like.user_id != userId;
