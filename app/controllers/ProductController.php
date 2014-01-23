@@ -252,13 +252,13 @@ class ProductController extends BaseController {
 	}
 
 	public function getCommentsJSON($pid){
+		return Product::with("comments.likes.user", "comments.user")->find($pid);
 
-		return Product::with(['comments' => function($query){
-			$query->with(['likes' => function($query){
-				$query->with(['user'=> function($query){
-					$query->where('id', Auth::User()->id );
-				}]);
-			}]);
-		}, "comments.user"])->find($pid);
+		// return Product::with(['comments' => function($query){
+		// 	$query->with(['likes' => function($query){
+		// 		$query->where('user_id', Auth::User()->id );
+		// 		$query->with("user");
+		// 	}]);
+		// }, "comments.user"])->find($pid);
 	}
 }
