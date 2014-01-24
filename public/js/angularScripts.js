@@ -1,3 +1,4 @@
+//This controller belongs to the comment area on product view page, and handeles comment rendering and utilities.
 function commentAreaController($scope, $http){
 	var productId = $('div#data').data('productid');
 	var roleId = $('div#data').data('userrole');
@@ -32,4 +33,11 @@ function commentAreaController($scope, $http){
 			})
 		});
 	}
+}
+//This controller belongs to the profile page.
+function profileController($scope, $http){
+	var userId = $('div#data').data('userid');
+	$http.get('http://webshop.dev/profile/'+userId+'/profileJson').success(function(data){
+		$scope.user = data;
+	});
 }

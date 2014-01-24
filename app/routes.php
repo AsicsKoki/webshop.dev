@@ -46,6 +46,8 @@ Route::put('register', array('as'=>'PutNewUser', 'uses' => 'UsersController@putN
 Route::get('user/{uid}', array('as' => 'ShowUserPage', 'uses' => 'UsersController@getUser'))->where('uid', '\d+');
 Route::get('user/{uid}/comments', array('as' => 'showComments', 'uses' => 'UsersController@getComments'))->where('uid', '\d+');
 Route::get('user/{uid}/comments/rawComments', array('as' => 'showCommentsRaw', 'uses' => 'UsersController@getCommentsRaw'))->where('uid', '\d+');
+Route::get('profile/{uid}', array('as' => 'showProfilePage', 'uses' => 'UsersController@getProfile'))->where('uid', '\d+');
+Route::get('profile/{uid}/profileJson', array('as' => 'getProfileData', 'uses' => 'UsersController@getProfileJson'))->where('uid', '\d+');
 
 /**
  * Authenticantion

@@ -30,6 +30,12 @@ class UsersController extends BaseController {
 			->with('user', User::with('products','ratings','likes', 'comments')
 			->find($uid));
 	}
+	public function getProfile($uid)
+	{
+		return View::make('user.profile')
+			->with('user', User::with('products','ratings','likes', 'comments')
+			->find($uid));
+	}
 
 	/**
 	 * Creates the user edit page.
@@ -132,5 +138,10 @@ class UsersController extends BaseController {
 
 	public function getCommentsRaw($uid){
 		return User::find($uid)->comments;
+	}
+
+	public function getProfileJson($uid){
+		return User::with('products','ratings','likes', 'comments')
+			->find($uid);
 	}
 }

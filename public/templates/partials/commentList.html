@@ -1,0 +1,12 @@
+<table id="like_table" class="table table-hover display">
+<thead>
+	<th>Comment</th>
+	<th>Action</th>
+</thead>
+<tbody>
+	<tr ng-repeat="comment in user.comments">
+		<td>{{comment.comment}}</td>
+		<td><a href="#" class="deleteComment" data-commentid="{{comment.id}}">Delete</a></td>
+	</tr>
+</tbody>
+</table>
