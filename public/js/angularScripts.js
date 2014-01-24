@@ -15,7 +15,9 @@ function commentAreaController($scope, $http){
 		});
 	$scope.userId = userId;
 	}
-
+	$scope.hasLiked = function(data){
+		
+	}
 	$scope.like = function(comment){
 		$http.put('http://webshop.dev/products/postLike/'+comment.id).success(function(data){
 			comment.likes.push(data);

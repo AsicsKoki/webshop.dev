@@ -5,12 +5,14 @@
 	</header>
 	{{comment.comment}}
 	<div>
-		<a class="like" ng-click="like(comment)" ng-show="!liked">Like</a>
-		<a class="unlike" ng-click="unLike(comment)" ng-show="liked">Unlike</a>
-		<a class="likeToggle" ng-model="hide" ng-click="hide = !hide">liked by</a> {{comment.likes.length}}
+		<a class="like" ng-click="like(comment)" ng-show="!hasLiked(comment.likes)">Like</a>
+		<a class="unlike" ng-click="unLike(comment)" ng-show="hasLiked(comment.likes)">Unlike</a>
+		<a class="likeToggle" ng-click="hide = ! hide">liked by</a> {{comment.likes.length}}
 		<div class="likedBy" ng-show="hide">
 			<ul>
-				<li ng-repeat="like in comment.likes">{{like.user.username}}</li>
+				<li ng-repeat="like in comment.likes">
+					{{like.user.username}}
+				</li>
 			</ul>
 		</div>
 	</div>
