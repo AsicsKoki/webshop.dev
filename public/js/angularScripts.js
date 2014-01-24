@@ -8,15 +8,16 @@ function commentAreaController($scope, $http){
 		});
 
 	$scope.roleid = roleId;
-	$scope.liked = comment.likes.user.id == userId;
 	$scope.deleteComment = function(comment){
 		$http.delete('http://webshop.dev/products/deleteComment/'+comment.id).success(function(data){
 			$scope.comments.splice( $scope.comments.indexOf(comment), 1 );
 		});
 	$scope.userId = userId;
 	}
-	$scope.hasLiked = function(data){
-		
+	$scope.hasLiked = function(likes){
+		return likes.filter(function(like){
+			return like.user_id == userId;
+		}).length;
 	}
 	$scope.like = function(comment){
 		$http.put('http://webshop.dev/products/postLike/'+comment.id).success(function(data){
