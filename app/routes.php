@@ -83,7 +83,7 @@ Route::delete('products/deleteComment/{commentId}', array('as'=>'deleteComment',
 Route::post('products/updateCategory', array('as'=>'updateCategory', 'uses'=>'ProductController@updateCategory'));
 //delete comments on user page
 Route::delete('user/deleteProfileComment', array('as'=>'deleteUserProfileComment', 'uses'=>'ProductController@deleteComment'));
-
+Route::delete('profile/deleteComment/{commentId}', array('as'=>'deleteCommentProfile', 'uses'=>'ProductController@deleteComment'))->where('commentId', '\d+');
 
 
 /**

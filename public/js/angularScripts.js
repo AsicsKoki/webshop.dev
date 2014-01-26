@@ -40,4 +40,9 @@ function profileController($scope, $http){
 	$http.get('http://webshop.dev/profile/'+userId+'/profileJson').success(function(data){
 		$scope.user = data;
 	});
+
+	$scope.deleteComment = function(comment){
+	$http.delete('http://webshop.dev/profile/deleteComment/'+comment.id).success(function(data){
+		$scope.comments.splice( $scope.comments.indexOf(comment), 1 );
+	});
 }

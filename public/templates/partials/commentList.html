@@ -6,7 +6,7 @@
 <tbody>
 	<tr ng-repeat="comment in user.comments">
 		<td>{{comment.comment}}</td>
-		<td><a href="#" class="deleteComment" data-commentid="{{comment.id}}">Delete</a></td>
+		<td><a href="#" ng-click="deleteComment(comment)" data-commentid="{{comment.id}}">Delete</a></td>
 	</tr>
 </tbody>
 </table>

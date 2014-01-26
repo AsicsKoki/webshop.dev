@@ -18,62 +18,19 @@
 				@endforeach
 				</ul>
 			</div>
-			<div class="columnRight">
-				<ul class="plain">
-					<li><h4>First name:</h4> {{$user->first_name}}</li>
-					<li><h4>Last name:</h4> {{$user->last_name}}</li>
-					<li><h4>Email:</h4> {{$user->email}} </li>
-					<li><h4>About me:</h4>{{$user->bio}}</li>
-				</ul>
+			<div class="columnRight" ng-app ng-controller="profileController" ng-include="tpl='{{URL::to('/')}}/templates/partials/profileInfo.html'">
+				Loading...
 			</div>
 		</div>
 		<div ng-app class="tab-pane" id="Comments" ng-controller="profileController" ng-include="tpl='{{URL::to('/')}}/templates/partials/commentList.html'">
 			Loading...
 		</div>
-		<div class="tab-pane" id="Posts">
-		<table id="productsTable" class="table table-hover display dataTable">
-		<thead>
-			<th>Product name</th>
-			<th>Color</th>
-			<th>Price</th>
-			<th>Action</th>
-			<th>Quantity</th>
-		</thead>
-		<tbody>
-		@foreach($user->products as $product)
-			<tr>
-				<td>{{$product->name}}</td>
-				<td>{{$product->color->color_name}}</td>
-				<td>{{$product->price}}</td>
-				<td><a href="{{ URL::route('ShowProductPage', $product->id) }} " class='btn'>Read more</a></td>
-				<td>{{$product->quantity}}</td>
-			</tr>
-		@endforeach
-		</tbody>
-	</table>
+		<div class="tab-pane" id="Posts" ng-app ng-controller="profileController" ng-include="tpl='{{URL::to('/')}}/templates/partials/profileProductList.html'">
+		Loading...
 		</div>
 	</div>
 </div>
 @stop
 @section('moreScripts')
 {{ HTML::script('js/angularScripts.js') }}
-<script type="text/javascript">
-	$('.deleteComment').click(function(e){
-		e.preventDefault();
-		var id = $(this).data('commentid');
-		var self = this;
-		$.ajax({
-			url: "deleteProfileComment",
-			type: "DELETE",
-			data: {
-				id: id
-			},
-			success: function(data){
-				if (data){
-					$(self).parents("tr").remove();
-				}
-			}
-		});
-	});
-</script>
 @stop
