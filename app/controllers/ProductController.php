@@ -153,9 +153,7 @@ class ProductController extends BaseController {
 	 * @return [type]      [description]
 	 */
 	public function deleteProduct($pid){
-		Product::find($pid)->delete();
-		Session::flash('status_success', 'Product deleted');
-		return Redirect::intended('admin');
+		return Product::where('id', '=', $pid)->delete();
 	}
 
 	/**

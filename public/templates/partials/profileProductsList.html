@@ -1,7 +1,6 @@
 <table id="productsTable" class="table table-hover display dataTable">
 	<thead>
 		<th>Product name</th>
-		<th>Color</th>
 		<th>Price</th>
 		<th>Action</th>
 		<th>Quantity</th>
@@ -9,9 +8,11 @@
 	<tbody>
 		<tr ng-repeat="product in user.products">
 			<td>{{product.name}}</td>
-			<td>{{product.color->color_name}}</td>
 			<td>{{product.price}}</td>
-			<td><a href="{{ URL::route('ShowProductPage', product.id) }} " class='btn'>Read more</a></td>
+			<td>
+				<a ng-click="deleteProduct(product)" ng-show="{{userId == user.id || roleId == user.role_id}}" class='btn-danger'>Delete</a>
+				<a href="http://webshop.dev/products/{{product.id}}" class='btn'>Read more</a>
+			</td>
 			<td>{{product.quantity}}</td>
 		</tr>
 	</tbody>

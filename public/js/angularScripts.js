@@ -36,13 +36,24 @@ function commentAreaController($scope, $http){
 }
 //This controller belongs to the profile page.
 function profileController($scope, $http){
+	var roleId = $('div#data').data('userrole');
+
 	var userId = $('div#data').data('userid');
 	$http.get('http://webshop.dev/profile/'+userId+'/profileJson').success(function(data){
 		$scope.user = data;
 	});
 
+	$scope.userId = userId;
+	$scope.roleId = roleId;
 	$scope.deleteComment = function(comment){
 	$http.delete('http://webshop.dev/profile/deleteComment/'+comment.id).success(function(data){
 		$scope.comments.splice( $scope.comments.indexOf(comment), 1 );
-	});
+		});
+	}
+
+	$scope.deleteProduct = function(product){
+	$http.delete('http://webshop.dev/profile/deleteProduct/'+product.id).success(function(data){
+		$scope.user.products.splice( $scope.user.products.indexOf(product), 1 );
+		});
+	}
 }
