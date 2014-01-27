@@ -11,12 +11,9 @@
 	<div id="my-tab-content" class="tab-content" ng-app ng-controller="profileController" >
 		<div class="tab-pane active" id="profile">
 			<div class="columnLeft">
-				<ul class="plain">
-				@foreach ($user->images as $image) {
-					<li><img src="files/{{$image->path}}"></img></li>
-				}
-				@endforeach
-				</ul>
+				<div ng-include="tpl='{{URL::to('/')}}/templates/partials/profileReviews.html'">
+					Loading...
+				</div>
 			</div>
 			<div class="columnRight" ng-include="tpl='{{URL::to('/')}}/templates/partials/profileInfo.html'">
 				Loading...

@@ -141,7 +141,13 @@ class UsersController extends BaseController {
 	}
 
 	public function getProfileJson($uid){
-		return User::with('products','ratings','likes', 'comments')
+		return User::with('products','ratings','likes', 'comments', 'reviews')
 			->find($uid);
+	}
+
+	public function postReview(){
+		$review = Input::all();
+		$user = User::find(Input::get('user_id'))->get();
+		$user = $review->users->save($review);
 	}
 }

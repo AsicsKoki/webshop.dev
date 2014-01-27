@@ -56,4 +56,14 @@ function profileController($scope, $http){
 		$scope.user.products.splice( $scope.user.products.indexOf(product), 1 );
 		});
 	}
+
+	$scope.submitReview = function(){
+		var review = {
+			user_id: userId;
+			review: $scope.review;
+		};
+		$http.post('http://webshop.dev/profile/postReview', review).success(function(reviews){
+			$scope.user.reviews.push(review);
+		})
+	}
 }
