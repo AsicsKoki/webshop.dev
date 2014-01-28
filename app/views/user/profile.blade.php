@@ -30,4 +30,5 @@
 @stop
 @section('moreScripts')
 {{ HTML::script('js/angularScripts.js') }}
+{{ HTML::script('js/parsley.js') }}
 @stop

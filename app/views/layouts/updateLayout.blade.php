@@ -1,5 +1,4 @@
 @extends('layouts/mainLayout')
-<html>
 	@section('moreStyles')
 		{{-- STYLES --}}
 		{{HTML::style('css/styles.css')}}
@@ -13,4 +12,3 @@
 		{{ HTML::script('js/parsley.js') }}
 		{{ HTML::script('js/jquery.flexslider-min.js') }}
 	@stop
-</html>

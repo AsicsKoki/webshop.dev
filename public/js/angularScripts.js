@@ -57,13 +57,14 @@ function profileController($scope, $http){
 		});
 	}
 
-	$scope.submitReview = function(reviewText){
+	$scope.submitReview = function(reviewForm, reviewText){
 		var review = {
 			user_id: userId,
 			review: reviewText,
 		};
+		if (reviewForm.$valid){
 		$http.post('http://webshop.dev/profile/postReview', review).success(function(review){
 			$scope.user.reviews.push(review);
 		})
-	}
+	}}
 }

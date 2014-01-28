@@ -146,6 +146,14 @@ class UsersController extends BaseController {
 	}
 
 	public function postReview(){
-		return Review::create(Input::all());
+		$validator = Validator::make(
+		Input::all(),
+		    array(
+				'review' => 'required|between:5,50',
+		    )
+		);
+		if($validator->passes()){
+			return Review::create(Input::all());
+		}
 	}
 }

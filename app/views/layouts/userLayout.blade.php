@@ -1,5 +1,4 @@
 @extends('layouts/mainLayout')
-<html>
 	@section('moreStyles')
 		{{-- STYLES --}}
 		{{ HTML::style('css/bootstrap-responsive.min.css')}}
@@ -10,4 +9,3 @@
 		{{-- SCRIPTS --}}
 		{{ HTML::script('js/jquery.dataTables.js') }}
 	@stop
-</html>
