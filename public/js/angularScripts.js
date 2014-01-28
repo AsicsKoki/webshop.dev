@@ -59,8 +59,8 @@ function profileController($scope, $http){
 
 	$scope.submitReview = function(){
 		var review = {
-			user_id: userId;
-			review: $scope.review;
+			user_id: userId,
+			review: $scope.review,
 		};
 		$http.post('http://webshop.dev/profile/postReview', review).success(function(reviews){
 			$scope.user.reviews.push(review);

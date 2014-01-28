@@ -146,8 +146,6 @@ class UsersController extends BaseController {
 	}
 
 	public function postReview(){
-		$review = Input::all();
-		$user = User::find(Input::get('user_id'))->get();
-		$user = $review->users->save($review);
+		return Review::create(['user_id'=> Auth::User()->id, 'review' => Input::get('review')]);
 	}
 }
