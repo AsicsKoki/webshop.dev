@@ -85,7 +85,7 @@ Route::post('products/updateCategory', array('as'=>'updateCategory', 'uses'=>'Pr
 Route::delete('user/deleteProfileComment', array('as'=>'deleteUserProfileComment', 'uses'=>'ProductController@deleteComment'));
 Route::delete('profile/deleteComment/{commentId}', array('as'=>'deleteCommentProfile', 'uses'=>'ProductController@deleteComment'))->where('commentId', '\d+');
 Route::delete('profile/deleteProduct/{pid}', array('as'=> 'profileDeleteProduct', 'uses' => 'ProductController@deleteProduct'))->where('pid', '\d+');
-Route::post('profile/postReview', array('as'=>'postReview', 'uses'=>'UserController@postReview'));
+Route::post('profile/postReview', array('as'=>'postReview', 'uses'=>'UsersController@postReview'));
 
 
 /**

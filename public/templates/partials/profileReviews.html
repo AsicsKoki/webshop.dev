@@ -1,6 +1,10 @@
 <p>User reviews:</p>
-<p></p>
+<div ng-repeat="review in user.reviews" class="well">
+	<p>By: {{review.user.username}}</p>
+	<p>{{review.review}}</p>
+</div>
+
 <form name="reviewForm">
-	<input type="text" name="review" ng-model="review" required style="width: 300px; height: 100px"/>
-	<input ng-click="submitReview()" class="btn" style="postition: relative; width: 300px;" type="submit" value="submit"/>
+	<input  type="text" ng-model="review" required class="reviewTextBox"/>
+	<input ng-click="submitReview(review)"  type="submit" value="submit" class="btn reviewTextButton"/>
 </form>
