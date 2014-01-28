@@ -4,7 +4,7 @@
 	<p>{{review.review}}</p>
 </div>
 
-<form name="reviewForm" novalidate>
+<form name="reviewForm" ng-show="!userId" novalidate>
 	<input  type="text"  ng-model="review" name="review" required class="reviewTextBox"  ng-minlength=5 ng-maxlength=250/>
 	<input ng-click="submitReview(reviewForm, review)"  type="submit" value="submit" class="btn reviewTextButton"/>
 </form>
