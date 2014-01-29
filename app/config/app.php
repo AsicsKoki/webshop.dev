@@ -108,7 +108,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		// 'LaravelBook\Laravel4Powerpack\Providers\PowerpackServiceProvider',
 		'Former\FormerServiceProvider',
-		// 'Juy\Profiler\Providers\ProfilerServiceProvider'
+		'BrainSocket\BrainSocketServiceProvider'
 	),
 
 	/*
@@ -174,11 +174,8 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-		// 'HTML'            => 'LaravelBook\Laravel4Powerpack\Facades\HTMLFacade',
-		// 'Form'            => 'LaravelBook\Laravel4Powerpack\Facades\FormFacade',
-		// 'Str'             => 'LaravelBook\Laravel4Powerpack\Facades\StrFacade',
 		'Former'          => 'Former\Facades\Former',
-		// 'Profiler'        => 'Juy\Profiler\Facades\Profiler'
+		'BrainSocket'     => 'BrainSocket\BrainSocketFacade',
 	),
 
 );

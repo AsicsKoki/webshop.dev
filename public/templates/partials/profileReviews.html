@@ -1,6 +1,6 @@
 <p>User reviews:</p>
 <div ng-repeat="review in user.reviews" class="well">
-	<p class="btn btn-danger" ng-show="roleId" ng-click="deleteReview(review)">Delete</p>
+	<a class="btn btn-danger" ng-show="roleId" ng-click="deleteReview(review)">Delete</a>
 	<p>By: {{review.user.username}}</p>
 	<p>{{review.review}}</p>
 </div>
@@ -8,4 +8,8 @@
 <form name="reviewForm" ng-show="!userId" novalidate>
 	<input  type="text"  ng-model="review" name="review" required class="reviewTextBox"  ng-minlength=5 ng-maxlength=250/>
 	<input ng-click="submitReview(reviewForm, review)"  type="submit" value="submit" class="btn reviewTextButton"/>
+</form>
+<form action="">
+	<input type="text">
+	<input type="submit">Send
 </form>
