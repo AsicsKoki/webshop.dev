@@ -156,4 +156,8 @@ class UsersController extends BaseController {
 			return Review::create(Input::all());
 		}
 	}
+
+	public function deleteReview($reviewId){
+		return Review::where('id', '=', $reviewId)->delete();
+	}
 }

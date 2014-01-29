@@ -67,4 +67,10 @@ function profileController($scope, $http){
 			$scope.user.reviews.push(review);
 		})
 	}}
+
+	$scope.deleteReview = function(review){
+	$http.delete('http://webshop.dev/profile/deleteReview/'+review.id).success(function(data){
+		$scope.reviews.splice( $scope.reviews.indexOf(review), 1 );
+		});
+	}
 }

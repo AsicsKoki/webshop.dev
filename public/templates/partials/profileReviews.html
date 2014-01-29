@@ -1,5 +1,6 @@
 <p>User reviews:</p>
 <div ng-repeat="review in user.reviews" class="well">
+	<p class="btn btn-danger" ng-show="roleId" ng-click="deleteReview(review)">Delete</p>
 	<p>By: {{review.user.username}}</p>
 	<p>{{review.review}}</p>
 </div>
