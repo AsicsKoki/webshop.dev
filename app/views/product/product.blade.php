@@ -20,7 +20,7 @@
 		@include('partials/rating')
 			<div id="data" class="hide" data-productid="{{$product->id}}" data-userrole="{{Auth::user()->role_id}}" data-userid="{{Auth::user()->id}}"></div>
 			<div id="commentArea" ng-app ng-controller="commentAreaController" ng-include="tpl='{{URL::to('/')}}/templates/partials/productComments.html'">
-				Loading...
+				<div id="spin"><div></div></div>
 			</div>
 		@if(Auth::user()->role_id == 1)
 			<div id="categorySelect">
@@ -66,10 +66,31 @@
 @section('moreScripts')
 {{ HTML::script('js/jquery.flexslider-min.js') }}
 {{ HTML::script('js/angularScripts.js') }}
+{{ HTML::script('js/spin.js') }}
 <script type="text/javascript" charset="utf-8">
 $(window).load(function() {
 	$('.flexslider').flexslider();
-});
+		var opts = {
+			lines: 7, // The number of lines to draw
+			length: 25, // The length of each line
+			width: 2, // The line thickness
+			radius: 22, // The radius of the inner circle
+			corners: 1, // Corner roundness (0..1)
+			rotate: 54, // The rotation offset
+			direction: 1, // 1: clockwise, -1: counterclockwise
+			color: '#000', // #rgb or #rrggbb or array of colors
+			speed: 2.2, // Rounds per second
+			trail: 15, // Afterglow percentage
+			shadow: false, // Whether to render a shadow
+			hwaccel: false, // Whether to use hardware acceleration
+			className: 'spinner', // The CSS class to assign to the spinner
+			zIndex: 2e9, // The z-index (defaults to 2000000000)
+			top: 'auto', // Top position relative to parent in px
+			left: 'auto' // Left position relative to parent in px
+		};
+		var target = document.getElementById('spin');
+		var spinner = new Spinner(opts).spin(target);
+		});
 $('.ratings_stars').hover(
 // Handles the mouseover
 function() {

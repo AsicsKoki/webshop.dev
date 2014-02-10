@@ -4,8 +4,11 @@ function commentAreaController($scope, $http){
 	var roleId = $('div#data').data('userrole');
 	var userId = $('div#data').data('userid');
 
+	$scope.loading = true;
 	$http.get('http://webshop.dev/products/'+productId+'/comments').success(function(data){
 			$scope.comments = data.comments;
+		}).then(function(data) {
+			$scope.loading = false;
 		});
 
 	$scope.roleid = roleId;
