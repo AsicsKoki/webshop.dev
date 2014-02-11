@@ -87,6 +87,8 @@ Route::delete('profile/deleteComment/{commentId}', array('as'=>'deleteCommentPro
 Route::delete('profile/deleteProduct/{pid}', array('as'=> 'profileDeleteProduct', 'uses' => 'ProductController@deleteProduct'))->where('pid', '\d+');
 Route::post('profile/postReview', array('as'=>'postReview', 'uses'=>'UsersController@postReview'));
 Route::post('profile/deleteReview/{reviewId}', array('as'=>'deleteReview', 'uses'=>'UsersController@deleteReview'));
+Route::get('contact', array('as'=>'contactFormPage', 'uses'=>'ProductController@getContactPage'));
+Route::post('contact/sendEmail', array('as'=>'sendContactEmail', 'uses'=>'UsersController@sendContactEmail'));
 
 /**
  * Cart

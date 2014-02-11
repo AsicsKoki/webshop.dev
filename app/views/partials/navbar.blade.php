@@ -5,7 +5,7 @@
 			<li><a href="{{ URL::route('AllProducts') }}">Products</a></li>
 			<li><a href="{{ URL::route('AllUsers') }}">Users</a></li>
 			<li><a href="{{ URL::route('newProductPage') }}">New product</a></li>
-			<li><a href="#">Contact</a></li>
+			<li><a href="{{ URL::route('contactFormPage') }}">Contact</a></li>
 			<li>
 				{{ Former::open()->method('post')->action(URL::route('SearchProducts')) }}
 				{{ Former::framework('Nude') }}

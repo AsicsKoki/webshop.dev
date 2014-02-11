@@ -158,6 +158,14 @@ class UsersController extends BaseController {
 	}
 
 	public function deleteReview($reviewId){
-		return Review::where('id', '=', $reviewId)->delete();
+		return Review::where('id', $reviewId)->delete();
+	}
+
+	public function sendContactEmail(){
+		$data = Auth::user();
+		Mail::send('utils.contact', $data, function($message){
+			$message->from('pera@pera.com', 'pera');
+			$message->to('cpt.koki@gmail.com', 'Konstantin Velickovic')->subject('Test!');
+		});
 	}
 }

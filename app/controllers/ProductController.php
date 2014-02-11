@@ -259,4 +259,8 @@ class ProductController extends BaseController {
 		// 	}]);
 		// }, "comments.user"])->find($pid);
 	}
+
+	public function getContactPage(){
+		return View::make('utils.contact');
+	}
 }

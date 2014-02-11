@@ -1,0 +1,11 @@
+<form name="emailForm" novalidate>
+	<div class="form-group">
+		<label for="inputEmail">Email address</label>
+		<input type="email" class="form-control" id="inputEmail" placeholder="Enter email">
+	</div>
+	<div class="form-group">
+		<label for="inputPassword">Message</label>
+		<textarea name="message" id="message" cols="30" rows="10" ng-minlength=5 required></textarea>
+	</div>
+	<button ng-click="sendMail(emailForm)" type="submit" class="btn btn-default">Send</button>
+</form>

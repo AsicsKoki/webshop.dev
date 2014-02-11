@@ -77,3 +77,13 @@ function profileController($scope, $http){
 		});
 	}
 }
+
+function contactController($scope, $http){
+	$scope.sendMail = function(emailForm){
+		var email = emailForm
+		if (emailForm.$valid){
+		$http.post('http://webshop.dev/contact/sendEmail', email).success(function(email){
+
+		})
+	}}
+}
