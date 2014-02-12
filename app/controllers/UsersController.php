@@ -162,10 +162,10 @@ class UsersController extends BaseController {
 	}
 
 	public function sendContactEmail(){
-		$data = Auth::user();
-		Mail::send('utils.contact', $data, function($message){
-			$message->from('pera@pera.com', 'pera');
-			$message->to('cpt.koki@gmail.com', 'Konstantin Velickovic')->subject('Test!');
+		$data = Input::all();
+		Mail::send('utils.emailTemplate', $data, function($message) use($data){
+			$message->from( Auth::User()->email, Auth::User()->username);
+			$message->to('cpt.koki@gmail.com', 'Konstantin Velickovic')->subject($data['subject']);
 		});
 	}
 }
