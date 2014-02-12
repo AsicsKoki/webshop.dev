@@ -162,10 +162,20 @@ class UsersController extends BaseController {
 	}
 
 	public function sendContactEmail(){
-		$data = Input::all();
-		Mail::send('utils.emailTemplate', $data, function($message) use($data){
-			$message->from( Auth::User()->email, Auth::User()->username);
-			$message->to('cpt.koki@gmail.com', 'Konstantin Velickovic')->subject($data['subject']);
-		});
+		$validator = Validator::make(
+		Input::all(),
+		    array(
+				'msg'     => 'required|between:20,1000',
+				'subject' => 'required|between:5,50',
+		    )
+		);
+
+		if($validator->passes()){
+			$data = Input::all();
+			Mail::send('utils.emailTemplate', $data, function($message) use($data){
+				$message->from( Auth::User()->email, Auth::User()->username);
+				$message->to('cpt.koki@gmail.com', 'Konstantin Velickovic')->subject($data['subject']);
+			});
+		}
 	}
 }

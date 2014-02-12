@@ -92,8 +92,4 @@ function contactController($scope, $http){
 			$scope.emailForm.submitted = true;
 		}
 	}
-
-
-
-
 }
