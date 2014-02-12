@@ -79,12 +79,21 @@ function profileController($scope, $http){
 }
 
 function contactController($scope, $http){
+	$scope.submitted = false;
 	$scope.mail = {};
 	$scope.sendMail = function() {
-		$http({
-			method : 'POST',
-			url : 'http://webshop.dev/contact/sendEmail',
-			data : $scope.mail
-		})
+		if($scope.emailForm.$valid){
+			$http({
+				method : 'POST',
+				url : 'http://webshop.dev/contact/sendEmail',
+				data : $scope.mail
+			})
+		} else {
+			$scope.emailForm.submitted = true;
+		}
 	}
+
+
+
+
 }
