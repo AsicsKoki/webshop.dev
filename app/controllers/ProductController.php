@@ -1,6 +1,7 @@
 <?php
 
 use \Utils\HashUtility;
+use Acme\Services\Validation\ValidationException;
 
 class ProductController extends BaseController {
 
@@ -87,11 +88,7 @@ class ProductController extends BaseController {
 		);
 		if ($validator->passes())
 		{
-			$data = Input::all();
-			$product = Product::find($pid);
-			$product->update($data);
-			if (Input::hasFile('image')) $this->saveProductImage($product);
-			return Redirect::back()->with('message', 'Saved');
+			return Product::updateProduct(Input::all());
 		} else {
 			return Redirect::back()
 				->withInput(Input::all())
@@ -112,28 +109,16 @@ class ProductController extends BaseController {
 	 * @return [type] [description]
 	 */
 	public function putProduct(){
-		$validator = Validator::make(
-		Input::all(),
-		    array(
-				'name'        => 'required|between:5,50',
-				'description' => 'required|between:5,500',
-				'quantity'    => 'integer|required|min:1',
-				'price'       => 'integer|required|min:1',
-				'color_id'    => 'integer|required|between:1,5',
-				'image'       => 'image'
-			)
-		);
-		if($validator->passes()){
-			$data = Input::all();
-			$data['user_id']= Auth::User()->id;
-			$product = Product::create($data);
-			if (Input::hasFile('image')) $this->saveProductImage($product);
-			Session::flash('status_success', 'Product created');
-			return Redirect::intended('products');
-		} else {
+		try
+		{
+			return Product::createProduct(Input::all());
+		}
+
+		catch(ValidationException $e)
+		{
 			return Redirect::back()
-				->withInput(Input::all())
-				->withErrors($validator->messages());
+				->withInput()
+				->withErrors($e->getErrors());
 		}
 	}
 

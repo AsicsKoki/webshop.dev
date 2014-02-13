@@ -99,12 +99,7 @@ class UsersController extends BaseController {
 		);
 
 		if($validator->passes()){
-			$data = Input::all();
-			$data['password'] = Hash::make($data['password']);
-			$user = new User($data);
-   			$user->save();
-			Session::flash('status_success', 'Registerd successfuly. Please log in');
-			return Redirect::intended('login');
+			return User::createUser(Input::all())
 		} else {
 			Session::flash('status_error', 'Please enter valid data');
 			return Redirect::back()

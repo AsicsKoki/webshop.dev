@@ -1,6 +1,6 @@
 <?php
 
-class Product extends Eloquent {
+class Product extends BaseModel {
 
 	/**
    * Define which attributes can be filled
@@ -47,5 +47,20 @@ class Product extends Eloquent {
 	public function comments()
 	{
 		return $this->hasMany('Comment');
+	}
+
+	public static function createProduct($data){
+		$data['user_id']= Auth::User()->id;
+		$product = Product::create($data);
+		if (Input::hasFile('image')) $this->saveProductImage($product);
+		Session::flash('status_success', 'Product created');
+		return Redirect::intended('products');
+	}
+
+	public static function updateProduct($data){
+		$product = Product::find($pid);
+		$product->update($data);
+		if (Input::hasFile('image')) $this->saveProductImage($product);
+		return Redirect::back()->with('message', 'Saved');
 	}
 }

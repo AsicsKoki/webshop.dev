@@ -3,7 +3,7 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends BaseModel implements UserInterface, RemindableInterface {
 
 	protected $fillable = array('username', 'first_name', 'last_name', 'bio', 'email', 'password');
 	/**
@@ -87,6 +87,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function reviews()
 	{
 		return $this->hasMany('Review');
+	}
+
+	public static function createUser($data){
+		$data['password'] = Hash::make($data['password']);
+		$user = new User($data);
+   		$user->save();
+		Session::flash('status_success', 'Registerd successfuly. Please log in');
+		return Redirect::intended('login');
 	}
 
 }
