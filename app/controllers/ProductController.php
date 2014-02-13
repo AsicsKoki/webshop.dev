@@ -75,24 +75,16 @@ class ProductController extends BaseController {
 	 * @return [type]      [description]
 	 */
 	public function postProduct($pid){
-
-		$validator = Validator::make(
-		Input::all(),
-		    array(
-				'name'        => 'required|between:5,50',
-				'description' => 'required|between:5,500',
-				'quantity'    => 'integer|required|min:1',
-				'price'       => 'integer|required|min:1',
-				'image'       => 'image'
-			)
-		);
-		if ($validator->passes())
+		try
 		{
 			return Product::updateProduct(Input::all());
-		} else {
+		}
+
+		catch(ValidationException $e)
+		{
 			return Redirect::back()
-				->withInput(Input::all())
-				->withErrors($validator->messages());
+				->withInput()
+				->withErrors($e->getErrors());
 		}
 	}
 
@@ -186,10 +178,6 @@ class ProductController extends BaseController {
 	 * @return [type] [description]
 	 */
 	public function getCategoryResults($cid){
-		// return View::make('product.categoryResult')
-		// 	->with('result', Category::find($cid)->with('products')->get()->toArray());
-		// return Category::with('products')->find($cid)->toArray();
-
 		return View::make('product.categoryResult')
 			->with('result', Category::with('products')->find($cid)->toArray());
 	}
@@ -236,13 +224,6 @@ class ProductController extends BaseController {
 
 	public function getCommentsJSON($pid){
 		return Product::with("comments.likes.user", "comments.user")->find($pid);
-
-		// return Product::with(['comments' => function($query){
-		// 	$query->with(['likes' => function($query){
-		// 		$query->where('user_id', Auth::User()->id );
-		// 		$query->with("user");
-		// 	}]);
-		// }, "comments.user"])->find($pid);
 	}
 
 	public function getContactPage(){

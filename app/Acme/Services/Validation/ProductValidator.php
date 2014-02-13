@@ -1,5 +1,5 @@
 <?php namespace Acme\Services\Validation;
-	
+
 	class ProductValidator extends Validator
 	{
 		protected $rules = [
@@ -20,4 +20,3 @@
 			'image'       => 'image'
 		];
 	}
- 

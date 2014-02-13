@@ -15,5 +15,10 @@
 		{
 			return $this->validate($input, $this->rules);
 		}
+
+		public function validateForUpdate($input)
+		{
+			return $this->validate($input, $this->rules);
+		}
 	}
  ?>
