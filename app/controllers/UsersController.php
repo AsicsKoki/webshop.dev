@@ -86,18 +86,6 @@ class UsersController extends BaseController {
 	}
 
 	public function putNewUser(){
-		$validator = Validator::make(
-		Input::all(),
-		    array(
-				'username'              => 'required|between:5,50|unique:users,username',
-				'first_name'            => 'required|min:1',
-				'last_name'             => 'required|min:1',
-				'email'                 => 'required|email|unique:users,email',
-				'password_confirmation' => 'required',
-				'password'              => 'required|min:5|same:password_confirmation',
-		    )
-		);
-
 		if($validator->passes()){
 			return User::createUser(Input::all())
 		} else {
