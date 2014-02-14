@@ -108,7 +108,8 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		// 'LaravelBook\Laravel4Powerpack\Providers\PowerpackServiceProvider',
 		'Former\FormerServiceProvider',
-		'BrainSocket\BrainSocketServiceProvider'
+		'BrainSocket\BrainSocketServiceProvider',
+		'Anouar\Paypalpayment\PaypalpaymentServiceProvider'
 	),
 
 	/*
@@ -176,6 +177,7 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Former'          => 'Former\Facades\Former',
 		'BrainSocket'     => 'BrainSocket\BrainSocketFacade',
+		'Paypalpayment'   => 'Anouar\Paypalpayment\Facades\PaypalPayment'
 	),
 
 );
