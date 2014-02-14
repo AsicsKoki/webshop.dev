@@ -13,8 +13,8 @@
 		];
 
 		protected $updateRules = [
-				'username' => 'required|between:5,50|unique:users,username',
-				'bio'      => 'required|between:5,500',
-				'email'    => 'required|email|unique:users,email',
+			'username' => 'required|between:5,50|unique:users,username',
+			'bio'      => 'required|between:5,500',
+			'email'    => 'required|email|unique:users,email',
 		];
 	}

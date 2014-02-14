@@ -63,4 +63,8 @@ class Product extends BaseModel {
 		if (Input::hasFile('image')) $this->saveProductImage($product);
 		return Redirect::back()->with('message', 'Saved');
 	}
+
+	public static function delete($pid){
+		return Product::where('id', '=', $pid)->delete();
+	}
 }

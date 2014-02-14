@@ -97,4 +97,10 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		return Redirect::intended('login');
 	}
 
+	public static function updateUser($data){
+		User::find($uid)->update(Input::all());
+		Session::flash('status_success', 'Profile updated');
+		return Redirect::back();
+	}
+
 }

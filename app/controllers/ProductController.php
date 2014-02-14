@@ -130,7 +130,7 @@ class ProductController extends BaseController {
 	 * @return [type]      [description]
 	 */
 	public function deleteProduct($pid){
-		return Product::where('id', '=', $pid)->delete();
+		return Product::delete($pid);
 	}
 
 	/**

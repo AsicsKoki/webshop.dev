@@ -55,25 +55,17 @@ class UsersController extends BaseController {
 	 */
 	public function postUser($uid){
 
-		$validator = Validator::make(
-        	Input::all(),
-		    array(
-				'username' => 'required|between:5,50|unique:users,username',
-				'bio'      => 'required|between:5,500',
-				'email'    => 'required|email|unique:users,email',
-		    )
-		);
-
-		if ($validator->passes())
+		try
 		{
-			User::find($uid)->update(Input::all());
-			Session::flash('status_success', 'Profile updated');
-			return Redirect::back();
-		} else {
-			Session::flash('status_error', 'Error');
-			return Redirect::back()
-				->withInput(Input::all())
-				->withErrors($validator->messages());
+			return User::updateUser(Input::all());
+		}
+
+		catch(ValidationException $e)
+		{
+		return Redirect::back()
+		Session::flash('status_error', 'Error');
+			->withInput()
+			->withErrors($e->getErrors());
 		}
 	}
 
@@ -86,9 +78,12 @@ class UsersController extends BaseController {
 	}
 
 	public function putNewUser(){
-		if($validator->passes()){
+		try
+		{
 			return User::createUser(Input::all())
-		} else {
+		}
+		catch(ValidationException $e)
+		{
 			Session::flash('status_error', 'Please enter valid data');
 			return Redirect::back()
 				->withInput(Input::all())
