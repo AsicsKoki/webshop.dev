@@ -8,7 +8,7 @@
 		"anahkiasen/former": "dev-master",
 		"paypal/rest-api-sdk-php" : "0.7.0",
 		"juy/profiler" : "dev-master",
-		 "anouar/paypalpayment": "dev-master",
+		"anouar/paypalpayment": "dev-master",
 		"brainboxlabs/brain-socket": "v1.0.0",
 		"omnipay/paypal": "~2.0"
 	},
