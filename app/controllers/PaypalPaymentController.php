@@ -45,17 +45,24 @@ class PaypalPaymentController extends BaseController {
     */
     public function create()
     {
+        $type = Input::get('creditCardType');
+        $creditCardNumber = Input::get('creditCardNumber');
+        $cvv2 = Input::get('creditCardSecurityNumber')
+        $expireMonth = Input::get('creditCardExpiryMonth');
+        $expireYear = Input::get('creditCardExpiryYear');
+        $firstName = Input::get('firstName');
+        $lastName = Input::get('lastName');
         // ### CreditCard
         // A resource representing a credit card that can be
         // used to fund a payment.
         $card = Paypalpayment::CreditCard();
-        $card->setType("visa");
-        $card->setNumber("4417119669820331");
-        $card->setExpire_month("11");
-        $card->setExpire_year("2019");
-        $card->setCvv2("012");
-        $card->setFirst_name("Anouar");
-        $card->setLast_name("Abdessalam");
+        $card->setType($type);
+        $card->setNumber($creditCardNumber);
+        $card->setExpire_month($expireMonth);
+        $card->setExpire_year($expireYear);
+        $card->setCvv2($cvv2);
+        $card->setFirst_name($firstName);
+        $card->setLast_name($lastName);
 
         // ### FundingInstrument
         // A resource representing a Payer's funding instrument.

@@ -54,7 +54,7 @@
 		</div>
 		<div class="form-group">
 			<label for="selectCreditCardexpiryMonth">Credit card expiry month</label>
-			<select class="form-control" for="expiryMonth" name="creditCardExpiryMonth" id="creditCardExpiryMonth">
+			<select class="form-control" for="expiryMonth" name="creditCardExpiryMonth" id="creditCardExpiryMonth" ng-model="data.creditCardExpiryMonth">
 			<option value="1">January</option>
 			<option value="2">February</option>
 			<option value="3">March</option>
@@ -71,7 +71,7 @@
 		</div>
 		<div class="form-group">
 			<label for="selectCreditCardExpiryYear">Credit card expiry year</label>
-			<select class="form-control" for="ExpiryYear" name="creditCardExpiryYear" id="creditCardExpiryMonth">
+			<select class="form-control" for="ExpiryYear" name="creditCardExpiryYear" id="creditCardExpiryYear" ng-model="data.creditCardExpiryYear">
 			<option value="2014">2014</option>
 			<option value="2015">2015</option>
 			<option value="2016">2016</option>
@@ -82,8 +82,8 @@
 		</select>
 		</div>
 		<div class="form-group">
-			<label for="selectCreditCardExpiryYear">Credit card type</label>
-			<select class="form-control" for="ExpiryYear" name="creditCardExpiryYear" id="creditCardExpiryMonth">
+			<label for="selectCreditCardType">Credit card type</label>
+			<select class="form-control" for="type" name="creditCardType" id="creditCardType" ng-model="data.creditCardType">
 			<option value="visa">visa</option>
 			<option value="mastercard">mastercard</option>
 			<option value="discover">discover</option>

@@ -43,9 +43,4 @@ class CartController extends BaseController {
 		unset($cart[$pid]);
 		return Session::set('cartData', $cart);
 	}
-
-	public function checkoutCart()
-	{
-		
-	}
 }
