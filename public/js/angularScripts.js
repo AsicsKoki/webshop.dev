@@ -93,3 +93,19 @@ function contactController($scope, $http){
 		}
 	}
 }
+
+function creditCardController($scope, $http){
+	$scope.submitted = false;
+	$scope.creditCard = {};
+	$scope.checkout = function() {
+		if($scope.creditCardFormForm.$valid){
+			$http({
+				method : 'POST',
+				url : 'http://webshop.dev/payment/create',
+				data : $scope.creditCard
+			})
+		} else {
+			$scope.creditCardFormForm.submitted = true;
+		}
+	}
+}

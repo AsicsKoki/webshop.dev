@@ -13,6 +13,6 @@
 			{{$html}}
 			</tbody>
 		</table>
-		<a class="btn" href="order.php">Checkout</a>
+		@include('partials.creditCardForm')
 	</div>
 @stop
