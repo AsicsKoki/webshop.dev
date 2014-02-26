@@ -101,3 +101,16 @@ PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer wtk7vc6MFCfMuX
 PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 21307064332660139299238428480
 PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
 PayPal\Transport\PPRestCall: {"id":"PAY-7Y448920UD456135EKMDWBCI","create_time":"2014-02-21T14:19:53Z","update_time":"2014-02-21T14:20:06Z","state":"approved","intent":"sale","payer":{"payment_method":"credit_card","funding_instruments":[{"credit_card":{"type":"visa","number":"xxxxxxxxxxxx0331","expire_month":"11","expire_year":"2019","first_name":"Anouar","last_name":"Abdessalam"}}]},"transactions":[{"amount":{"total":"1.00","currency":"USD","details":{"subtotal":"1.00"}},"description":"This is the payment description.","related_resources":[{"sale":{"id":"6YP88720A2771533U","create_time":"2014-02-21T14:19:53Z","update_time":"2014-02-21T14:20:06Z","state":"completed","amount":{"total":"1.00","currency":"USD"},"parent_payment":"PAY-7Y448920UD456135EKMDWBCI","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/sale/6YP88720A2771533U","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/sale/6YP88720A2771533U/refund","rel":"refund","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-7Y448920UD456135EKMDWBCI","rel":"parent_payment","method":"GET"}]}}]}],"links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAY-7Y448920UD456135EKMDWBCI","rel":"self","method":"GET"}]}
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/oauth2/token
+PayPal\Core\PPHttpConnection: Payload grant_type=client_credentials
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Basic QWJBbDVoRDRjMnp5dXJFeHF5Q0RMbkRwazVzblMtcWQ3cTdZM1J3cXdCOXI0dUxfVHNrSUhkZ19WR1RjOkVGUWdkeEFpQkREd2tnX0o4M0t4R0VoQzFfcTdSaTZOOVc0UG9YbFhIS3RSaEVDQ1BFbFB4Q1pwNFZKLQ==
+PayPal\Core\PPHttpConnection: Adding header Accept: */*
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file
+PayPal\Core\PPHttpConnection: Connecting to https://api.sandbox.paypal.com/v1/payments/payment
+PayPal\Core\PPHttpConnection: Payload {"intent":"sale","payer":{"payment_method":"credit_card","funding_instruments":[{"credit_card":{"type":null,"number":null,"expire_month":null,"expire_year":null,"cvv2":null,"first_name":null,"last_name":null}}]},"transactions":[{"amount":{"currency":"USD","total":34},"description":"This is the payment description."}]}
+PayPal\Core\PPHttpConnection: Adding header Content-Type: application/json
+PayPal\Core\PPHttpConnection: Adding header User-Agent: PayPalSDK/rest-sdk-php 0.6.0 (lang=PHP;v=5.4.19;bit=32;os=Windows_NT_6.1;machine=i586;openssl=0.9.8y;curl=7.30.0)
+PayPal\Core\PPHttpConnection: Adding header Authorization: Bearer c0ARd758CQYn-WP0kaxkuTeTPV1hnhu061mAJrB.G78
+PayPal\Core\PPHttpConnection: Adding header PayPal-Request-Id: 2130706433277213934122651137
+PayPal\Core\PPHttpConnection: Invalid or no certificate authority found - Retrying using bundled CA certs file

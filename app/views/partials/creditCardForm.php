@@ -1,4 +1,4 @@
-<form name="creditCardForm" novalidate ng-submit="sendPayment()" ng-app ng-controller="creditCardController">
+<form name="creditCardForm" novalidate ng-submit="checkout()" ng-app ng-controller="creditCardController">
 	<fieldset>
 		<div class="form-group">
 			<label for="inputFirstName">First name</label>
