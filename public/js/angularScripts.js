@@ -100,8 +100,8 @@ function creditCardController($scope, $http){
 	$scope.checkout = function() {
 		if($scope.creditCardForm.$valid){
 			$http({
-				method : 'POST',
-				url : 'webshop.dev/payment/create',
+				method : 'get',
+				url : '/payment/create',
 				data : $scope.creditCardForm
 			})
 		} else {

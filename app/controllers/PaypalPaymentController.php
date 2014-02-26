@@ -51,19 +51,16 @@ class PaypalPaymentController extends BaseController {
 		foreach ($data as $id => $quantity) {
 			$price = Product::find($id)->price;
 			$total += $price*(int)$quantity;
-			// var_dump($price);
-			// $a = (int)$quantity;
-			// var_dump($a);
 		}
 
 
-	   $type = Input::get('creditCardType');
-	   $creditCardNumber = Input::get('creditCardNumber');
-	   $cvv2 = Input::get('creditCardSecurityNumber');
-	   $expireMonth = Input::get('creditCardExpiryMonth');
-	   $expireYear = Input::get('creditCardExpiryYear');
-	   $firstName = Input::get('firstName');
-	   $lastName = Input::get('lastName');
+		$type             = Input::get('creditCardType');
+		$creditCardNumber = Input::get('creditCardNumber');
+		$cvv2             = Input::get('creditCardSecurityNumber');
+		$expireMonth      = Input::get('creditCardExpiryMonth');
+		$expireYear       = Input::get('creditCardExpiryYear');
+		$firstName        = Input::get('firstName');
+		$lastName         = Input::get('lastName');
 	   // ### CreditCard
 	   // A resource representing a credit card that can be
 	   // used to fund a payment.
