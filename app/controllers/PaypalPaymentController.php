@@ -45,9 +45,16 @@ class PaypalPaymentController extends BaseController {
     */
     public function create()
     {
+
+        $data = Session::all();
+        var_dump($data);
+        exit;
+
+
+
         $type = Input::get('creditCardType');
         $creditCardNumber = Input::get('creditCardNumber');
-        $cvv2 = Input::get('creditCardSecurityNumber')
+        $cvv2 = Input::get('creditCardSecurityNumber');
         $expireMonth = Input::get('creditCardExpiryMonth');
         $expireYear = Input::get('creditCardExpiryYear');
         $firstName = Input::get('firstName');
