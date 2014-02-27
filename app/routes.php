@@ -97,4 +97,4 @@ Route::get('cart', array('as'=>'showCart', 'uses'=>'CartController@getCartPage')
 Route::post('products/{pid}', array('as'=>'addToCart', 'uses'=>'CartController@postToCart'))->where('pid', '\d+');
 Route::get('ajaxSlideCart', array('as'=>'ajaxSlideCart','uses'=>'CartController@getCartPage'));
 Route::delete('ajaxCartDelete', array('as'=>'cartDelete','uses'=>'CartController@cartDeleteEntry'));
-Route::resource('payment', 'PaypalPaymentController');
+Route::post('cart/create', array('as'=>'createPayment','uses'=>'PaypalPaymentController@create'));

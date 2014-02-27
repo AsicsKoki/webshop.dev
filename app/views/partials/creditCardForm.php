@@ -2,7 +2,7 @@
 	<fieldset>
 		<div class="form-group">
 			<label for="inputFirstName">First name</label>
-			<input type="text" name="firstName" ng-model="data.firstName" class="form-control" id="inputFirstName" ng-minlength=2 required placeholder="First name">
+			<input type="text" name="firstName" ng-model="creditCardForm.firstName" class="form-control" id="inputFirstName" ng-minlength=2 required placeholder="First name">
 			<div class="error" ng-show="creditCardForm.firstName.$dirty && creditCardForm.firstName.$invalid">
 				<small class="error"
 				ng-show="creditCardForm.firstName.$error.required">
@@ -15,7 +15,7 @@
 		</div>
 		<div class="form-group">
 			<label for="inputLastName">Last name</label>
-			<input placeholder="Last name" type="text" name="lastName" id="lastName" ng-model="data.lastName" cols="30" rows="10" ng-minlength=2 required></input>
+			<input placeholder="Last name" type="text" name="lastName" id="lastName" ng-model="creditCardForm.lastName" cols="30" rows="10" ng-minlength=2 required></input>
 			<div class="error" ng-show="creditCardForm.lastName.$dirty && creditCardForm.lastName.$invalid">
 				<small class="error"
 				ng-show="creditCardForm.lastName.$error.required">
@@ -28,7 +28,7 @@
 		</div>
 		<div class="form-group">
 			<label for="inputCreditCardNumber">Credit card number</label>
-			<input type="text" placeholder="Credit card number" name="creditCardNumber" id="creditCard" ng-model="data.creditCardNumber" ng-minlength=16 ng-maxlength=16 required></input>
+			<input type="text" placeholder="Credit card number" name="creditCardNumber" id="creditCard" ng-model="creditCardForm.creditCardNumber" ng-minlength=16 ng-maxlength=16 required></input>
 			<div class="error" ng-show="creditCardForm.creditCard.$dirty && creditCardForm.creditCard.$invalid">
 				<small class="error"
 				ng-show="creditCardForm.creditCard.$error.required">
@@ -44,7 +44,7 @@
 		</div>
 		<div class="form-group">
 			<label for="inputCreditCardSecurityNumber">Credit security number</label>
-			<input type="text" placeholder="CVV2" name="creditCardSecurityNumber" id="creditCardSecurityNumber" ng-model="data.creditCardSecurityNumber" required></input>
+			<input type="text" placeholder="CVV2" name="creditCardSecurityNumber" id="creditCardSecurityNumber" ng-model="creditCardForm.creditCardSecurityNumber" required></input>
 			<div class="error" ng-show="creditCardForm.creditCardSecurityNumber.$dirty && creditCardForm.creditCardSecurityNumber.$invalid">
 				<small class="error"
 				ng-show="creditCardForm.creditCardSecurityNumber.$error.required">
@@ -54,7 +54,7 @@
 		</div>
 		<div class="form-group">
 			<label for="selectCreditCardexpiryMonth">Credit card expiry month</label>
-			<select class="form-control" for="expiryMonth" name="creditCardExpiryMonth" id="creditCardExpiryMonth" ng-model="data.creditCardExpiryMonth">
+			<select class="form-control" for="expiryMonth" name="creditCardExpiryMonth" id="creditCardExpiryMonth" ng-model="creditCardForm.creditCardExpiryMonth">
 			<option value="1">January</option>
 			<option value="2">February</option>
 			<option value="3">March</option>
@@ -71,7 +71,7 @@
 		</div>
 		<div class="form-group">
 			<label for="selectCreditCardExpiryYear">Credit card expiry year</label>
-			<select class="form-control" for="ExpiryYear" name="creditCardExpiryYear" id="creditCardExpiryYear" ng-model="data.creditCardExpiryYear">
+			<select class="form-control" for="ExpiryYear" name="creditCardExpiryYear" id="creditCardExpiryYear" ng-model="creditCardForm.creditCardExpiryYear">
 			<option value="2014">2014</option>
 			<option value="2015">2015</option>
 			<option value="2016">2016</option>
@@ -83,7 +83,7 @@
 		</div>
 		<div class="form-group">
 			<label for="selectCreditCardType">Credit card type</label>
-			<select class="form-control" for="type" name="creditCardType" id="creditCardType" ng-model="data.creditCardType">
+			<select class="form-control" for="type" name="creditCardType" id="creditCardType" ng-model="creditCardForm.creditCardType">
 			<option value="visa">visa</option>
 			<option value="mastercard">mastercard</option>
 			<option value="discover">discover</option>
