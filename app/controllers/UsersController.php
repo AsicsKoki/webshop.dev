@@ -62,8 +62,8 @@ class UsersController extends BaseController {
 
 		catch(ValidationException $e)
 		{
-		return Redirect::back()
-		Session::flash('status_error', 'Error');
+		return Redirect::back();
+		Session::flash('status_error', 'Error')
 			->withInput()
 			->withErrors($e->getErrors());
 		}
@@ -80,7 +80,7 @@ class UsersController extends BaseController {
 	public function putNewUser(){
 		try
 		{
-			return User::createUser(Input::all())
+			return User::createUser(Input::all());
 		}
 		catch(ValidationException $e)
 		{
@@ -155,5 +155,10 @@ class UsersController extends BaseController {
 				$message->to('cpt.koki@gmail.com', 'Konstantin Velickovic')->subject($data['subject']);
 			});
 		}
+	}
+
+	public function queueTest(){
+		Queue::push('TestQueue', array('message' => 'pera'));
+		var_dump("123");
 	}
 }
