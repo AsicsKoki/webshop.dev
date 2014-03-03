@@ -158,7 +158,7 @@ class UsersController extends BaseController {
 	}
 
 	public function queueTest(){
-		Queue::push('TestQueue', array('message' => 'pera'));
+		Queue::push('TestQueue', []);
 		var_dump("123");
 	}
 }

@@ -45,7 +45,7 @@ class PaypalPaymentController extends BaseController {
     */
     public function create()
     {
-
+    		//reminder:add payment ammount to array with other details and pass the data to the queue
 		$data = Session::get('cartData');
 		$total = 0;
 		foreach ($data as $id => $quantity) {
@@ -54,13 +54,16 @@ class PaypalPaymentController extends BaseController {
 		}
 
 
-		$type             = Input::get('creditCardType');
-		$creditCardNumber = Input::get('creditCardNumber');
-		$cvv2             = Input::get('creditCardSecurityNumber');
-		$expireMonth      = Input::get('creditCardExpiryMonth');
-		$expireYear       = Input::get('creditCardExpiryYear');
-		$firstName        = Input::get('firstName');
-		$lastName         = Input::get('lastName');
+		// $type             = Input::get('creditCardType');
+		// $creditCardNumber = Input::get('creditCardNumber');
+		// $cvv2             = Input::get('creditCardSecurityNumber');
+		// $expireMonth      = Input::get('creditCardExpiryMonth');
+		// $expireYear       = Input::get('creditCardExpiryYear');
+		// $firstName        = Input::get('firstName');
+		// $lastName         = Input::get('lastName');
+
+		$data = Input::all();
+    		Queue::push('PaymentQueue', $data)
 
 
 		// ### CreditCard

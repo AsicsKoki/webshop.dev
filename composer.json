@@ -17,6 +17,7 @@
 			"app/acme",
 			"app/commands",
 			"app/controllers",
+			"app/queues",
 			"app/models",
             	"app/utils",
 			"app/database/migrations",
