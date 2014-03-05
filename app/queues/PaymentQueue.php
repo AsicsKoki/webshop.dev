@@ -78,11 +78,13 @@ class PaymentQueue {
 
 	$response=$payment->toArray();
 
-	echo"<pre>";
-	print_r($response);
-
-	//var_dump($payment->getId());
-
-	//print_r($payment->toArray());//$payment->toJson();
+	$saleData = [
+		'total' => $response["transactions"]["0"]["related_resources"]["0"]["sale"]["amount"]["total"],
+		'user_id' => Auth::User()->id,
+		'paypal_id' => $response["transactions"]["0"]["related_resources"]["0"]["sale"]['id'],
+		'state' => $response["transactions"]["0"]["related_resources"]["0"]["sale"]["state"]
+		];
+		Sale::createSaleRecord($saleData);
+		return Redirect::intended('cart/history');
 	}
 }

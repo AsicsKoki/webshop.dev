@@ -89,6 +89,11 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		return $this->hasMany('Review');
 	}
 
+	public function sales()
+	{
+		return $this->hasMany('Sale');
+	}
+
 	public static function createUser($data){
 		$data['password'] = Hash::make($data['password']);
 		$user = new User($data);
