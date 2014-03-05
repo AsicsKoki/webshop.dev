@@ -12,6 +12,5 @@ class Sale extends Eloquent {
 		$sale = new Sale($saleData);
    		$sale->save();
    		Session::forget('cartData');
-		return Redirect::intended('cart/history');
 	}
 }

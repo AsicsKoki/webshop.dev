@@ -14,8 +14,8 @@ class PaypalPaymentController extends BaseController {
 	*string $_ClientId
 	*string $_ClientSecret
 	*/
-    private $_ClientId='AbAl5hD4c2zyurExqyCDLnDpk5snS-qd7q7Y3RwqwB9r4uL_TskIHdg_VGTc';
-    private $_ClientSecret='EFQgdxAiBDDwkg_J83KxGEhC1_q7Ri6N9W4PoXlXHKtRhECCPElPxCZp4VJ-';
+	private $_ClientId='AbAl5hD4c2zyurExqyCDLnDpk5snS-qd7q7Y3RwqwB9r4uL_TskIHdg_VGTc';
+	private $_ClientSecret='EFQgdxAiBDDwkg_J83KxGEhC1_q7Ri6N9W4PoXlXHKtRhECCPElPxCZp4VJ-';
 
     /*
 	*   These construct set the SDK configuration dynamiclly,
@@ -43,9 +43,8 @@ class PaypalPaymentController extends BaseController {
 	* Create payment using credit card
 	* url:payment/create
     */
-    public function create()
-    {
-    		//reminder:add payment ammount to array with other details and pass the data to the queue
+    	public function create(){
+
 		$data = Session::get('cartData');
 		$total = 0;
 		foreach ($data as $id => $quantity) {
@@ -53,26 +52,17 @@ class PaypalPaymentController extends BaseController {
 			$total += $price*(int)$quantity;
 		}
 
-
-		// $type             = Input::get('creditCardType');
-		// $creditCardNumber = Input::get('creditCardNumber');
-		// $cvv2             = Input::get('creditCardSecurityNumber');
-		// $expireMonth      = Input::get('creditCardExpiryMonth');
-		// $expireYear       = Input::get('creditCardExpiryYear');
-		// $firstName        = Input::get('firstName');
-		// $lastName         = Input::get('lastName');
-
-		$data = array(
-				'type'             => Input::get('creditCardType'),
-				'creditCardNumber' => Input::get('creditCardNumber'),
-				'cvv2'             => Input::get('creditCardSecurityNumber'),
-				'expireMonth'      => Input::get('creditCardExpiryMonth'),
-				'expireYear'       => Input::get('creditCardExpiryYear'),
-				'firstName'        => Input::get('firstName'),
-				'lastName'         => Input::get('lastName'),
-				'total'            => $total
-    			);
-    		Queue::push('PaymentQueue', $data);
+		$data = [
+			'type'             => Input::get('creditCardType'),
+			'creditCardNumber' => Input::get('creditCardNumber'),
+			'cvv2'             => Input::get('creditCardSecurityNumber'),
+			'expireMonth'      => Input::get('creditCardExpiryMonth'),
+			'expireYear'       => Input::get('creditCardExpiryYear'),
+			'firstName'        => Input::get('firstName'),
+			'lastName'         => Input::get('lastName'),
+			'total'            => $total
+			];
+		Queue::push('PaymentQueue', $data);
 	}
     /*
 	   Use this call to get a list of payments.
