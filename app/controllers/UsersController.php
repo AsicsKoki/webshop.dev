@@ -156,9 +156,4 @@ class UsersController extends BaseController {
 			});
 		}
 	}
-
-	public function queueTest(){
-		Queue::push('TestQueue', []);
-		var_dump("123");
-	}
 }

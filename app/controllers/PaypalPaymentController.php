@@ -52,33 +52,26 @@ class PaypalPaymentController extends BaseController {
 			];
 		Queue::push('PaymentQueue', $data);
 	}
-    /*
-	   Use this call to get a list of payments.
-	   url:payment/
-    */
-    public function index()
-    {
-	   echo "<pre>";
+	/*
+	Use this call to get a list of payments.
+	url:payment/
+	*/
+	public function index(){
+		echo "<pre>";
+		$payments = Paypalpayment::all(array('count' => 1, 'start_index' => 0),$this->_apiContext);
+		print_r($payments);
+	}
 
-	   $payments = Paypalpayment::all(array('count' => 1, 'start_index' => 0),$this->_apiContext);
+	/*
+	Use this call to get details about payments that have not completed, 
+	such as payments that are created and approved, or if a payment has failed.
+	url:payment/PAY-3B7201824D767003LKHZSVOA
+	*/
 
-	   print_r($payments);
-    }
-
-	   /*
-	   Use this call to get details about payments that have not completed, 
-	   such as payments that are created and approved, or if a payment has failed.
-	   url:payment/PAY-3B7201824D767003LKHZSVOA
-    */
-
-    public function show($payment_id)
-    {
-	   $payment_id = "PAY-3RM7991580237541DKMDAY3Y";
-	  $payment = Paypalpayment::get($payment_id,$this->_apiContext);
-
-	  echo "<pre>";
-
-	  print_r($payment);
-    }
-
+	public function show($payment_id){
+		$payment_id = "PAY-3RM7991580237541DKMDAY3Y";
+		$payment = Paypalpayment::get($payment_id,$this->_apiContext);
+		echo "<pre>";
+		print_r($payment);
+	}
 }

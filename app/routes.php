@@ -98,6 +98,4 @@ Route::post('products/{pid}', array('as'=>'addToCart', 'uses'=>'CartController@p
 Route::get('ajaxSlideCart', array('as'=>'ajaxSlideCart','uses'=>'CartController@getCartPage'));
 Route::delete('ajaxCartDelete', array('as'=>'cartDelete','uses'=>'CartController@cartDeleteEntry'));
 Route::post('cart/create', array('as'=>'createPayment','uses'=>'PaypalPaymentController@create'));
-
-
-Route::get('cart/queueTest', array('as'=>'123','uses'=>'UsersController@queueTest'));
+Route::get('cart/history', array('as'=>'paymentHistory','uses'=>'UsersController@paymentHistory'));
