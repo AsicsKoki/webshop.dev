@@ -2,29 +2,17 @@
 
 class PaypalPaymentController extends BaseController {
 
-    /**
+	/**
 	* object to authenticate the call.
 	* @param object $_apiContext
 	*/
-    private $_apiContext;
+    	private $_apiContext;
 
-    /**
-	* Set the ClientId and the ClientSecret.
-	* @param
-	*string $_ClientId
-	*string $_ClientSecret
-	*/
-	private $_ClientId='AbAl5hD4c2zyurExqyCDLnDpk5snS-qd7q7Y3RwqwB9r4uL_TskIHdg_VGTc';
-	private $_ClientSecret='EFQgdxAiBDDwkg_J83KxGEhC1_q7Ri6N9W4PoXlXHKtRhECCPElPxCZp4VJ-';
 
-    /*
-	*   These construct set the SDK configuration dynamiclly,
-	*   If you want to pick your configuration from the sdk_config.ini file
-	*   make sure to update you configuration there then grape the credentials using this code :
-	*   $this->_cred= Paypalpayment::OAuthTokenCredential();
-    */
-    public function __construct()
-    {
+	$this->_cred= Paypalpayment::OAuthTokenCredential();
+
+    	public function __construct()
+    	{
 	   // ### Api Context
 	   // Pass in a `ApiContext` object to authenticate
 	   // the call. You can also send a unique request id
