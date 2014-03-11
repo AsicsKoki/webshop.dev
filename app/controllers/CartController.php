@@ -44,7 +44,11 @@ class CartController extends BaseController {
 		return Session::set('cartData', $cart);
 	}
 
-	public function paymentHistory(){
-		return View::make('cart.history')->with('data',  Sale::where('user_id', '=', Auth::user()->id)->toArray());
+	public function getHistory(){
+		return View::make('cart.history');
+	}
+
+	public function historyData(){
+		return Sale::find($userid);
 	}
 }

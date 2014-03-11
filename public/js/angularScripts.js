@@ -109,3 +109,13 @@ function creditCardController($scope, $http){
 		}
 	}
 }
+
+function orderController($scope, $http){
+	var userId = $('div#orderList').data('userid');
+	$scope.loading = true;
+	$http.get('http://webshop.dev/cart/history/'+userId).success(function(data){
+			$scope.sales = data.sales;
+		}).then(function(data) {
+			$scope.loading = false;
+		});
+}
