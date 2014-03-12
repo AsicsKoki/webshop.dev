@@ -48,7 +48,7 @@ class CartController extends BaseController {
 		return View::make('cart.history');
 	}
 
-	public function historyData(){
-		return Sale::find($userid);
+	public function historyData($userId){
+		return Sale::find($userId);
 	}
 }
