@@ -111,7 +111,7 @@ function creditCardController($scope, $http){
 }
 
 function orderController($scope, $http){
-	var userId = $('div#orderlist').data('userid');
+	var userId = $('div#data').data('userid');
 	$scope.loading = true;
 	$http.get('http://webshop.dev/cart/history/'+userId).success(function(data){
 			$scope.sales = data.sales;

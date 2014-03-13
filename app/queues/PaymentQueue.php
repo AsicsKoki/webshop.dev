@@ -81,10 +81,10 @@ class PaymentQueue {
 	$saleData = [
 		'total' => $response["transactions"]["0"]["related_resources"]["0"]["sale"]["amount"]["total"],
 		'user_id' => Auth::User()->id,
-		'paypal_id' => $response["transactions"]["0"]["related_resources"]["0"]["sale"]['id'],
+		'paypal_id' => $response["transactions"]["0"]["related_resources"]["0"]["sale"]['parent_payment'],
 		'state' => $response["transactions"]["0"]["related_resources"]["0"]["sale"]["state"]
 		];
 		Sale::createSaleRecord($saleData);
-		return Redirect::intended('cart/history');
+		return Redirect::to('http://webshop.dev/cart/history');
 	}
 }
