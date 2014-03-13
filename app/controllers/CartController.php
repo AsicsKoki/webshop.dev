@@ -49,6 +49,6 @@ class CartController extends BaseController {
 	}
 
 	public function historyData($userId){
-		return Sale::find($userId);
+		return Sale::where('user_id', '=', $userId)->get();
 	}
 }

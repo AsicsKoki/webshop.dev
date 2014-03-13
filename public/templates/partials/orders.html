@@ -1,13 +1,16 @@
 <table id="orderTable" class="table table-hover display">
 <thead>
-	<th>Comment</th>
+	<th>Created at</th>
+	<th>Price</th>
+	<th>State</th>
 	<th>Action</th>
 </thead>
 <tbody>
-	{{sales}}
-	<!-- <tr ng-repeat="order in user.comments">
-		<td>{{comment.comment}}</td>
-		<td><a href="#" ng-click="" data-commentid="">Delete</a></td>
-	</tr> -->
+	<tr ng-repeat="sale in sales">
+		<td>{{sale.created_at}}</td>
+		<td>{{sale.total}}</td>
+		<td>{{sale.state}}</td>
+		<td><a href="#" ng-click="showDetails(sale.paypal_id)" data-commentid="">Details</a></td>
+	</tr>
 </tbody>
 </table>

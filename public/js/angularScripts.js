@@ -114,8 +114,11 @@ function orderController($scope, $http){
 	var userId = $('div#data').data('userid');
 	$scope.loading = true;
 	$http.get('http://webshop.dev/cart/history/'+userId).success(function(data){
-			$scope.sales = data.sales;
+			$scope.sales = data;
 		}).then(function(data) {
 			$scope.loading = false;
 		});
+	$http.get('http://webshop.dev/cart/history/'+paypal_id).success(function(data){
+		$scope.saleData = data;
+	});
 }
