@@ -8,7 +8,7 @@
 		<li><a href="#Posts" data-toggle="tab">Posts</a></li>
 	</ul>
 	<header><h4> {{$user->username}}'s profile </h4></header>
-	<div id="my-tab-content" class="tab-content" ng-app ng-controller="profileController" >
+	<div id="my-tab-content" class="tab-content" ng-controller="profileController" >
 		<div class="tab-pane active" id="profile">
 			<div class="columnLeft">
 				<div ng-include="tpl='{{URL::to('/')}}/templates/partials/profileReviews.html'">

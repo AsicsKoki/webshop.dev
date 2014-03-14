@@ -100,3 +100,4 @@ Route::delete('ajaxCartDelete', array('as'=>'cartDelete','uses'=>'CartController
 Route::post('cart/create', array('as'=>'createPayment','uses'=>'PaypalPaymentController@create'));
 Route::get('cart/history', array('as'=>'getHistory','uses'=>'CartController@getHistory'));
 Route::get('cart/history/{userId}', array('as'=>'paymentHistory','uses'=>'CartController@historyData'));
+Route::get('cart/history/{paypal_id}', array('as'=>'paymentHistory','uses'=>'CartController@paymentDetails'));

@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="webshop">
 	<head>
 		{{-- STYLES --}}
 		{{HTML::style('css/styles.css')}}
