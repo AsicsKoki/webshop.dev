@@ -3,6 +3,7 @@
 	<th>Created at</th>
 	<th>Price</th>
 	<th>State</th>
+	<th>id</th>
 	<th>Action</th>
 </thead>
 <tbody>
@@ -10,7 +11,8 @@
 		<td>{{sale.created_at}}</td>
 		<td>{{sale.total}}</td>
 		<td>{{sale.state}}</td>
-		<td><a href="#" ng-click="showDetails(sale.paypal_id)" data-commentid="">Details</a></td>
+		<td>{{sale.paypal_id}}</td>
+		<td><a ng-click="showDetails(sale.paypal_id)" href="#">Details</a></td>
 	</tr>
 </tbody>
 </table>

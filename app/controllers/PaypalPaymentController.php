@@ -76,7 +76,6 @@ class PaypalPaymentController extends BaseController {
 	*/
 
 	public function show($payment_id){
-		$payment_id = "PAY-3RM7991580237541DKMDAY3Y";
 		$payment = Paypalpayment::get($payment_id,$this->_apiContext);
 		echo "<pre>";
 		print_r($payment);
