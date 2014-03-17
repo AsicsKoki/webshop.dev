@@ -1,12 +1,52 @@
 var app = angular.module('webshop', []);
+	app.factory('shopApi', function($http) {
+		return{
 
-	app.controller('commentAreaController', function ($scope, $http){
+			/*Payment*/
+			getHistory: function(userId){
+				return $http.get('http://webshop.dev/cart/history/'+userId);
+			},
+
+			/*Comments*/
+			getComments: function(productId){
+				return $http.get('http://webshop.dev/products/'+productId+'/comments');
+			},
+			deleteComment: function(commentId){
+				return $http.delete('http://webshop.dev/products/deleteComment/'+commentId);
+			},
+			like: function(commentId){
+				return $http.put('http://webshop.dev/products/postLike/'+commentId);
+			},
+			unLike: function(commentId){
+				return $http.delete('http://webshop.dev/products/unLike/'+commentId);
+			},
+
+			/*Profile*/
+			getProfile: function(userId){
+				return $http.get('http://webshop.dev/profile/'+userId+'/profileJson')
+			},
+			deleteComment: function(commentId){
+				return $http.delete('http://webshop.dev/profile/deleteComment/'+commentId);
+			},
+			deleteProduct: function(productId){
+				return $http.delete('http://webshop.dev/profile/deleteProduct/'+productId);
+			},
+			submitReview: function(review){
+				return $http.post('http://webshop.dev/profile/postReview', review);
+			},
+			deleteReview: function(){
+				return $http.delete('http://webshop.dev/profile/deleteReview/'+reviewId);
+			},
+		}
+	});
+
+	app.controller('commentAreaController', function ($scope, shopApi){
 		var productId = $('div#data').data('productid');
 		var roleId = $('div#data').data('userrole');
 		var userId = $('div#data').data('userid');
 
 		$scope.loading = true;
-		$http.get('http://webshop.dev/products/'+productId+'/comments').success(function(data){
+		shopApi.getComments(productId).success(function(data){
 				$scope.comments = data.comments;
 			}).then(function(data) {
 				$scope.loading = false;
@@ -14,7 +54,7 @@ var app = angular.module('webshop', []);
 
 		$scope.roleid = roleId;
 		$scope.deleteComment = function(comment){
-			$http.delete('http://webshop.dev/products/deleteComment/'+comment.id).success(function(data){
+			shopApi.deleteComment(comment.id).success(function(data){
 				$scope.comments.splice( $scope.comments.indexOf(comment), 1 );
 			});
 		$scope.userId = userId;
@@ -25,36 +65,36 @@ var app = angular.module('webshop', []);
 			}).length;
 		}
 		$scope.like = function(comment){
-			$http.put('http://webshop.dev/products/postLike/'+comment.id).success(function(data){
+			shopApi.like(comment.id).success(function(data){
 				comment.likes.push(data);
 			})
 		}
 
 		$scope.unLike = function(comment){
-			$http.delete('http://webshop.dev/products/unLike/'+comment.id).success(function(data){
+			shopApi.unLike(comment.id).success(function(data){
 					comment.likes = comment.likes.filter(function(like){
 						return like.user_id != userId;
 				})
 			});
 		}
 	})
-	.controller('profileController', function ($scope, $http){
+	.controller('profileController', function ($scope, shopApi){
 		var roleId = $('div#data').data('userrole');
 		var userId = $('div#data').data('userid');
-		$http.get('http://webshop.dev/profile/'+userId+'/profileJson').success(function(data){
+		shopApi.getProfile(userId).success(function(data){
 			$scope.user = data;
 		});
 
 		$scope.userId = userId;
 		$scope.roleId = roleId;
 		$scope.deleteComment = function(comment){
-		$http.delete('http://webshop.dev/profile/deleteComment/'+comment.id).success(function(data){
+		shopApi.deleteComment(comment.id).success(function(data){
 			$scope.comments.splice( $scope.comments.indexOf(comment), 1 );
 			});
 		}
 
 		$scope.deleteProduct = function(product){
-		$http.delete('http://webshop.dev/profile/deleteProduct/'+product.id).success(function(data){
+		shopApi.deleteProduct(product.id).success(function(data){
 			$scope.user.products.splice( $scope.user.products.indexOf(product), 1 );
 			});
 		}
@@ -65,18 +105,18 @@ var app = angular.module('webshop', []);
 				review: reviewText,
 			};
 			if (reviewForm.$valid){
-			$http.post('http://webshop.dev/profile/postReview', review).success(function(review){
+			shopApi.submitReview(review).success(function(review){
 				$scope.user.reviews.push(review);
 			})
 		}}
 
 		$scope.deleteReview = function(review){
-		$http.delete('http://webshop.dev/profile/deleteReview/'+review.id).success(function(data){
+		shopApi.deleteReview(review.id).success(function(data){
 			$scope.reviews.splice( $scope.reviews.indexOf(review), 1 );
 			});
 		}
 	})
-	.controller('contactController', function ($scope, $http){
+	.controller('contactController', function ($scope, shopApi){
 		$scope.submitted = false;
 		$scope.mail = {};
 		$scope.sendMail = function() {
@@ -91,7 +131,7 @@ var app = angular.module('webshop', []);
 			}
 		}
 	})
-	.controller('creditCardController', function ($scope, $http){
+	.controller('creditCardController', function ($scope, shopApi){
 		$scope.submitted = false;
 		$scope.creditCardForm = {};
 		$scope.checkout = function() {
@@ -106,12 +146,12 @@ var app = angular.module('webshop', []);
 			}
 		}
 	})
-	.controller('orderController', function ($scope, $http){
+	.controller('orderController', function ($scope, shopApi){
 		var userId = $('div#data').data('userid');
 		$scope.loading = true;
-		$http.get('http://webshop.dev/cart/history/'+userId).success(function(data){
+		shopApi.getHistory(userId).success(function(data){
 				$scope.sales = data;
-			}).then(function(data) {
+			}).always(function(data) {
 				$scope.loading = false;
 			});
 
