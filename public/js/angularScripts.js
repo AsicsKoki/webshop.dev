@@ -6,6 +6,9 @@ var app = angular.module('webshop', []);
 			getHistory: function(userId){
 				return $http.get('http://webshop.dev/cart/history/'+userId);
 			},
+			getHistoryDetails: function(paypal_id){
+				return $http.get('http://webshop.dev/cart/history/'+paypal_id);
+			}
 
 			/*Comments*/
 			getComments: function(productId){
@@ -23,7 +26,7 @@ var app = angular.module('webshop', []);
 
 			/*Profile*/
 			getProfile: function(userId){
-				return $http.get('http://webshop.dev/profile/'+userId+'/profileJson')
+				return $http.get('http://webshop.dev/profile/'+userId+'/profileJson');
 			},
 			deleteComment: function(commentId){
 				return $http.delete('http://webshop.dev/profile/deleteComment/'+commentId);
@@ -37,6 +40,21 @@ var app = angular.module('webshop', []);
 			deleteReview: function(){
 				return $http.delete('http://webshop.dev/profile/deleteReview/'+reviewId);
 			},
+			/*Mailing*/
+			sendMail: function(mail){
+				$http({
+					method : 'POST',
+					url : 'http://webshop.dev/contact/sendEmail',
+					data : mail
+				})
+			},
+			checkout: function(data){
+				$http({
+					method : 'POST',
+					url : 'cart/create',
+					data : data
+				})
+			}
 		}
 	});
 
@@ -121,11 +139,7 @@ var app = angular.module('webshop', []);
 		$scope.mail = {};
 		$scope.sendMail = function() {
 			if($scope.emailForm.$valid){
-				$http({
-					method : 'POST',
-					url : 'http://webshop.dev/contact/sendEmail',
-					data : $scope.mail
-				})
+				shopApi.sendMail($scope.mail);
 			} else {
 				$scope.emailForm.submitted = true;
 			}
@@ -136,11 +150,7 @@ var app = angular.module('webshop', []);
 		$scope.creditCardForm = {};
 		$scope.checkout = function() {
 			if($scope.creditCardForm.$valid){
-				$http({
-					method : 'POST',
-					url : 'cart/create',
-					data : $scope.creditCardForm
-				})
+				shopApi.checkout($scope.creditCardForm);
 			} else {
 				$scope.creditCardForm.submitted = true;
 			}
@@ -156,7 +166,7 @@ var app = angular.module('webshop', []);
 			});
 
 		$scope.showDetails = function(paypal_id){
-			$http.get('http://webshop.dev/cart/history/'+paypal_id).success(function(data){
+			shopApi.getHistoryDetails(paypal_id).success(function(data){
 				$scope.saleData = data;
 			});
 		}
